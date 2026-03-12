@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANKIT — Built Different</title>
+    <meta name="description" content="Your recovery is broken. MANKIT puts 30g protein and full electrolytes in one drink — so recovery starts the second you finish your last rep.">
+    <meta name="theme-color" content="#0c0c0c">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏋️</text></svg>">
+    <style>
+        :root {
+            --bg: #0c0c0c;
+            --bg-alt: #141414;
+            --bg-dark: #080808;
+            --text-primary: #eae6e1;
+            --text-secondary: #9a9590;
+            --text-tertiary: #6a6560;
+            --accent: #c47a3a;
+            --accent-dark: #a86428;
+            --accent-glow: rgba(196,122,58,0.08);
+            --secondary: #8a7e72;
+            --white: #ffffff;
+            --card-bg: #1c1c1c;
+            --border: #2c2c2c;
+            --danger: #ff3b30;
+            --success: #c47a3a;
+            --shadow: 0 4px 24px rgba(0,0,0,0.4);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.5);
+            --shadow-xl: 0 32px 80px rgba(0,0,0,0.6);
+            --radius: 24px;
+            --radius-sm: 14px;
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+        body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text-primary);line-height:1.5;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
+
+        /* ===================== NAV ===================== */
+        nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:rgba(12,12,12,0.85);border-bottom:0.5px solid var(--border);transition:background 0.3s}
+        .nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between}
+        .nav-logo{font-size:18px;font-weight:700;letter-spacing:0.05em;color:var(--text-primary);text-decoration:none;text-transform:uppercase}
+        .nav-links{display:flex;gap:32px;list-style:none;align-items:center}
+        .nav-links a{font-size:14px;color:var(--text-secondary);text-decoration:none;transition:color 0.2s}
+        .nav-links a:hover{color:var(--text-primary)}
+        .nav-cta{background:var(--accent)!important;color:#0c0c0c!important;padding:8px 20px;border-radius:980px;font-size:14px;font-weight:600;transition:opacity 0.2s}
+        .nav-cta:hover{opacity:0.85}
+        .nav-menu-btn{display:none;background:none;border:none;color:var(--text-primary);font-size:24px;cursor:pointer;padding:4px}
+        @media(max-width:768px){.nav-menu-btn{display:block}.nav-links{display:none}}
+
+        /* ===================== HERO ===================== */
+        .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:140px 24px 100px;position:relative;overflow:hidden;background:linear-gradient(180deg,#0c0c0c 0%,#0f0f0f 50%,#141414 100%)}
+        .hero::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:1000px;height:1000px;background:radial-gradient(circle,rgba(196,122,58,0.03) 0%,rgba(138,126,114,0.015) 40%,transparent 70%);border-radius:50%;pointer-events:none;animation:pulseGlow 6s ease-in-out infinite}
+        .hero::after{content:'';position:absolute;bottom:-100px;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(196,122,58,0.02) 0%,transparent 70%);pointer-events:none}
+        @keyframes pulseGlow{0%,100%{transform:translateX(-50%) scale(1);opacity:1}50%{transform:translateX(-50%) scale(1.1);opacity:0.7}}
+
+        .hero-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+        .particle{position:absolute;width:4px;height:4px;background:var(--text-tertiary);border-radius:50%;opacity:0.06;animation:floatUp linear infinite}
+        .particle:nth-child(1){left:10%;animation-duration:20s;animation-delay:0s;width:3px;height:3px}
+        .particle:nth-child(2){left:25%;animation-duration:24s;animation-delay:3s;width:5px;height:5px}
+        .particle:nth-child(3){left:45%;animation-duration:22s;animation-delay:1s}
+        .particle:nth-child(4){left:65%;animation-duration:26s;animation-delay:5s;width:3px;height:3px}
+        .particle:nth-child(5){left:80%;animation-duration:21s;animation-delay:2s;width:4px;height:4px}
+        .particle:nth-child(6){left:92%;animation-duration:23s;animation-delay:4s;width:3px;height:3px}
+        @keyframes floatUp{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:0.06}90%{opacity:0.06}100%{transform:translateY(-100px) rotate(360deg);opacity:0}}
+
+        .hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--accent);background:var(--accent-glow);padding:8px 18px;border-radius:980px;margin-bottom:28px;letter-spacing:0.02em;animation:fadeUp 0.8s ease both;border:1px solid rgba(196,122,58,0.2)}
+        .hero-badge .dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:blink 2s ease-in-out infinite}
+        .hero-badge .countdown{font-variant-numeric:tabular-nums;margin-left:4px;color:var(--secondary)}
+        @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+
+        .hero h1{font-size:clamp(52px,11vw,104px);font-weight:700;letter-spacing:-0.045em;line-height:1.02;max-width:900px;animation:fadeUp 0.8s ease 0.1s both;position:relative}
+        .hero h1 .accent{background:linear-gradient(135deg,var(--accent),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero h1.glitch{animation:fadeUp 0.8s ease 0.1s both}
+
+        .hero-sub{font-size:clamp(18px,2.5vw,24px);color:var(--text-secondary);max-width:620px;margin-top:20px;line-height:1.55;font-weight:400;animation:fadeUp 0.8s ease 0.2s both}
+        .hero-actions{display:flex;gap:16px;margin-top:44px;flex-wrap:wrap;justify-content:center;animation:fadeUp 0.8s ease 0.3s both}
+
+        .btn-primary{background:var(--accent);color:#0c0c0c;padding:17px 36px;border-radius:980px;font-size:17px;font-weight:600;text-decoration:none;border:none;cursor:pointer;transition:transform 0.2s,opacity 0.2s,box-shadow 0.2s;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 16px rgba(0,0,0,0.2)}
+        .btn-primary:hover{transform:scale(1.03);box-shadow:0 8px 32px rgba(0,0,0,0.3)}
+        .btn-secondary{background:transparent;color:var(--accent);padding:17px 36px;border-radius:980px;font-size:17px;font-weight:600;text-decoration:none;border:1.5px solid var(--accent);cursor:pointer;transition:transform 0.2s,background 0.2s}
+        .btn-secondary:hover{transform:scale(1.03);background:rgba(196,122,58,0.08)}
+
+        /* ===================== HERO PRODUCT SHOWCASE ===================== */
+        .hero-showcase{margin-top:80px;display:flex;align-items:flex-end;justify-content:center;gap:28px;animation:fadeUp 1s ease 0.5s both;perspective:800px;position:relative}
+
+        /* Sticks (powder packs) — dark matte bodies */
+        .stick{width:40px;height:160px;position:relative;transition:transform 0.4s ease;cursor:default}
+        .stick:hover{transform:translateY(-12px)}
+        .stick-body{width:100%;height:100%;border-radius:6px;position:relative;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,0.4),0 4px 12px rgba(0,0,0,0.3)}
+        .stick-body.copper{background:linear-gradient(170deg,#3a2e24 0%,#2a2018 50%,#1e1610 100%)}
+        .stick-body.dark{background:linear-gradient(170deg,#2a2a2a 0%,#1a1a1a 50%,#111111 100%)}
+        .stick-body::before{content:'';position:absolute;top:0;left:-50%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(196,122,58,0.1),transparent);transform:skewX(-20deg);animation:sachetShine 4s ease-in-out infinite;pointer-events:none}
+        .stick-body::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent,transparent 8px,rgba(196,122,58,0.04) 8px,rgba(196,122,58,0.04) 10px);pointer-events:none}
+        @keyframes sachetShine{0%,100%{left:-50%}50%{left:120%}}
+        .stick-label{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px;text-align:center}
+        .stick-brand{font-size:5px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent)}
+        .stick-flavor{font-size:8px;font-weight:700;color:rgba(234,230,225,0.7);margin-top:4px;line-height:1.2}
+
+        /* Cans — dark charcoal/black bodies */
+        .can{width:96px;height:280px;position:relative;transition:transform 0.4s ease;cursor:default}
+        .can:hover{transform:translateY(-16px)}
+        .can-body{width:100%;height:100%;border-radius:12px 12px 16px 16px;position:relative;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,0.3),0 4px 12px rgba(0,0,0,0.2)}
+        .can-body.burnt-copper{background:linear-gradient(180deg,#1e1e1e 0%,#181818 50%,#121212 100%)}
+        .can-body.matte-black{background:linear-gradient(180deg,#1a1a1a 0%,#111111 50%,#0a0a0a 100%)}
+        .can-body.warm-stone{background:linear-gradient(180deg,#1e1c1a 0%,#181614 50%,#12100e 100%)}
+        .can-color-band{position:absolute;top:80px;left:0;right:0;height:50px}
+        .can-body.burnt-copper .can-color-band{background:linear-gradient(180deg,#c47a3a,#a86428)}
+        .can-body.matte-black .can-color-band{background:linear-gradient(180deg,#333333,#222222)}
+        .can-body.warm-stone .can-color-band{background:linear-gradient(180deg,#8a7e72,#6a6056)}
+        .can-top{position:absolute;top:0;left:0;right:0;height:24px;background:linear-gradient(180deg,#2a2a2a 0%,#222222 40%,#1a1a1a 100%);border-radius:12px 12px 0 0;display:flex;align-items:center;justify-content:center}
+        .can-top::before{content:'';width:50px;height:14px;border-radius:7px;border:1.5px solid rgba(196,122,58,0.15);background:linear-gradient(180deg,#2a2a2a,#1e1e1e);position:relative;top:1px}
+        .can-tab{position:absolute;top:3px;left:50%;transform:translateX(-50%);width:20px;height:10px;border-radius:5px 5px 3px 3px;background:linear-gradient(180deg,#333,#222);border:1px solid rgba(196,122,58,0.1);z-index:2}
+        .can-tab::after{content:'';position:absolute;bottom:2px;left:50%;transform:translateX(-50%);width:6px;height:4px;border-radius:50%;border:1px solid rgba(196,122,58,0.1)}
+        .can-bottom{position:absolute;bottom:0;left:0;right:0;height:8px;background:linear-gradient(0deg,#1a1a1a,#222222);border-radius:0 0 16px 16px}
+        .can-label{position:absolute;top:40px;left:0;right:0;bottom:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 10px;text-align:center;z-index:2}
+        .can-brand{font-size:7px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent)}
+        .can-divider{width:24px;height:1px;background:var(--accent);opacity:0.3;margin:6px 0}
+        .can-flavor{font-size:13px;font-weight:700;color:var(--text-primary);letter-spacing:-0.01em;line-height:1.2}
+        .can-sub{font-size:7px;color:var(--text-tertiary);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px}
+        .can-ml{font-size:6px;color:var(--text-tertiary);margin-top:8px;letter-spacing:0.05em;opacity:0.5}
+        .can-seal{position:absolute;bottom:28px;width:24px;height:24px;border-radius:50%;border:1px solid rgba(196,122,58,0.3);display:flex;align-items:center;justify-content:center;z-index:2}
+        .can-seal::after{content:'MK';font-size:6px;font-weight:800;color:var(--accent);letter-spacing:0.05em}
+        .can-body::before{content:'';position:absolute;top:0;right:-10px;width:40px;height:100%;background:linear-gradient(180deg,transparent,rgba(196,122,58,0.06),transparent);transform:skewX(-5deg);pointer-events:none;z-index:3}
+        .can-body::after{content:'';position:absolute;top:24px;left:8px;width:1px;height:calc(100% - 40px);background:linear-gradient(180deg,transparent,rgba(196,122,58,0.1),transparent);pointer-events:none;z-index:3}
+        .product-shadow{position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:70%;height:20px;background:radial-gradient(ellipse,rgba(0,0,0,0.3) 0%,transparent 70%);border-radius:50%}
+
+        /* ===================== MARQUEE ===================== */
+        .marquee-section{padding:40px 0;overflow:hidden;border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border);background:var(--bg)}
+        .marquee-track{display:flex;gap:48px;animation:marquee 30s linear infinite;width:max-content}
+        .marquee-item{font-size:14px;font-weight:600;color:var(--text-tertiary);letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;display:flex;align-items:center;gap:12px}
+        .marquee-dot{width:5px;height:5px;background:var(--accent);border-radius:50%;opacity:0.5}
+        @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+        /* ===================== SECTIONS ===================== */
+        #products{background:var(--bg-alt);padding:140px 24px}
+        .section-header{text-align:center;max-width:680px;margin:0 auto 72px}
+        .section-label{font-size:14px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px}
+        .section-header h2{font-size:clamp(36px,5.5vw,60px);font-weight:700;letter-spacing:-0.035em;line-height:1.08}
+        .section-header p{font-size:19px;color:var(--text-secondary);margin-top:16px;line-height:1.6}
+        .products-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
+        .product-card{background:var(--card-bg);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform 0.4s ease,box-shadow 0.4s ease;position:relative;border:1px solid var(--border)}
+        .product-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-xl)}
+        .product-card-visual{height:280px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#0c0c0c 0%,#141414 50%,#1c1c1c 100%)}
+        .card-stick-group{display:flex;gap:8px;align-items:flex-end;transform:rotate(-3deg)}
+        .card-stick{width:28px;height:100px;border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 12px 32px rgba(0,0,0,0.4);position:relative;overflow:hidden}
+        .card-stick.s1{background:linear-gradient(170deg,#3a2e24,#1e1610);transform:translateY(-8px)}
+        .card-stick.s2{background:linear-gradient(170deg,#2a2a2a,#111111)}
+        .card-stick.s3{background:linear-gradient(170deg,#3a3632,#1e1a16);transform:translateY(-4px)}
+        .card-stick.s4{background:linear-gradient(170deg,#3a3020,#1e1810);transform:translateY(-2px)}
+        .card-stick::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent,transparent 6px,rgba(196,122,58,0.06) 6px,rgba(196,122,58,0.06) 7px);pointer-events:none}
+        .card-stick span{font-size:4px;font-weight:700;letter-spacing:0.1em;color:var(--accent);text-transform:uppercase;z-index:1}
+        .card-can-group{display:flex;gap:16px;align-items:flex-end}
+        .card-can{width:52px;height:150px;border-radius:8px 8px 10px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;box-shadow:0 12px 32px rgba(0,0,0,0.3);background:#181818;overflow:hidden}
+        .card-can.c1{transform:translateY(-10px)}
+        .card-can.c1::before{content:'';position:absolute;top:40px;left:0;right:0;height:24px;background:var(--accent)}
+        .card-can.c2::before{content:'';position:absolute;top:40px;left:0;right:0;height:24px;background:#333}
+        .card-can.c3{transform:translateY(-6px)}
+        .card-can.c3::before{content:'';position:absolute;top:40px;left:0;right:0;height:24px;background:#8a7e72}
+        .card-can.c4::before{content:'';position:absolute;top:40px;left:0;right:0;height:24px;background:#b8860b}
+        .card-can.c5{transform:translateY(-4px)}
+        .card-can.c5::before{content:'';position:absolute;top:40px;left:0;right:0;height:24px;background:#4a3020}
+        .card-can span{font-size:5px;font-weight:700;letter-spacing:0.12em;color:var(--accent);text-transform:uppercase;z-index:2}
+        .card-can-top{position:absolute;top:0;left:0;right:0;height:12px;background:linear-gradient(180deg,#2a2a2a,#1a1a1a);border-radius:8px 8px 0 0;z-index:2}
+        .product-card-visual::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60%;height:40%;background:radial-gradient(ellipse,rgba(196,122,58,0.02) 0%,transparent 70%);pointer-events:none}
+        .product-card-info{padding:36px 32px 40px}
+        .product-card-info h3{font-size:26px;font-weight:700;letter-spacing:-0.02em;margin-bottom:4px}
+        .product-card-info .price{font-size:17px;font-weight:600;color:var(--accent);margin-bottom:14px}
+        .product-card-info p{font-size:15px;color:var(--text-secondary);line-height:1.65}
+        .flavor-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+        .flavor-pill{font-size:12px;font-weight:600;padding:6px 14px;border-radius:980px;background:#222;color:var(--text-secondary);border:1px solid #333}
+
+        /* ===================== INGREDIENT STRIP ===================== */
+        .ingredient-strip{padding:32px 0;overflow:hidden;border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border);background:var(--bg-dark)}
+        .ingredient-track{display:flex;gap:48px;animation:marquee 40s linear infinite;width:max-content}
+        .ingredient-item{font-size:13px;font-weight:500;color:var(--text-tertiary);white-space:nowrap;display:flex;align-items:center;gap:8px;letter-spacing:0.02em}
+        .ingredient-item strong{color:var(--accent);font-weight:700}
+
+        #science{padding:140px 24px}
+        .features-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+        .feature{background:var(--card-bg);padding:44px 28px;text-align:center;transition:background 0.3s}
+        .feature:hover{background:var(--bg-alt)}
+        .feature-icon-wrap{width:64px;height:64px;margin:0 auto 24px;border-radius:18px;background:var(--accent-glow);display:flex;align-items:center;justify-content:center}
+        .feature-icon-wrap svg{width:28px;height:28px;stroke:var(--accent);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+        .feature h3{font-size:20px;font-weight:700;letter-spacing:-0.01em;margin-bottom:8px}
+        .feature p{font-size:14px;color:var(--text-secondary);line-height:1.6}
+        @media(max-width:900px){.features-grid{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:500px){.features-grid{grid-template-columns:1fr}}
+
+        .big-quote{padding:120px 24px;text-align:center;background:var(--bg-dark);color:var(--text-primary);position:relative;overflow:hidden}
+        .big-quote::before{content:'\201C';position:absolute;top:-40px;left:50%;transform:translateX(-50%);font-size:300px;font-weight:700;color:rgba(196,122,58,0.03);line-height:1;pointer-events:none}
+        .big-quote blockquote{max-width:700px;margin:0 auto;font-size:clamp(24px,4vw,36px);font-weight:600;letter-spacing:-0.02em;line-height:1.4;position:relative;z-index:1}
+        .big-quote .quote-author{margin-top:24px;font-size:15px;color:var(--text-tertiary);font-weight:400}
+
+        #how{background:var(--bg-alt);padding:140px 24px}
+        .steps{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+        .step{text-align:center;padding:40px 28px;background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow);transition:transform 0.3s,box-shadow 0.3s;position:relative;border:1px solid var(--border)}
+        .step:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+        .step-number{width:56px;height:56px;border-radius:50%;background:var(--accent);color:#0c0c0c;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;margin:0 auto 20px}
+        .step h3{font-size:20px;font-weight:700;letter-spacing:-0.01em;margin-bottom:8px}
+        .step p{font-size:15px;color:var(--text-secondary);line-height:1.6}
+        .step:not(:last-child)::after{content:'';position:absolute;top:50%;right:-20px;width:12px;height:12px;border-top:2px solid var(--accent);border-right:2px solid var(--accent);transform:rotate(45deg);z-index:2;opacity:0.4}
+        @media(max-width:768px){.steps{grid-template-columns:1fr;gap:16px}.step::after{display:none}}
+
+        #athletes{padding:140px 24px}
+        .testimonials-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+        .testimonial{background:var(--card-bg);border-radius:var(--radius);padding:40px 36px;box-shadow:var(--shadow);transition:transform 0.3s;position:relative;border:1px solid var(--border)}
+        .testimonial:hover{transform:translateY(-4px)}
+        .testimonial .stars{display:flex;gap:3px;margin-bottom:20px}
+        .star{width:18px;height:18px}
+        .star svg{width:18px;height:18px;fill:var(--accent)}
+        .testimonial blockquote{font-size:16px;line-height:1.65;color:var(--text-primary);margin-bottom:24px;font-style:italic}
+        .testimonial-footer{display:flex;align-items:center;gap:12px}
+        .testimonial-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent-glow),rgba(196,122,58,0.3));display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--accent)}
+        .testimonial-info .testimonial-author{font-size:15px;font-weight:600}
+        .testimonial-info .testimonial-handle{font-size:13px;color:var(--text-tertiary)}
+
+        .numbers{padding:100px 24px;background:var(--bg-alt);border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border)}
+        .numbers-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+        .number-item .num{font-size:clamp(36px,5vw,52px);font-weight:700;letter-spacing:-0.03em;background:linear-gradient(135deg,var(--accent),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .number-item .num-label{font-size:14px;color:var(--text-secondary);margin-top:4px}
+        @media(max-width:600px){.numbers-grid{grid-template-columns:repeat(2,1fr);gap:32px}}
+
+        #waitlist{padding:140px 24px;background:var(--bg)}
+        .waitlist-box{max-width:580px;margin:0 auto;text-align:center}
+        .waitlist-box h2{font-size:clamp(36px,5vw,52px);font-weight:700;letter-spacing:-0.035em;line-height:1.1}
+        .waitlist-box .sub{font-size:18px;color:var(--text-secondary);margin-top:16px;line-height:1.6}
+        .email-form{display:flex;gap:12px;margin-top:36px;flex-wrap:wrap;justify-content:center}
+        .email-form input[type="email"]{flex:1;min-width:260px;padding:18px 26px;border-radius:980px;border:1.5px solid var(--border);background:var(--card-bg);color:var(--text-primary);font-size:17px;font-family:inherit;outline:none;transition:border-color 0.2s,box-shadow 0.2s}
+        .email-form input[type="email"]:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-glow)}
+        .email-form input[type="email"]::placeholder{color:var(--text-tertiary)}
+        .email-form button{padding:18px 36px;border-radius:980px;background:var(--accent);color:#0c0c0c;font-size:17px;font-weight:600;font-family:inherit;border:none;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 16px rgba(0,0,0,0.2)}
+        .email-form button:hover{transform:scale(1.03);box-shadow:0 8px 32px rgba(0,0,0,0.3)}
+        .form-note{font-size:13px;color:var(--text-tertiary);margin-top:16px}
+        .waitlist-perks{display:flex;gap:24px;justify-content:center;margin-top:28px;flex-wrap:wrap}
+        .perk{font-size:13px;color:var(--text-secondary);display:flex;align-items:center;gap:6px}
+        .perk svg{width:16px;height:16px;stroke:var(--accent);fill:none;stroke-width:2}
+        .success-message{display:none;padding:24px;background:var(--accent-glow);border:1px solid rgba(196,122,58,0.2);border-radius:var(--radius-sm);margin-top:24px;font-size:17px;font-weight:500;color:var(--accent)}
+
+        footer{padding:60px 24px 40px;text-align:center;border-top:0.5px solid var(--border);background:var(--bg)}
+        .footer-inner{max-width:800px;margin:0 auto}
+        .footer-logo{font-size:20px;font-weight:700;letter-spacing:0.05em;margin-bottom:20px;color:var(--text-primary);text-transform:uppercase}
+        .footer-links{display:flex;gap:28px;justify-content:center;list-style:none;margin-bottom:28px;flex-wrap:wrap}
+        .footer-links a{font-size:14px;color:var(--text-secondary);text-decoration:none;transition:color 0.2s}
+        .footer-links a:hover{color:var(--accent)}
+        .footer-social{display:flex;gap:16px;justify-content:center;margin-bottom:28px}
+        .footer-social a{width:40px;height:40px;border-radius:50%;background:var(--bg-alt);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:background 0.2s,border-color 0.2s}
+        .footer-social a:hover{background:var(--accent-glow);border-color:rgba(196,122,58,0.3)}
+        .footer-social svg{width:18px;height:18px;fill:var(--text-secondary)}
+        .footer-copy{font-size:13px;color:var(--text-tertiary)}
+
+        /* ===================== MODAL / PRE-ORDER ===================== */
+        .modal-overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:24px;overflow-y:auto}
+        .modal-overlay.open{display:flex}
+        .modal{background:var(--card-bg);border-radius:var(--radius);max-width:640px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow-xl);animation:modalIn 0.3s ease;border:1px solid var(--border)}
+        @keyframes modalIn{from{opacity:0;transform:scale(0.95) translateY(16px)}to{opacity:1;transform:scale(1) translateY(0)}}
+        .modal-header{display:flex;align-items:center;justify-content:space-between;padding:28px 32px 0;position:sticky;top:0;background:var(--card-bg);z-index:1;border-radius:var(--radius) var(--radius) 0 0}
+        .modal-header h2{font-size:24px;font-weight:700;letter-spacing:-0.02em}
+        .modal-close{width:36px;height:36px;border-radius:50%;border:none;background:var(--bg-alt);color:var(--text-secondary);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
+        .modal-close:hover{background:var(--border)}
+        .modal-body{padding:24px 32px 32px}
+        .order-product{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--border)}
+        .order-product:last-of-type{border-bottom:none}
+        .order-product-info{display:flex;align-items:center;gap:14px}
+        .order-product-swatch{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:var(--accent);letter-spacing:0.05em;flex-shrink:0}
+        .swatch-blood-orange{background:linear-gradient(135deg,#8b3a1a,#5a2210)}
+        .swatch-stick-unflavored{background:linear-gradient(135deg,#333,#111)}
+        .swatch-vanilla{background:linear-gradient(135deg,#6a6056,#4a4640)}
+        .swatch-tropical{background:linear-gradient(135deg,#8b6b20,#5a4510)}
+        .swatch-can-blood-orange{background:linear-gradient(135deg,#c47a3a,#a86428)}
+        .swatch-can-unflavored{background:linear-gradient(135deg,#333,#111)}
+        .swatch-can-vanilla{background:linear-gradient(135deg,#8a7e72,#6a6056)}
+        .swatch-mango{background:linear-gradient(135deg,#b8860b,#8a6400)}
+        .swatch-chocolate{background:linear-gradient(135deg,#4a3020,#2a1a10)}
+        .order-product-name{font-size:15px;font-weight:600}
+        .order-product-price{font-size:13px;color:var(--text-secondary)}
+        .qty-control{display:flex;align-items:center;border:1.5px solid var(--border);border-radius:10px;overflow:hidden}
+        .qty-btn{width:36px;height:36px;border:none;background:var(--bg-alt);color:var(--text-primary);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.15s;font-family:inherit}
+        .qty-btn:hover{background:var(--border)}
+        .qty-val{width:40px;text-align:center;font-size:15px;font-weight:600;border:none;background:transparent;color:var(--text-primary);font-family:inherit}
+        .order-summary{background:var(--bg-alt);border-radius:var(--radius-sm);padding:20px;margin-top:20px}
+        .order-summary-row{display:flex;justify-content:space-between;font-size:14px;color:var(--text-secondary);padding:4px 0}
+        .order-summary-total{display:flex;justify-content:space-between;font-size:18px;font-weight:700;padding:12px 0 0;border-top:1.5px solid var(--border);margin-top:8px}
+        .order-section-label{font-size:13px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin:24px 0 12px}
+        .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+        .form-row.full{grid-template-columns:1fr}
+        .form-field{display:flex;flex-direction:column;gap:4px}
+        .form-field label{font-size:13px;font-weight:500;color:var(--text-secondary)}
+        .form-field input,.form-field textarea{padding:12px 16px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg);color:var(--text-primary);font-size:15px;font-family:inherit;outline:none;transition:border-color 0.2s,box-shadow 0.2s}
+        .form-field input:focus,.form-field textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+        .form-field textarea{resize:vertical;min-height:60px}
+        .btn-order{width:100%;padding:18px;border-radius:980px;background:var(--accent);color:#0c0c0c;font-size:17px;font-weight:600;font-family:inherit;border:none;cursor:pointer;margin-top:24px;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 16px rgba(0,0,0,0.2)}
+        .btn-order:hover{transform:scale(1.02);box-shadow:0 8px 32px rgba(0,0,0,0.3)}
+        .btn-order:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+        .order-success{text-align:center;padding:48px 24px}
+        .order-success-icon{width:72px;height:72px;border-radius:50%;background:var(--accent-glow);display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+        .order-success-icon svg{width:32px;height:32px;stroke:var(--accent);fill:none;stroke-width:2.5}
+        .order-success h3{font-size:24px;font-weight:700;margin-bottom:8px}
+        .order-success p{font-size:15px;color:var(--text-secondary);line-height:1.6}
+        .order-id{display:inline-block;background:var(--bg-alt);padding:6px 16px;border-radius:8px;font-size:14px;font-weight:600;font-family:monospace;margin-top:12px;color:var(--accent)}
+        .social-share{display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap}
+        .share-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:980px;font-size:13px;font-weight:600;text-decoration:none;border:1.5px solid var(--border);color:var(--text-secondary);background:var(--bg-alt);cursor:pointer;transition:border-color 0.2s,color 0.2s}
+        .share-btn:hover{border-color:var(--accent);color:var(--accent)}
+        .btn-back{background:none;border:none;color:var(--accent);font-size:14px;font-weight:600;cursor:pointer;padding:0;margin-bottom:8px;font-family:inherit;display:flex;align-items:center;gap:4px}
+        .btn-back:hover{text-decoration:underline}
+        @media(max-width:600px){.form-row{grid-template-columns:1fr}.modal-body{padding:20px}.modal-header{padding:20px 20px 0}}
+
+        /* Spinner */
+        .spinner{display:inline-block;width:20px;height:20px;border:2.5px solid rgba(12,12,12,0.2);border-top-color:#0c0c0c;border-radius:50%;animation:spin 0.6s linear infinite;vertical-align:middle;margin-right:8px}
+        @keyframes spin{to{transform:rotate(360deg)}}
+
+        /* Toast notifications */
+        .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--card-bg);color:var(--text-primary);padding:14px 28px;border-radius:14px;font-size:15px;font-weight:500;z-index:300;box-shadow:var(--shadow-lg);transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);pointer-events:none;border:1px solid var(--border)}
+        .toast.show{transform:translateX(-50%) translateY(0)}
+        .toast.error{background:var(--danger);border-color:var(--danger)}
+
+        /* ===================== ADMIN DASHBOARD ===================== */
+        .admin-page{display:none;min-height:100vh;padding:80px 24px 40px;background:var(--bg)}
+        .admin-page.active{display:block}
+        .admin-header{max-width:1100px;margin:0 auto 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+        .admin-header h1{font-size:28px;font-weight:700;letter-spacing:-0.02em}
+        .admin-actions{display:flex;gap:12px;flex-wrap:wrap}
+        .btn-admin{padding:10px 22px;border-radius:980px;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;transition:transform 0.2s;border:1.5px solid var(--border);background:var(--card-bg);color:var(--text-primary)}
+        .btn-admin:hover{transform:scale(1.02)}
+        .btn-admin.primary{background:var(--accent);color:#0c0c0c;border-color:var(--accent)}
+        .btn-admin.danger{background:transparent;border-color:var(--danger);color:var(--danger)}
+        .admin-stats{max-width:1100px;margin:0 auto 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+        .admin-stat{background:var(--card-bg);border-radius:var(--radius-sm);padding:24px;box-shadow:var(--shadow);border:1px solid var(--border)}
+        .admin-stat .stat-val{font-size:32px;font-weight:700;letter-spacing:-0.02em}
+        .admin-stat .stat-val.gold{color:var(--accent)}
+        .admin-stat .stat-label{font-size:13px;color:var(--text-secondary);margin-top:4px}
+
+        .admin-toolbar{max-width:1100px;margin:0 auto 20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+        .admin-search{flex:1;min-width:200px;padding:12px 20px;border-radius:12px;border:1.5px solid var(--border);background:var(--card-bg);color:var(--text-primary);font-size:15px;font-family:inherit;outline:none;transition:border-color 0.2s}
+        .admin-search:focus{border-color:var(--accent)}
+        .admin-filter{padding:10px 18px;border-radius:10px;border:1.5px solid var(--border);background:var(--card-bg);color:var(--text-primary);font-size:14px;font-family:inherit;cursor:pointer;outline:none}
+
+        .admin-table-wrap{max-width:1100px;margin:0 auto;background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow);overflow-x:auto;border:1px solid var(--border)}
+        .admin-table{width:100%;border-collapse:collapse;font-size:14px;min-width:800px}
+        .admin-table th{text-align:left;padding:14px 16px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-tertiary);background:var(--bg-alt);border-bottom:1px solid var(--border)}
+        .admin-table td{padding:14px 16px;border-bottom:1px solid var(--border);vertical-align:top}
+        .admin-table tr:last-child td{border-bottom:none}
+        .admin-table tr:hover td{background:var(--bg-alt)}
+        .order-items-list{font-size:13px;color:var(--text-secondary);line-height:1.6}
+        .order-status{display:inline-block;padding:3px 10px;border-radius:980px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;cursor:pointer;transition:opacity 0.2s;border:none;font-family:inherit}
+        .order-status:hover{opacity:0.7}
+        .order-status.pending{background:rgba(196,122,58,0.12);color:var(--accent)}
+        .order-status.confirmed{background:rgba(138,126,114,0.12);color:var(--secondary)}
+        .order-status.shipped{background:rgba(0,122,255,0.12);color:#007aff}
+        .order-status.cancelled{background:rgba(255,59,48,0.12);color:var(--danger)}
+        .admin-empty{text-align:center;padding:80px 24px;color:var(--text-tertiary);font-size:16px}
+        .admin-login{max-width:400px;margin:120px auto;text-align:center;padding:0 24px}
+        .admin-login h2{font-size:24px;font-weight:700;margin-bottom:8px}
+        .admin-login p{font-size:15px;color:var(--text-secondary);margin-bottom:24px}
+        .admin-login input{width:100%;padding:16px 20px;border-radius:12px;border:1.5px solid var(--border);background:var(--card-bg);color:var(--text-primary);font-size:16px;font-family:inherit;outline:none;text-align:center;margin-bottom:16px;transition:border-color 0.2s}
+        .admin-login input:focus{border-color:var(--accent)}
+        .admin-login .btn-order{margin-top:0}
+        .admin-login-error{font-size:13px;color:var(--danger);margin-top:8px;display:none}
+        .admin-realtime{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--success);font-weight:500}
+        .admin-realtime .live-dot{width:8px;height:8px;background:var(--success);border-radius:50%;animation:blink 2s ease-in-out infinite}
+        .order-address{font-size:12px;color:var(--text-tertiary);line-height:1.4;margin-top:2px}
+        .order-notes{font-size:12px;color:var(--text-tertiary);font-style:italic;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+        .order-delete{background:none;border:none;color:var(--text-tertiary);cursor:pointer;font-size:16px;padding:4px;border-radius:6px;transition:color 0.2s,background 0.2s}
+        .order-delete:hover{color:var(--danger);background:rgba(255,59,48,0.08)}
+
+        @media(max-width:768px){.admin-table{font-size:12px}.admin-table th,.admin-table td{padding:10px 12px}}
+
+        /* ===================== ANIMATIONS ===================== */
+        @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+        .reveal{opacity:0;transform:translateY(36px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94)}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+        .reveal-delay-1{transition-delay:0.1s}
+        .reveal-delay-2{transition-delay:0.2s}
+        .reveal-delay-3{transition-delay:0.3s}
+
+        /* ===================== RESPONSIVE ===================== */
+        @media(max-width:768px){
+            .hero{padding:110px 20px 70px}
+            section{padding:100px 20px}
+            #products,#science,#how,#athletes{padding:100px 20px}
+            .hero-showcase{gap:16px;flex-wrap:wrap;justify-content:center}
+            .stick{width:32px;height:120px}
+            .can{width:76px;height:220px}
+            .email-form{flex-direction:column}
+            .email-form input[type="email"]{min-width:auto;width:100%}
+            .email-form button{width:100%}
+            .step::after{display:none}
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">MANKIT</a>
+        <ul class="nav-links">
+            <li><a href="#products">Products</a></li>
+            <li><a href="#science">Science</a></li>
+            <li><a href="#how">How It Works</a></li>
+            <li><a href="#athletes">Results</a></li>
+            <li><a href="#preorder" class="nav-cta" onclick="event.preventDefault();openPreorder()">Pre-Order</a></li>
+        </ul>
+        <button class="nav-menu-btn" onclick="openPreorder()" aria-label="Pre-order">&#8594;</button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="mainSite">
+    <div class="hero-particles">
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    </div>
+    <span class="hero-badge"><span class="dot"></span> Pre-orders open — first batch ships April <span class="countdown" id="countdown"></span></span>
+    <h1 class="glitch">Your recovery is <span class="accent">broken.</span></h1>
+    <p class="hero-sub">You train hard and then wait hours to refuel. By then the damage is done. MANKIT puts 30g protein and full electrolytes in one drink — so recovery starts the second you finish your last rep.</p>
+    <div class="hero-actions">
+        <a href="#preorder" class="btn-primary" onclick="event.preventDefault();openPreorder()">
+            Pre-Order Now
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#products" class="btn-secondary">Explore Products</a>
+    </div>
+    <div class="hero-showcase" id="heroShowcase">
+        <div class="stick"><div class="stick-body copper"><div class="stick-label"><span class="stick-brand">MANKIT</span><span class="stick-flavor">Iron<br>Forge</span></div></div><div class="product-shadow"></div></div>
+        <div class="can"><div class="can-body burnt-copper"><div class="can-color-band"></div><div class="can-top"></div><div class="can-tab"></div><div class="can-label"><span class="can-brand">MANKIT</span><div class="can-divider"></div><span class="can-flavor">Ironside</span><span class="can-sub">30g Protein</span><span class="can-ml">355ml / 12 fl oz</span></div><div class="can-seal"></div><div class="can-bottom"></div></div><div class="product-shadow"></div></div>
+        <div class="can"><div class="can-body matte-black"><div class="can-color-band"></div><div class="can-top"></div><div class="can-tab"></div><div class="can-label"><span class="can-brand">MANKIT</span><div class="can-divider"></div><span class="can-flavor">Blackout</span><span class="can-sub">30g Protein</span><span class="can-ml">355ml / 12 fl oz</span></div><div class="can-seal"></div><div class="can-bottom"></div></div><div class="product-shadow"></div></div>
+        <div class="can"><div class="can-body warm-stone"><div class="can-color-band"></div><div class="can-top"></div><div class="can-tab"></div><div class="can-label"><span class="can-brand">MANKIT</span><div class="can-divider"></div><span class="can-flavor">Concrete</span><span class="can-sub">30g Protein</span><span class="can-ml">355ml / 12 fl oz</span></div><div class="can-seal"></div><div class="can-bottom"></div></div><div class="product-shadow"></div></div>
+        <div class="stick"><div class="stick-body dark"><div class="stick-label"><span class="stick-brand">MANKIT</span><span class="stick-flavor">Black<br>Ops</span></div></div><div class="product-shadow"></div></div>
+    </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+    <div class="marquee-track">
+        <span class="marquee-item"><span class="marquee-dot"></span>30g protein per serve</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Full electrolyte panel</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Zero sugar</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Recovery starts now</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>No more two shakers</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>One drink. Done.</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Lab tested</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Built for intensity</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>30g protein per serve</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Full electrolyte panel</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Zero sugar</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Recovery starts now</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>No more two shakers</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>One drink. Done.</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Lab tested</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Built for intensity</span>
+    </div>
+</div>
+
+<!-- PRODUCTS -->
+<section id="products">
+    <div class="section-header reveal"><p class="section-label">Products</p><h2>One drink replaces your whole post-workout stack.</h2><p>Protein powder. Electrolyte mix. Recovery shake. You used to need three products. Now you need one.</p></div>
+    <div class="products-grid">
+        <div class="product-card reveal">
+            <div class="product-card-visual"><div class="card-stick-group"><div class="card-stick s1"><span>MK</span></div><div class="card-stick s2"><span>MK</span></div><div class="card-stick s3"><span>MK</span></div><div class="card-stick s4"><span>MK</span></div></div></div>
+            <div class="product-card-info"><h3>Powder Sticks</h3><p class="price">From $22 / box of 12</p><p>Throw one in your gym bag. After your last set, tear it into water — 30g protein and full electrolytes hitting your muscles before you even leave the building.</p><div class="flavor-pills"><span class="flavor-pill">Iron Forge</span><span class="flavor-pill">Black Ops</span><span class="flavor-pill">Granite</span><span class="flavor-pill">War Paint</span></div></div>
+        </div>
+        <div class="product-card reveal reveal-delay-1">
+            <div class="product-card-visual"><div class="card-can-group"><div class="card-can c1"><div class="card-can-top"></div><span>Iron</span></div><div class="card-can c2"><div class="card-can-top"></div><span>Black</span></div><div class="card-can c3"><div class="card-can-top"></div><span>Stone</span></div></div></div>
+            <div class="product-card-info"><h3>RTD Cans</h3><p class="price">From $28 / pack of 6</p><p>Keep a pack in your gym locker. Crack one open the second you rack your last weight. No shaker, no mixing, no waiting to get home.</p><div class="flavor-pills"><span class="flavor-pill">Ironside</span><span class="flavor-pill">Blackout</span><span class="flavor-pill">Concrete</span><span class="flavor-pill">Warzone</span><span class="flavor-pill">Titan</span></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- INGREDIENT TRANSPARENCY STRIP -->
+<div class="ingredient-strip">
+    <div class="ingredient-track">
+        <span class="ingredient-item"><strong>30g</strong> Protein — muscle rebuild</span>
+        <span class="ingredient-item"><strong>1200mg</strong> Sodium — prevents cramping</span>
+        <span class="ingredient-item"><strong>500mg</strong> Potassium — nerve function</span>
+        <span class="ingredient-item"><strong>250mg</strong> Magnesium — reduces fatigue</span>
+        <span class="ingredient-item"><strong>0g</strong> Sugar — no crash</span>
+        <span class="ingredient-item"><strong>8g</strong> BCAAs — stops muscle breakdown</span>
+        <span class="ingredient-item"><strong>150mg</strong> Calcium — bone density</span>
+        <span class="ingredient-item"><strong>0</strong> Artificial colors — nothing to hide</span>
+        <span class="ingredient-item"><strong>30g</strong> Protein — muscle rebuild</span>
+        <span class="ingredient-item"><strong>1200mg</strong> Sodium — prevents cramping</span>
+        <span class="ingredient-item"><strong>500mg</strong> Potassium — nerve function</span>
+        <span class="ingredient-item"><strong>250mg</strong> Magnesium — reduces fatigue</span>
+        <span class="ingredient-item"><strong>0g</strong> Sugar — no crash</span>
+        <span class="ingredient-item"><strong>8g</strong> BCAAs — stops muscle breakdown</span>
+        <span class="ingredient-item"><strong>150mg</strong> Calcium — bone density</span>
+        <span class="ingredient-item"><strong>0</strong> Artificial colors — nothing to hide</span>
+    </div>
+</div>
+
+<!-- THE SCIENCE -->
+<section id="science">
+    <div class="section-header reveal"><p class="section-label">The Problem</p><h2>The problem with your post-workout routine.</h2><p>You finish a brutal workout. Then you go home, make a shake, hope it's enough. By then you've lost the recovery window.</p></div>
+    <div class="features-grid reveal">
+        <div class="feature"><div class="feature-icon-wrap"><svg viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M6.5 17.5l11-11"/><circle cx="12" cy="12" r="10"/></svg></div><h3>Your muscles are starving</h3><p>30g whey isolate — more than most shakes — absorbed fast because you're drinking it immediately, not 45 minutes later at your kitchen counter.</p></div>
+        <div class="feature"><div class="feature-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><h3>You're more dehydrated than you think</h3><p>Sodium, potassium, magnesium, calcium. You sweat out all four. Water alone doesn't replace them. That's why you cramp, drag, and underperform next session.</p></div>
+        <div class="feature"><div class="feature-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>You read every label</h3><p>No sugar, no artificial colors, no proprietary blends. Every ingredient listed, every batch third-party tested. If you track macros, you'll respect this label.</p></div>
+        <div class="feature"><div class="feature-icon-wrap"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>The window is closing</h3><p>Your body starts cannibalizing muscle within 30 minutes post-workout. MANKIT mixes in 10 seconds — no blender needed. Recovery starts before you leave the gym floor.</p></div>
+    </div>
+</section>
+
+<!-- BIG QUOTE -->
+<section class="big-quote reveal">
+    <blockquote>"I got tired of the post-workout circus. Shaker bottle, electrolyte packet, BCAA pills, then rush home for a real meal. I thought — what if one drink covered it all? That's MANKIT."</blockquote>
+    <p class="quote-author">Simiran Jha, Founder</p>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+    <div class="section-header reveal"><p class="section-label">How It Works</p><h2>Kill the post-workout circus.</h2></div>
+    <div class="steps">
+        <div class="step reveal"><div class="step-number">1</div><h3>Pick your weapon</h3><p>Sticks for the gym bag, cans for the locker. Either way, you're carrying one drink instead of a whole supplement stack.</p></div>
+        <div class="step reveal reveal-delay-1"><div class="step-number">2</div><h3>Delivered to your door</h3><p>Shipped free. Subscribe monthly so you never run out, or order once. Cancel anytime.</p></div>
+        <div class="step reveal reveal-delay-2"><div class="step-number">3</div><h3>Recover while they're still mixing</h3><p>30g protein and full electrolytes hitting your muscles while everyone else is still looking for their shaker bottle.</p></div>
+    </div>
+</section>
+
+<!-- NUMBERS -->
+<div class="numbers reveal" id="numbersSection">
+    <div class="numbers-grid">
+        <div class="number-item"><div class="num" data-target="5000" data-suffix="+">0</div><div class="num-label">Guys who ditched the shaker bag</div></div>
+        <div class="number-item"><div class="num" data-target="4.8" data-decimal="true">0</div><div class="num-label">Avg. tester rating</div></div>
+        <div class="number-item"><div class="num" data-target="30" data-suffix="g">0</div><div class="num-label">Protein per serve</div></div>
+        <div class="number-item"><div class="num" data-target="0" data-suffix="g" data-static="true">0g</div><div class="num-label">Sugar. Period.</div></div>
+    </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section id="athletes">
+    <div class="section-header reveal"><p class="section-label">Results</p><h2>They had the same problem.</h2></div>
+    <div class="testimonials-grid">
+        <div class="testimonial reveal"><div class="stars"><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div></div><blockquote>"I was spending 20 minutes after every session mixing protein, adding electrolytes, popping BCAAs. Now I grab a MANKIT can from my locker and I'm done. My recovery time dropped noticeably."</blockquote><div class="testimonial-footer"><div class="testimonial-avatar">J</div><div class="testimonial-info"><div class="testimonial-author">Jake T.</div><div class="testimonial-handle">Powerlifter</div></div></div></div>
+        <div class="testimonial reveal reveal-delay-1"><div class="stars"><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div></div><blockquote>"I used to skip post-workout nutrition because I was rushing to work. Now I keep MANKIT sticks in my briefcase. Tear one into my water bottle in the parking lot. No excuses anymore."</blockquote><div class="testimonial-footer"><div class="testimonial-avatar">R</div><div class="testimonial-info"><div class="testimonial-author">Ryan M.</div><div class="testimonial-handle">Morning lifter</div></div></div></div>
+        <div class="testimonial reveal reveal-delay-2"><div class="stars"><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div></div><blockquote>"I've tried every protein drink on the market. Most taste like chalk and don't have electrolytes. MANKIT actually tastes good AND replaces my Gatorade and protein shake. One product, done."</blockquote><div class="testimonial-footer"><div class="testimonial-avatar">C</div><div class="testimonial-info"><div class="testimonial-author">Carlos D.</div><div class="testimonial-handle">Personal trainer</div></div></div></div>
+    </div>
+</section>
+
+<!-- WAITLIST -->
+<section id="waitlist">
+    <div class="waitlist-box reveal">
+        <p class="section-label">Early Access</p>
+        <h2>Done with the post-workout circus?</h2>
+        <p class="sub">Join 5,000+ lifters who are switching. Early pricing and free samples when we ship.</p>
+        <form class="email-form" id="waitlistForm">
+            <input type="email" placeholder="Enter your email" required aria-label="Email address">
+            <button type="submit">Join Waitlist</button>
+        </form>
+        <div class="waitlist-perks">
+            <span class="perk"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Free samples</span>
+            <span class="perk"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Early pricing</span>
+            <span class="perk"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> No spam</span>
+        </div>
+        <p class="form-note">Unsubscribe anytime. We respect your inbox.</p>
+        <div class="success-message" id="successMsg">You're on the list. We'll be in touch soon.</div>
+    </div>
+</section>
+
+<!-- PRE-ORDER MODAL -->
+<div class="modal-overlay" id="preorderModal">
+    <div class="modal">
+        <div class="modal-header">
+            <h2 id="modalTitle">Pre-Order</h2>
+            <button class="modal-close" onclick="closePreorder()">&times;</button>
+        </div>
+        <div class="modal-body" id="modalBody">
+            <div id="orderStep1">
+                <p class="order-section-label">Powder Sticks — Box of 12</p>
+                <div class="order-product" data-id="stick-blood-orange" data-price="24" data-name="Iron Forge Sticks (12)"><div class="order-product-info"><div class="order-product-swatch swatch-blood-orange">MK</div><div><div class="order-product-name">Iron Forge</div><div class="order-product-price">$24.00 / box</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)">+</button></div></div>
+                <div class="order-product" data-id="stick-unflavored" data-price="22" data-name="Black Ops Sticks (12)"><div class="order-product-info"><div class="order-product-swatch swatch-stick-unflavored">MK</div><div><div class="order-product-name">Black Ops (Unflavored)</div><div class="order-product-price">$22.00 / box</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)">+</button></div></div>
+                <div class="order-product" data-id="stick-vanilla" data-price="24" data-name="Granite Sticks (12)"><div class="order-product-info"><div class="order-product-swatch swatch-vanilla">MK</div><div><div class="order-product-name">Granite</div><div class="order-product-price">$24.00 / box</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)">+</button></div></div>
+                <div class="order-product" data-id="stick-tropical" data-price="26" data-name="War Paint Sticks (12)"><div class="order-product-info"><div class="order-product-swatch swatch-tropical">MK</div><div><div class="order-product-name">War Paint</div><div class="order-product-price">$26.00 / box</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)">+</button></div></div>
+                <p class="order-section-label">RTD Cans — Pack of 6</p>
+                <div class="order-product" data-id="can-blood-orange" data-price="30" data-name="Ironside Cans (6)"><div class="order-product-info"><div class="order-product-swatch swatch-can-blood-orange">MK</div><div><div class="order-product-name">Ironside</div><div class="order-product-price">$30.00 / pack</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)">+</button></div></div>
+                <div class="order-product" data-id="can-unflavored" data-price="28" data-name="Blackout Cans (6)"><div class="order-product-info"><div class="order-product-swatch swatch-can-unflavored">MK</div><div><div class="order-product-name">Blackout (Unflavored)</div><div class="order-product-price">$28.00 / pack</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)">+</button></div></div>
+                <div class="order-product" data-id="can-vanilla" data-price="30" data-name="Concrete Cans (6)"><div class="order-product-info"><div class="order-product-swatch swatch-can-vanilla">MK</div><div><div class="order-product-name">Concrete</div><div class="order-product-price">$30.00 / pack</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)">+</button></div></div>
+                <div class="order-product" data-id="can-mango" data-price="32" data-name="Warzone Cans (6)"><div class="order-product-info"><div class="order-product-swatch swatch-mango">MK</div><div><div class="order-product-name">Warzone</div><div class="order-product-price">$32.00 / pack</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)">+</button></div></div>
+                <div class="order-product" data-id="can-chocolate" data-price="32" data-name="Titan Cans (6)"><div class="order-product-info"><div class="order-product-swatch swatch-chocolate">MK</div><div><div class="order-product-name">Titan</div><div class="order-product-price">$32.00 / pack</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)">+</button></div></div>
+                <div class="order-summary" id="orderSummary" style="display:none"><div id="summaryLines"></div><div class="order-summary-total"><span>Total</span><span id="summaryTotal">$0.00</span></div></div>
+                <button class="btn-order" id="btnNext" onclick="goToStep2()" disabled>Continue to Details</button>
+            </div>
+            <div id="orderStep2" style="display:none">
+                <button class="btn-back" onclick="backToStep1()">&#8592; Back to products</button>
+                <form id="customerForm" onsubmit="submitOrder(event)">
+                    <p class="order-section-label">Your Information</p>
+                    <div class="form-row"><div class="form-field"><label>First Name *</label><input type="text" id="custFirst" required maxlength="50"></div><div class="form-field"><label>Last Name *</label><input type="text" id="custLast" required maxlength="50"></div></div>
+                    <div class="form-row"><div class="form-field"><label>Email *</label><input type="email" id="custEmail" required maxlength="100"></div><div class="form-field"><label>Phone *</label><input type="tel" id="custPhone" required maxlength="20" pattern="[0-9+\-\s\(\)]{7,20}"></div></div>
+                    <p class="order-section-label">Shipping Address</p>
+                    <div class="form-row full"><div class="form-field"><label>Street Address *</label><input type="text" id="custAddress" required maxlength="200"></div></div>
+                    <div class="form-row"><div class="form-field"><label>City *</label><input type="text" id="custCity" required maxlength="100"></div><div class="form-field"><label>State / Province *</label><input type="text" id="custState" required maxlength="100"></div></div>
+                    <div class="form-row"><div class="form-field"><label>ZIP / Postal Code *</label><input type="text" id="custZip" required maxlength="20"></div><div class="form-field"><label>Country *</label><input type="text" id="custCountry" value="United States" required maxlength="100"></div></div>
+                    <p class="order-section-label">Notes (optional)</p>
+                    <div class="form-row full"><div class="form-field"><textarea id="custNotes" placeholder="Any special requests..." maxlength="500"></textarea></div></div>
+                    <div class="order-summary" id="orderSummary2"></div>
+                    <button class="btn-order" type="submit" id="btnSubmitOrder">Place Pre-Order</button>
+                </form>
+            </div>
+            <div id="orderStep3" style="display:none">
+                <div class="order-success"><div class="order-success-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><h3>Pre-Order Confirmed!</h3><p>Thank you for your order. We'll reach out via email with updates on shipping and your early access perks.</p><div class="order-id" id="confirmOrderId"></div><div class="social-share" id="socialShare"><a class="share-btn" id="shareTwitter" target="_blank" rel="noopener">&#x1D54F; Share on X</a><a class="share-btn" id="shareCopy" onclick="copyShareText()">&#128203; Copy</a></div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ADMIN DASHBOARD -->
+<div class="admin-page" id="adminPage">
+    <div class="admin-login" id="adminLogin">
+        <h2>Admin Access</h2>
+        <p>Sign in with your admin email to view orders.</p>
+        <input type="email" id="adminEmail" placeholder="Admin email">
+        <input type="password" id="adminPass" placeholder="Password" onkeydown="if(event.key==='Enter')adminAuth()">
+        <button class="btn-order" onclick="adminAuth()" id="btnAdminLogin">Log In</button>
+        <p class="admin-login-error" id="adminError"></p>
+    </div>
+    <div id="adminDashboard" style="display:none">
+        <div class="admin-header">
+            <div><h1>Orders Dashboard</h1><span class="admin-realtime"><span class="live-dot"></span> Real-time via Firebase</span></div>
+            <div class="admin-actions">
+                <button class="btn-admin" onclick="exportCSV()">Export CSV</button>
+                <button class="btn-admin" onclick="adminSignOut()">Sign Out</button>
+                <button class="btn-admin primary" onclick="window.location.href=window.location.pathname">Back to Site</button>
+            </div>
+        </div>
+        <div class="admin-stats" id="adminStats"></div>
+        <div class="admin-toolbar">
+            <input class="admin-search" id="adminSearch" placeholder="Search orders by name, email, or order ID..." oninput="renderAdmin()">
+            <select class="admin-filter" id="adminStatusFilter" onchange="renderAdmin()">
+                <option value="all">All Statuses</option>
+                <option value="pending">Pending</option>
+                <option value="confirmed">Confirmed</option>
+                <option value="shipped">Shipped</option>
+                <option value="cancelled">Cancelled</option>
+            </select>
+        </div>
+        <div class="admin-table-wrap">
+            <table class="admin-table">
+                <thead><tr><th>Order ID</th><th>Date</th><th>Customer</th><th>Contact</th><th>Items</th><th>Total</th><th>Status</th><th></th></tr></thead>
+                <tbody id="adminTableBody"></tbody>
+            </table>
+            <div class="admin-empty" id="adminEmpty" style="display:none">No orders found.</div>
+        </div>
+    </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-logo">MANKIT</div>
+        <ul class="footer-links">
+            <li><a href="#products">Products</a></li>
+            <li><a href="#science">Science</a></li>
+            <li><a href="#how">How It Works</a></li>
+            <li><a href="#athletes">Results</a></li>
+            <li><a href="#waitlist">Waitlist</a></li>
+        </ul>
+        <div class="footer-social">
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
+            <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
+            <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
+        </div>
+        <p class="footer-copy">&copy; 2026 MANKIT by Simiran Jha. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- ============ FIREBASE SDK ============ -->
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+
+<script>
+// =======================================================================
+// FIREBASE CONFIG — Replace with your project's config
+// =======================================================================
+const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+const auth = firebase.auth();
+
+// ============ HELPERS ============
+function esc(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
+function showToast(msg, isError) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = 'toast show' + (isError ? ' error' : '');
+    setTimeout(() => t.className = 'toast', 3000);
+}
+
+function genOrderId() {
+    return 'MK-' + Date.now().toString(36).toUpperCase() + Math.random().toString(36).substring(2,5).toUpperCase();
+}
+
+// Rate limiting: max 5 orders per hour per browser
+function checkRateLimit() {
+    const key = 'mk_order_times';
+    const now = Date.now();
+    let times = JSON.parse(localStorage.getItem(key) || '[]');
+    times = times.filter(t => now - t < 3600000);
+    if (times.length >= 5) return false;
+    times.push(now);
+    localStorage.setItem(key, JSON.stringify(times));
+    return true;
+}
+
+// ============ COUNTDOWN TIMER ============
+function updateCountdown() {
+    const launch = new Date('2026-04-01T00:00:00');
+    const now = new Date();
+    const diff = launch - now;
+    if (diff <= 0) { document.getElementById('countdown').textContent = '— LIVE'; return; }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    document.getElementById('countdown').textContent = d + 'd ' + h + 'h ' + m + 'm';
+}
+updateCountdown();
+setInterval(updateCountdown, 60000);
+
+// ============ SCROLL REVEAL ============
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ============ NUMBER COUNTER ANIMATION ============
+let numbersCounted = false;
+const numbersObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && !numbersCounted) {
+            numbersCounted = true;
+            document.querySelectorAll('.num[data-target]').forEach(el => {
+                if (el.dataset.static === 'true') return;
+                const target = parseFloat(el.dataset.target);
+                const isDecimal = el.dataset.decimal === 'true';
+                const suffix = el.dataset.suffix || '';
+                const duration = 1500;
+                const start = performance.now();
+                function animate(now) {
+                    const elapsed = now - start;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    const current = eased * target;
+                    if (isDecimal) {
+                        el.textContent = current.toFixed(1) + suffix;
+                    } else {
+                        el.textContent = Math.floor(current).toLocaleString() + suffix;
+                    }
+                    if (progress < 1) requestAnimationFrame(animate);
+                }
+                requestAnimationFrame(animate);
+            });
+            numbersObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.3 });
+const numbersSection = document.getElementById('numbersSection');
+if (numbersSection) numbersObserver.observe(numbersSection);
+
+// ============ MOUSE-FOLLOW PARALLAX ON HERO ============
+const heroShowcase = document.getElementById('heroShowcase');
+if (heroShowcase) {
+    document.addEventListener('mousemove', (e) => {
+        const rect = heroShowcase.getBoundingClientRect();
+        if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+        const cx = (e.clientX / window.innerWidth - 0.5) * 2;
+        const cy = (e.clientY / window.innerHeight - 0.5) * 2;
+        heroShowcase.querySelectorAll('.can, .stick').forEach((el, i) => {
+            const factor = (i % 3 + 1) * 3;
+            el.style.transform = 'translateY(0px) rotateY(' + (cx * factor) + 'deg) rotateX(' + (-cy * factor) + 'deg)';
+        });
+    });
+}
+
+// ============ WAITLIST (Firebase) ============
+document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const emailInput = this.querySelector('input[type="email"]');
+    const email = emailInput.value.trim();
+    try {
+        await db.collection('waitlist').add({ email, createdAt: firebase.firestore.FieldValue.serverTimestamp() });
+        this.style.display = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+        document.querySelector('.form-note').style.display = 'none';
+        document.querySelector('.waitlist-perks').style.display = 'none';
+    } catch (err) {
+        showToast('Could not join waitlist. Please try again.', true);
+    }
+});
+
+// ============ SMOOTH SCROLL ============
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        if (this.getAttribute('href') === '#preorder') return;
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+});
+
+// ============ PARALLAX ============
+let ticking = false;
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        requestAnimationFrame(() => {
+            const scrolled = window.scrollY;
+            const showcase = document.querySelector('.hero-showcase');
+            if (showcase && scrolled < window.innerHeight) {
+                showcase.style.opacity = Math.max(0, 1 - scrolled / (window.innerHeight * 0.7));
+            }
+            ticking = false;
+        });
+        ticking = true;
+    }
+});
+
+// ============ SOCIAL SHARE ============
+function getShareText(orderId) {
+    return 'Just locked in my MANKIT order \ud83d\udd25 Built Different. @mankitofficial #MANKIT #BuiltDifferent';
+}
+function copyShareText() {
+    const orderId = document.getElementById('confirmOrderId').textContent;
+    navigator.clipboard.writeText(getShareText(orderId)).then(() => showToast('Copied to clipboard!'));
+}
+
+// ============ PRE-ORDER MODAL ============
+function openPreorder() {
+    document.getElementById('preorderModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    resetOrderModal();
+}
+function closePreorder() {
+    document.getElementById('preorderModal').classList.remove('open');
+    document.body.style.overflow = '';
+}
+document.getElementById('preorderModal').addEventListener('click', function(e) {
+    if (e.target === this) closePreorder();
+});
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closePreorder();
+});
+
+function resetOrderModal() {
+    document.getElementById('orderStep1').style.display = '';
+    document.getElementById('orderStep2').style.display = 'none';
+    document.getElementById('orderStep3').style.display = 'none';
+    document.getElementById('modalTitle').textContent = 'Pre-Order';
+    document.querySelectorAll('.qty-val').forEach(i => i.value = '0');
+    document.getElementById('btnSubmitOrder').disabled = false;
+    document.getElementById('btnSubmitOrder').innerHTML = 'Place Pre-Order';
+    updateSummary();
+}
+
+function changeQty(btn, delta) {
+    const input = btn.parentElement.querySelector('.qty-val');
+    let val = parseInt(input.value) + delta;
+    if (val < 0) val = 0;
+    if (val > 99) val = 99;
+    input.value = val;
+    updateSummary();
+}
+
+function getCartItems() {
+    const items = [];
+    document.querySelectorAll('#orderStep1 .order-product').forEach(row => {
+        const qty = parseInt(row.querySelector('.qty-val').value);
+        if (qty > 0) {
+            items.push({ id: row.dataset.id, name: row.dataset.name, price: parseFloat(row.dataset.price), qty, subtotal: qty * parseFloat(row.dataset.price) });
+        }
+    });
+    return items;
+}
+
+function updateSummary() {
+    const items = getCartItems();
+    const summaryDiv = document.getElementById('orderSummary');
+    const linesDiv = document.getElementById('summaryLines');
+    const totalSpan = document.getElementById('summaryTotal');
+    const btnNext = document.getElementById('btnNext');
+    if (items.length === 0) { summaryDiv.style.display = 'none'; btnNext.disabled = true; return; }
+    summaryDiv.style.display = '';
+    btnNext.disabled = false;
+    let html = '', total = 0;
+    items.forEach(item => { html += '<div class="order-summary-row"><span>' + esc(item.name) + ' x' + item.qty + '</span><span>$' + item.subtotal.toFixed(2) + '</span></div>'; total += item.subtotal; });
+    linesDiv.innerHTML = html;
+    totalSpan.textContent = '$' + total.toFixed(2);
+}
+
+function goToStep2() {
+    if (getCartItems().length === 0) return;
+    document.getElementById('orderStep1').style.display = 'none';
+    document.getElementById('orderStep2').style.display = '';
+    document.getElementById('modalTitle').textContent = 'Your Details';
+    const items = getCartItems();
+    let total = 0, html = '';
+    items.forEach(i => { html += '<div class="order-summary-row"><span>' + esc(i.name) + ' x' + i.qty + '</span><span>$' + i.subtotal.toFixed(2) + '</span></div>'; total += i.subtotal; });
+    html += '<div class="order-summary-total"><span>Total</span><span>$' + total.toFixed(2) + '</span></div>';
+    document.getElementById('orderSummary2').innerHTML = html;
+}
+
+function backToStep1() {
+    document.getElementById('orderStep2').style.display = 'none';
+    document.getElementById('orderStep1').style.display = '';
+    document.getElementById('modalTitle').textContent = 'Pre-Order';
+}
+
+async function submitOrder(e) {
+    e.preventDefault();
+    const btn = document.getElementById('btnSubmitOrder');
+
+    // Rate limit
+    if (!checkRateLimit()) { showToast('Too many orders. Please try again later.', true); return; }
+
+    // Validate
+    const items = getCartItems();
+    if (items.length === 0) return;
+    let total = 0;
+    items.forEach(i => total += i.subtotal);
+
+    // Sanitize inputs
+    const customer = {
+        firstName: esc(document.getElementById('custFirst').value.trim()),
+        lastName: esc(document.getElementById('custLast').value.trim()),
+        email: document.getElementById('custEmail').value.trim().toLowerCase(),
+        phone: document.getElementById('custPhone').value.trim().replace(/[^0-9+\-\s()]/g, ''),
+        address: esc(document.getElementById('custAddress').value.trim()),
+        city: esc(document.getElementById('custCity').value.trim()),
+        state: esc(document.getElementById('custState').value.trim()),
+        zip: esc(document.getElementById('custZip').value.trim()),
+        country: esc(document.getElementById('custCountry').value.trim())
+    };
+
+    // Email format validation
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customer.email)) { showToast('Please enter a valid email.', true); return; }
+
+    const orderId = genOrderId();
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Placing Order...';
+
+    try {
+        await db.collection('orders').doc(orderId).set({
+            id: orderId,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            customer,
+            notes: esc(document.getElementById('custNotes').value.trim()).substring(0, 500),
+            items: items.map(i => ({ id: i.id, name: i.name, price: i.price, qty: i.qty, subtotal: i.subtotal })),
+            total,
+            status: 'pending'
+        });
+
+        document.getElementById('orderStep2').style.display = 'none';
+        document.getElementById('orderStep3').style.display = '';
+        document.getElementById('modalTitle').textContent = 'Order Placed';
+        document.getElementById('confirmOrderId').textContent = orderId;
+        // Set up share links
+        const shareText = getShareText(orderId);
+        document.getElementById('shareTwitter').href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText);
+        document.getElementById('customerForm').reset();
+        document.getElementById('custCountry').value = 'United States';
+        showToast('Order placed successfully!');
+    } catch (err) {
+        btn.disabled = false;
+        btn.innerHTML = 'Place Pre-Order';
+        showToast('Failed to place order. Please try again.', true);
+        console.error('Order error:', err);
+    }
+}
+
+// ============ ADMIN DASHBOARD ============
+let allOrders = [];
+let unsubOrders = null;
+
+function checkAdmin() {
+    if (new URLSearchParams(window.location.search).has('admin')) {
+        document.querySelectorAll('nav,.hero,.marquee-section,#products,.ingredient-strip,#science,.big-quote,#how,.numbers,#athletes,#waitlist,footer').forEach(el => el.style.display = 'none');
+        document.getElementById('adminPage').classList.add('active');
+        auth.onAuthStateChanged(user => {
+            if (user) showDashboard();
+        });
+    }
+}
+
+async function adminAuth() {
+    const email = document.getElementById('adminEmail').value.trim();
+    const pass = document.getElementById('adminPass').value;
+    const btn = document.getElementById('btnAdminLogin');
+    const err = document.getElementById('adminError');
+    err.style.display = 'none';
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Signing in...';
+    try {
+        await auth.signInWithEmailAndPassword(email, pass);
+        showDashboard();
+    } catch (e) {
+        err.textContent = e.code === 'auth/invalid-credential' ? 'Invalid email or password.' : e.message;
+        err.style.display = 'block';
+        btn.disabled = false;
+        btn.innerHTML = 'Log In';
+    }
+}
+
+function adminSignOut() {
+    if (unsubOrders) unsubOrders();
+    auth.signOut();
+    document.getElementById('adminLogin').style.display = '';
+    document.getElementById('adminDashboard').style.display = 'none';
+    document.getElementById('adminEmail').value = '';
+    document.getElementById('adminPass').value = '';
+    document.getElementById('btnAdminLogin').disabled = false;
+    document.getElementById('btnAdminLogin').innerHTML = 'Log In';
+}
+
+function showDashboard() {
+    document.getElementById('adminLogin').style.display = 'none';
+    document.getElementById('adminDashboard').style.display = '';
+    unsubOrders = db.collection('orders').orderBy('createdAt', 'desc').onSnapshot(snapshot => {
+        allOrders = snapshot.docs.map(doc => doc.data());
+        renderAdmin();
+    }, err => {
+        console.error('Firestore listen error:', err);
+        showToast('Error loading orders.', true);
+    });
+}
+
+function renderAdmin() {
+    const search = (document.getElementById('adminSearch').value || '').toLowerCase();
+    const statusFilter = document.getElementById('adminStatusFilter').value;
+    let orders = allOrders;
+    if (statusFilter !== 'all') orders = orders.filter(o => o.status === statusFilter);
+    if (search) orders = orders.filter(o => {
+        const hay = (o.id + ' ' + o.customer.firstName + ' ' + o.customer.lastName + ' ' + o.customer.email).toLowerCase();
+        return hay.includes(search);
+    });
+
+    const totalOrders = allOrders.length;
+    const totalRevenue = allOrders.reduce((s, o) => s + o.total, 0);
+    const totalItems = allOrders.reduce((s, o) => s + o.items.reduce((a, i) => a + i.qty, 0), 0);
+    const avgOrder = totalOrders > 0 ? totalRevenue / totalOrders : 0;
+    document.getElementById('adminStats').innerHTML =
+        '<div class="admin-stat"><div class="stat-val">' + totalOrders + '</div><div class="stat-label">Total Orders</div></div>' +
+        '<div class="admin-stat"><div class="stat-val gold">$' + totalRevenue.toFixed(2) + '</div><div class="stat-label">Total Revenue</div></div>' +
+        '<div class="admin-stat"><div class="stat-val">' + totalItems + '</div><div class="stat-label">Items Ordered</div></div>' +
+        '<div class="admin-stat"><div class="stat-val">$' + avgOrder.toFixed(2) + '</div><div class="stat-label">Avg. Order Value</div></div>';
+
+    const tbody = document.getElementById('adminTableBody');
+    if (orders.length === 0) { tbody.innerHTML = ''; document.getElementById('adminEmpty').style.display = ''; return; }
+    document.getElementById('adminEmpty').style.display = 'none';
+
+    let html = '';
+    orders.forEach(o => {
+        const date = o.createdAt ? o.createdAt.toDate() : new Date();
+        const dateStr = date.toLocaleDateString('en-US', { month:'short',day:'numeric',year:'numeric' });
+        const timeStr = date.toLocaleTimeString('en-US', { hour:'2-digit',minute:'2-digit' });
+        const itemsHtml = o.items.map(i => esc(i.name) + ' x' + i.qty).join('<br>');
+        const addr = esc(o.customer.city) + ', ' + esc(o.customer.state) + ' ' + esc(o.customer.zip);
+        const nextStatus = { pending:'confirmed', confirmed:'shipped', shipped:'cancelled', cancelled:'pending' };
+
+        html += '<tr>' +
+            '<td><strong>' + esc(o.id) + '</strong></td>' +
+            '<td>' + dateStr + '<br><span style="color:var(--text-tertiary);font-size:12px">' + timeStr + '</span></td>' +
+            '<td>' + esc(o.customer.firstName) + ' ' + esc(o.customer.lastName) + '<div class="order-address">' + addr + '</div></td>' +
+            '<td>' + esc(o.customer.email) + '<br><span style="color:var(--text-tertiary);font-size:12px">' + esc(o.customer.phone) + '</span></td>' +
+            '<td><div class="order-items-list">' + itemsHtml + '</div></td>' +
+            '<td><strong>$' + o.total.toFixed(2) + '</strong></td>' +
+            '<td><button class="order-status ' + o.status + '" onclick="cycleStatus(\'' + o.id + '\',\'' + nextStatus[o.status] + '\')" title="Click to change">' + o.status + '</button></td>' +
+            '<td><button class="order-delete" onclick="deleteOrder(\'' + o.id + '\')" title="Delete order">&#x2715;</button></td>' +
+        '</tr>';
+    });
+    tbody.innerHTML = html;
+}
+
+async function cycleStatus(orderId, newStatus) {
+    try {
+        await db.collection('orders').doc(orderId).update({ status: newStatus });
+    } catch (err) { showToast('Failed to update status.', true); }
+}
+
+async function deleteOrder(orderId) {
+    if (!confirm('Delete order ' + orderId + '? This cannot be undone.')) return;
+    try {
+        await db.collection('orders').doc(orderId).delete();
+        showToast('Order deleted.');
+    } catch (err) { showToast('Failed to delete order.', true); }
+}
+
+function exportCSV() {
+    if (allOrders.length === 0) return showToast('No orders to export.', true);
+    let csv = 'Order ID,Date,First Name,Last Name,Email,Phone,Address,City,State,ZIP,Country,Items,Total,Status,Notes\n';
+    allOrders.forEach(o => {
+        const date = o.createdAt ? o.createdAt.toDate().toLocaleString() : '';
+        const items = o.items.map(i => i.name + ' x' + i.qty).join('; ');
+        csv += [o.id, date, '"'+o.customer.firstName+'"', '"'+o.customer.lastName+'"', o.customer.email, o.customer.phone, '"'+o.customer.address+'"', '"'+o.customer.city+'"', '"'+o.customer.state+'"', o.customer.zip, '"'+o.customer.country+'"', '"'+items+'"', '$'+o.total.toFixed(2), o.status, '"'+(o.notes||'')+'"'].join(',') + '\n';
+    });
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'mankit-orders-' + new Date().toISOString().slice(0,10) + '.csv';
+    a.click();
+    URL.revokeObjectURL(a.href);
+}
+
+// Init
+checkAdmin();
+</script>
+
+</body>
+</html>
