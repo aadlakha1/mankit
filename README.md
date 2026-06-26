@@ -89,8 +89,10 @@ Access: append `?admin` to the site URL.
 
 ## Design
 
-- **Palette:** Burnt copper `#c47a3a`, warm stone `#8a7e72`, on near-black `#0c0c0c`
+- **Direction:** Industrial brutalist — sharp zero-radius edges, hard offset shadows, spec-sheet details, film grain, hazard-stripe accents
+- **Type:** Big Shoulders Display (headlines), Archivo (body), IBM Plex Mono (labels/specs/prices)
+- **Palette:** Copper `#c8722e`, bone `#e8e2d6`, ash `#8d857a`, on warm near-black `#0a0908`
 - **Always dark** — no light mode
-- **Cans:** Matte dark charcoal bodies with copper color bands
-- **Animations:** Scroll reveal, number counters, mouse-follow parallax, countdown timer
+- **Shop:** Right-side "Order Sheet" drawer with step tracker (Select → Ship → Confirmed) and receipt-style confirmation with barcode
+- **Animations:** Scroll reveal, number counters, mouse-follow parallax, marquee, countdown timer (respects `prefers-reduced-motion`)
 - **Responsive:** Fully mobile-friendly

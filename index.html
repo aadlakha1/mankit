@@ -5,384 +5,454 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MANKIT — Built Different</title>
     <meta name="description" content="Your recovery is broken. MANKIT puts 30g protein and full electrolytes in one drink — so recovery starts the second you finish your last rep.">
-    <meta name="theme-color" content="#0c0c0c">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏋️</text></svg>">
+    <meta name="theme-color" content="#0a0908">
+    <meta property="og:title" content="MANKIT — Built Different">
+    <meta property="og:description" content="Your recovery is broken. MANKIT puts 30g protein and full electrolytes in one drink — so recovery starts the second you finish your last rep.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aadlakha1.github.io/mankit/">
+    <meta name="twitter:card" content="summary">
+    <link rel="canonical" href="https://aadlakha1.github.io/mankit/">
+    <link rel="preconnect" href="https://www.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230a0908'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23c8722e' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial Black,Arial' font-size='26' font-weight='900' fill='%23c8722e' text-anchor='middle'%3EMK%3C/text%3E%3C/svg%3E">
     <style>
         :root {
-            --bg: #0c0c0c;
-            --bg-alt: #141414;
-            --bg-dark: #080808;
-            --text-primary: #eae6e1;
-            --text-secondary: #9a9590;
-            --text-tertiary: #6a6560;
-            --accent: #c47a3a;
-            --accent-dark: #a86428;
-            --accent-glow: rgba(196,122,58,0.08);
-            --secondary: #8a7e72;
-            --white: #ffffff;
-            --card-bg: #1c1c1c;
-            --border: #2c2c2c;
-            --danger: #ff3b30;
-            --success: #c47a3a;
-            --shadow: 0 4px 24px rgba(0,0,0,0.4);
-            --shadow-lg: 0 20px 60px rgba(0,0,0,0.5);
-            --shadow-xl: 0 32px 80px rgba(0,0,0,0.6);
-            --radius: 24px;
-            --radius-sm: 14px;
+            --ink: #0a0908;
+            --ink-2: #11100e;
+            --ink-3: #171511;
+            --card: #14120f;
+            --line: #2a2620;
+            --line-soft: #1e1b16;
+            --copper: #c8722e;
+            --copper-hot: #e8893a;
+            --copper-dim: rgba(200,114,46,0.12);
+            --bone: #e8e2d6;
+            --ash: #8d857a;
+            --ash-dim: #5c564d;
+            --danger: #d4452c;
+            --blue: #4a7ba6;
+            --disp: 'Big Shoulders Display', Impact, sans-serif;
+            --body: 'Archivo', 'Helvetica Neue', sans-serif;
+            --mono: 'IBM Plex Mono', 'SF Mono', monospace;
         }
         *{margin:0;padding:0;box-sizing:border-box}
         html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-        body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text-primary);line-height:1.5;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
+        body{font-family:var(--body);background:var(--ink);color:var(--bone);line-height:1.55;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
+        ::selection{background:var(--copper);color:var(--ink)}
+        :focus-visible{outline:2px solid var(--copper);outline-offset:2px}
+        ::-webkit-scrollbar{width:10px;height:10px}
+        ::-webkit-scrollbar-track{background:var(--ink)}
+        ::-webkit-scrollbar-thumb{background:var(--line);border:2px solid var(--ink)}
+        ::-webkit-scrollbar-thumb:hover{background:var(--copper)}
+
+        /* Film grain over everything */
+        body::after{content:'';position:fixed;inset:0;z-index:990;pointer-events:none;opacity:0.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+        .mono{font-family:var(--mono)}
+        .hazard{height:8px;background:repeating-linear-gradient(135deg,var(--copper) 0 14px,transparent 14px 28px);opacity:0.55}
 
         /* ===================== NAV ===================== */
-        nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:rgba(12,12,12,0.85);border-bottom:0.5px solid var(--border);transition:background 0.3s}
-        .nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between}
-        .nav-logo{font-size:18px;font-weight:700;letter-spacing:0.05em;color:var(--text-primary);text-decoration:none;text-transform:uppercase}
-        .nav-links{display:flex;gap:32px;list-style:none;align-items:center}
-        .nav-links a{font-size:14px;color:var(--text-secondary);text-decoration:none;transition:color 0.2s}
-        .nav-links a:hover{color:var(--text-primary)}
-        .nav-cta{background:var(--accent)!important;color:#0c0c0c!important;padding:8px 20px;border-radius:980px;font-size:14px;font-weight:600;transition:opacity 0.2s}
-        .nav-cta:hover{opacity:0.85}
-        .nav-menu-btn{display:none;background:none;border:none;color:var(--text-primary);font-size:24px;cursor:pointer;padding:4px}
-        @media(max-width:768px){.nav-menu-btn{display:block}.nav-links{display:none}}
+        nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,9,8,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+        .nav-inner{max-width:1320px;margin:0 auto;padding:0 28px;height:60px;display:flex;align-items:center;justify-content:space-between}
+        .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--bone)}
+        .nav-logo .mark{width:26px;height:26px;border:2px solid var(--copper);display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:900;font-size:13px;color:var(--copper);flex-shrink:0}
+        .nav-logo .word{font-family:var(--disp);font-weight:800;font-size:22px;letter-spacing:0.08em;text-transform:uppercase}
+        .nav-links{display:flex;gap:4px;list-style:none;align-items:center}
+        .nav-links a{font-family:var(--mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ash);text-decoration:none;padding:8px 14px;transition:color 0.15s,background 0.15s}
+        .nav-links a:hover{color:var(--bone);background:var(--ink-3)}
+        .nav-cta{background:var(--copper)!important;color:var(--ink)!important;font-weight:600;margin-left:12px}
+        .nav-cta:hover{background:var(--copper-hot)!important}
+        .nav-menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--bone);font-size:18px;cursor:pointer;padding:6px 12px;font-family:var(--mono)}
+        @media(max-width:820px){
+            .nav-menu-btn{display:block}
+            .nav-links{display:none}
+            .nav-links.open{display:flex;position:absolute;top:60px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--ink);border-bottom:1px solid var(--line);padding:8px 0 16px}
+            .nav-links.open li{width:100%}
+            .nav-links.open a{display:block;padding:14px 28px;font-size:14px;border-bottom:1px solid var(--line-soft)}
+            .nav-links.open .nav-cta{margin:12px 28px 0;text-align:center}
+        }
 
         /* ===================== HERO ===================== */
-        .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:140px 24px 100px;position:relative;overflow:hidden;background:linear-gradient(180deg,#0c0c0c 0%,#0f0f0f 50%,#141414 100%)}
-        .hero::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:1000px;height:1000px;background:radial-gradient(circle,rgba(196,122,58,0.03) 0%,rgba(138,126,114,0.015) 40%,transparent 70%);border-radius:50%;pointer-events:none;animation:pulseGlow 6s ease-in-out infinite}
-        .hero::after{content:'';position:absolute;bottom:-100px;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(196,122,58,0.02) 0%,transparent 70%);pointer-events:none}
-        @keyframes pulseGlow{0%,100%{transform:translateX(-50%) scale(1);opacity:1}50%{transform:translateX(-50%) scale(1.1);opacity:0.7}}
+        .hero{min-height:100vh;display:flex;align-items:center;padding:140px 28px 80px;position:relative;overflow:hidden;background:var(--ink)}
+        .hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);background-size:72px 72px;opacity:0.5;pointer-events:none;mask-image:radial-gradient(ellipse 90% 80% at 60% 40%,black 30%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 90% 80% at 60% 40%,black 30%,transparent 75%)}
+        .hero-inner{max-width:1320px;margin:0 auto;width:100%;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:center;position:relative;z-index:1}
+        .hero-badge{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--copper);border:1px solid var(--copper);padding:8px 14px;margin-bottom:32px;animation:fadeUp 0.7s ease both;background:var(--copper-dim)}
+        .hero-badge .dot{width:7px;height:7px;background:var(--copper);animation:blink 1.6s steps(2,start) infinite}
+        .hero-badge .countdown{font-variant-numeric:tabular-nums;color:var(--bone)}
+        @keyframes blink{0%{opacity:1}50%{opacity:0.15}100%{opacity:1}}
+        .hero h1{font-family:var(--disp);font-weight:900;font-size:clamp(52px,12.5vw,168px);line-height:0.88;letter-spacing:0.005em;text-transform:uppercase;animation:fadeUp 0.7s ease 0.08s both}
+        .hero h1 .accent{color:var(--copper);display:inline-block}
+        .hero-sub{font-size:clamp(16px,1.8vw,19px);color:var(--ash);max-width:520px;margin-top:28px;line-height:1.65;animation:fadeUp 0.7s ease 0.16s both}
+        .hero-sub strong{color:var(--bone);font-weight:600}
+        .hero-actions{display:flex;gap:14px;margin-top:40px;flex-wrap:wrap;animation:fadeUp 0.7s ease 0.24s both}
+        .hero-specline{margin-top:48px;font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ash-dim);display:flex;gap:18px;flex-wrap:wrap;animation:fadeUp 0.7s ease 0.32s both}
+        .hero-specline b{color:var(--copper);font-weight:600}
 
-        .hero-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
-        .particle{position:absolute;width:4px;height:4px;background:var(--text-tertiary);border-radius:50%;opacity:0.06;animation:floatUp linear infinite}
-        .particle:nth-child(1){left:10%;animation-duration:20s;animation-delay:0s;width:3px;height:3px}
-        .particle:nth-child(2){left:25%;animation-duration:24s;animation-delay:3s;width:5px;height:5px}
-        .particle:nth-child(3){left:45%;animation-duration:22s;animation-delay:1s}
-        .particle:nth-child(4){left:65%;animation-duration:26s;animation-delay:5s;width:3px;height:3px}
-        .particle:nth-child(5){left:80%;animation-duration:21s;animation-delay:2s;width:4px;height:4px}
-        .particle:nth-child(6){left:92%;animation-duration:23s;animation-delay:4s;width:3px;height:3px}
-        @keyframes floatUp{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:0.06}90%{opacity:0.06}100%{transform:translateY(-100px) rotate(360deg);opacity:0}}
+        /* Buttons — hard offset shadow, brutal press */
+        .btn-primary,.btn-secondary{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border:1px solid var(--copper);transition:transform 0.12s ease,box-shadow 0.12s ease,background 0.12s,color 0.12s}
+        .btn-primary{background:var(--copper);color:var(--ink);box-shadow:4px 4px 0 rgba(200,114,46,0.3)}
+        .btn-primary:hover{background:var(--copper-hot);transform:translate(-2px,-2px);box-shadow:7px 7px 0 rgba(200,114,46,0.3)}
+        .btn-primary:active{transform:translate(1px,1px);box-shadow:2px 2px 0 rgba(200,114,46,0.3)}
+        .btn-secondary{background:transparent;color:var(--copper)}
+        .btn-secondary:hover{background:var(--copper-dim);transform:translate(-2px,-2px);box-shadow:5px 5px 0 rgba(200,114,46,0.18)}
+        .btn-arrow{font-family:var(--body)}
 
-        .hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--accent);background:var(--accent-glow);padding:8px 18px;border-radius:980px;margin-bottom:28px;letter-spacing:0.02em;animation:fadeUp 0.8s ease both;border:1px solid rgba(196,122,58,0.2)}
-        .hero-badge .dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:blink 2s ease-in-out infinite}
-        .hero-badge .countdown{font-variant-numeric:tabular-nums;margin-left:4px;color:var(--secondary)}
-        @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
-
-        .hero h1{font-size:clamp(52px,11vw,104px);font-weight:700;letter-spacing:-0.045em;line-height:1.02;max-width:900px;animation:fadeUp 0.8s ease 0.1s both;position:relative}
-        .hero h1 .accent{background:linear-gradient(135deg,var(--accent),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-        .hero h1.glitch{animation:fadeUp 0.8s ease 0.1s both}
-
-        .hero-sub{font-size:clamp(18px,2.5vw,24px);color:var(--text-secondary);max-width:620px;margin-top:20px;line-height:1.55;font-weight:400;animation:fadeUp 0.8s ease 0.2s both}
-        .hero-actions{display:flex;gap:16px;margin-top:44px;flex-wrap:wrap;justify-content:center;animation:fadeUp 0.8s ease 0.3s both}
-
-        .btn-primary{background:var(--accent);color:#0c0c0c;padding:17px 36px;border-radius:980px;font-size:17px;font-weight:600;text-decoration:none;border:none;cursor:pointer;transition:transform 0.2s,opacity 0.2s,box-shadow 0.2s;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 16px rgba(0,0,0,0.2)}
-        .btn-primary:hover{transform:scale(1.03);box-shadow:0 8px 32px rgba(0,0,0,0.3)}
-        .btn-secondary{background:transparent;color:var(--accent);padding:17px 36px;border-radius:980px;font-size:17px;font-weight:600;text-decoration:none;border:1.5px solid var(--accent);cursor:pointer;transition:transform 0.2s,background 0.2s}
-        .btn-secondary:hover{transform:scale(1.03);background:rgba(196,122,58,0.08)}
-
-        /* ===================== HERO PRODUCT SHOWCASE ===================== */
-        .hero-showcase{margin-top:80px;display:flex;align-items:flex-end;justify-content:center;gap:28px;animation:fadeUp 1s ease 0.5s both;perspective:800px;position:relative}
-
-        /* Sticks (powder packs) — dark matte bodies */
-        .stick{width:40px;height:160px;position:relative;transition:transform 0.4s ease;cursor:default}
+        /* ===================== HERO STAGE (cans) ===================== */
+        .hero-stage{position:relative;display:flex;align-items:center;justify-content:center;min-height:480px}
+        .hero-stage .ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-52%);font-family:var(--disp);font-weight:900;font-size:clamp(220px,26vw,420px);line-height:1;color:transparent;-webkit-text-stroke:1px var(--line);pointer-events:none;user-select:none;letter-spacing:-0.02em}
+        .hero-showcase{display:flex;align-items:flex-end;justify-content:center;gap:22px;animation:fadeUp 0.9s ease 0.4s both;perspective:900px;position:relative;z-index:1}
+        .stick{width:42px;height:170px;position:relative;transition:transform 0.4s ease}
         .stick:hover{transform:translateY(-12px)}
-        .stick-body{width:100%;height:100%;border-radius:6px;position:relative;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,0.4),0 4px 12px rgba(0,0,0,0.3)}
-        .stick-body.copper{background:linear-gradient(170deg,#3a2e24 0%,#2a2018 50%,#1e1610 100%)}
-        .stick-body.dark{background:linear-gradient(170deg,#2a2a2a 0%,#1a1a1a 50%,#111111 100%)}
-        .stick-body::before{content:'';position:absolute;top:0;left:-50%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(196,122,58,0.1),transparent);transform:skewX(-20deg);animation:sachetShine 4s ease-in-out infinite;pointer-events:none}
-        .stick-body::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent,transparent 8px,rgba(196,122,58,0.04) 8px,rgba(196,122,58,0.04) 10px);pointer-events:none}
-        @keyframes sachetShine{0%,100%{left:-50%}50%{left:120%}}
-        .stick-label{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px;text-align:center}
-        .stick-brand{font-size:5px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent)}
-        .stick-flavor{font-size:8px;font-weight:700;color:rgba(234,230,225,0.7);margin-top:4px;line-height:1.2}
-
-        /* Cans — dark charcoal/black bodies */
-        .can{width:96px;height:280px;position:relative;transition:transform 0.4s ease;cursor:default}
-        .can:hover{transform:translateY(-16px)}
-        .can-body{width:100%;height:100%;border-radius:12px 12px 16px 16px;position:relative;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,0.3),0 4px 12px rgba(0,0,0,0.2)}
-        .can-body.burnt-copper{background:linear-gradient(180deg,#1e1e1e 0%,#181818 50%,#121212 100%)}
-        .can-body.matte-black{background:linear-gradient(180deg,#1a1a1a 0%,#111111 50%,#0a0a0a 100%)}
-        .can-body.warm-stone{background:linear-gradient(180deg,#1e1c1a 0%,#181614 50%,#12100e 100%)}
-        .can-color-band{position:absolute;top:80px;left:0;right:0;height:50px}
-        .can-body.burnt-copper .can-color-band{background:linear-gradient(180deg,#c47a3a,#a86428)}
-        .can-body.matte-black .can-color-band{background:linear-gradient(180deg,#333333,#222222)}
-        .can-body.warm-stone .can-color-band{background:linear-gradient(180deg,#8a7e72,#6a6056)}
-        .can-top{position:absolute;top:0;left:0;right:0;height:24px;background:linear-gradient(180deg,#2a2a2a 0%,#222222 40%,#1a1a1a 100%);border-radius:12px 12px 0 0;display:flex;align-items:center;justify-content:center}
-        .can-top::before{content:'';width:50px;height:14px;border-radius:7px;border:1.5px solid rgba(196,122,58,0.15);background:linear-gradient(180deg,#2a2a2a,#1e1e1e);position:relative;top:1px}
-        .can-tab{position:absolute;top:3px;left:50%;transform:translateX(-50%);width:20px;height:10px;border-radius:5px 5px 3px 3px;background:linear-gradient(180deg,#333,#222);border:1px solid rgba(196,122,58,0.1);z-index:2}
-        .can-tab::after{content:'';position:absolute;bottom:2px;left:50%;transform:translateX(-50%);width:6px;height:4px;border-radius:50%;border:1px solid rgba(196,122,58,0.1)}
-        .can-bottom{position:absolute;bottom:0;left:0;right:0;height:8px;background:linear-gradient(0deg,#1a1a1a,#222222);border-radius:0 0 16px 16px}
-        .can-label{position:absolute;top:40px;left:0;right:0;bottom:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 10px;text-align:center;z-index:2}
-        .can-brand{font-size:7px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent)}
-        .can-divider{width:24px;height:1px;background:var(--accent);opacity:0.3;margin:6px 0}
-        .can-flavor{font-size:13px;font-weight:700;color:var(--text-primary);letter-spacing:-0.01em;line-height:1.2}
-        .can-sub{font-size:7px;color:var(--text-tertiary);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px}
-        .can-ml{font-size:6px;color:var(--text-tertiary);margin-top:8px;letter-spacing:0.05em;opacity:0.5}
-        .can-seal{position:absolute;bottom:28px;width:24px;height:24px;border-radius:50%;border:1px solid rgba(196,122,58,0.3);display:flex;align-items:center;justify-content:center;z-index:2}
-        .can-seal::after{content:'MK';font-size:6px;font-weight:800;color:var(--accent);letter-spacing:0.05em}
-        .can-body::before{content:'';position:absolute;top:0;right:-10px;width:40px;height:100%;background:linear-gradient(180deg,transparent,rgba(196,122,58,0.06),transparent);transform:skewX(-5deg);pointer-events:none;z-index:3}
-        .can-body::after{content:'';position:absolute;top:24px;left:8px;width:1px;height:calc(100% - 40px);background:linear-gradient(180deg,transparent,rgba(196,122,58,0.1),transparent);pointer-events:none;z-index:3}
-        .product-shadow{position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:70%;height:20px;background:radial-gradient(ellipse,rgba(0,0,0,0.3) 0%,transparent 70%);border-radius:50%}
+        .stick-body{width:100%;height:100%;position:relative;overflow:hidden;border:1px solid var(--line);box-shadow:10px 12px 0 rgba(0,0,0,0.35)}
+        .stick-body.copper{background:linear-gradient(170deg,#2e2118 0%,#211710 55%,#16100a 100%)}
+        .stick-body.dark{background:linear-gradient(170deg,#242220 0%,#171513 55%,#0e0d0c 100%)}
+        .stick-body::before{content:'';position:absolute;top:0;left:-60%;width:45%;height:100%;background:linear-gradient(90deg,transparent,rgba(232,226,214,0.05),transparent);transform:skewX(-18deg);animation:sheen 5s ease-in-out infinite}
+        @keyframes sheen{0%,100%{left:-60%}50%{left:120%}}
+        .stick-label{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;padding:8px 3px}
+        .stick-brand{font-family:var(--mono);font-size:6px;font-weight:600;letter-spacing:0.2em;color:var(--copper)}
+        .stick-flavor{font-family:var(--disp);font-weight:800;font-size:11px;line-height:1.05;text-transform:uppercase;color:var(--bone)}
+        .can{width:104px;height:300px;position:relative;transition:transform 0.4s ease}
+        .can:hover{transform:translateY(-14px)}
+        .can-body{width:100%;height:100%;position:relative;overflow:hidden;border:1px solid var(--line);border-radius:6px 6px 8px 8px;box-shadow:14px 16px 0 rgba(0,0,0,0.4)}
+        .can-body.burnt-copper{background:linear-gradient(180deg,#1c1916 0%,#141210 55%,#0d0c0a 100%)}
+        .can-body.matte-black{background:linear-gradient(180deg,#191817 0%,#100f0e 55%,#0a0909 100%)}
+        .can-body.warm-stone{background:linear-gradient(180deg,#1c1a17 0%,#13110e 55%,#0c0b09 100%)}
+        .can-color-band{position:absolute;top:86px;left:0;right:0;height:54px;display:flex;align-items:flex-end}
+        .can-color-band::after{content:'';position:absolute;bottom:-7px;left:0;right:0;height:7px;background:repeating-linear-gradient(135deg,rgba(10,9,8,0.85) 0 5px,transparent 5px 10px)}
+        .can-body.burnt-copper .can-color-band{background:linear-gradient(180deg,var(--copper),#9c5a22)}
+        .can-body.matte-black .can-color-band{background:linear-gradient(180deg,#3a3835,#262422)}
+        .can-body.warm-stone .can-color-band{background:linear-gradient(180deg,#8d857a,#675f54)}
+        .can-top{position:absolute;top:0;left:0;right:0;height:24px;background:linear-gradient(180deg,#262422 0%,#1b1916 100%);border-bottom:1px solid var(--line);border-radius:6px 6px 0 0}
+        .can-tab{position:absolute;top:5px;left:50%;transform:translateX(-50%);width:22px;height:11px;border:1px solid var(--line);background:#1b1916;border-radius:3px}
+        .can-label{position:absolute;top:34px;left:0;right:0;bottom:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 8px;text-align:center;z-index:2}
+        .can-brand{font-family:var(--mono);font-size:7px;font-weight:600;letter-spacing:0.28em;color:var(--copper)}
+        .can-divider{width:28px;height:1px;background:var(--copper);opacity:0.45;margin:8px 0}
+        .can-flavor{font-family:var(--disp);font-weight:900;font-size:20px;text-transform:uppercase;color:var(--bone);line-height:0.95;letter-spacing:0.02em}
+        .can-sub{font-family:var(--mono);font-size:7px;color:var(--ash);letter-spacing:0.14em;text-transform:uppercase;margin-top:8px}
+        .can-ml{font-family:var(--mono);font-size:6px;color:var(--ash-dim);margin-top:10px;letter-spacing:0.08em}
+        .can-seal{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:6px;color:var(--ash-dim);letter-spacing:0.1em;z-index:2;border:1px solid var(--line);padding:2px 6px}
+        .can-bottom{position:absolute;bottom:0;left:0;right:0;height:9px;background:#13110f;border-top:1px solid var(--line-soft);border-radius:0 0 8px 8px}
+        .product-shadow{position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);width:80%;height:14px;background:radial-gradient(ellipse,rgba(0,0,0,0.5) 0%,transparent 70%)}
 
         /* ===================== MARQUEE ===================== */
-        .marquee-section{padding:40px 0;overflow:hidden;border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border);background:var(--bg)}
-        .marquee-track{display:flex;gap:48px;animation:marquee 30s linear infinite;width:max-content}
-        .marquee-item{font-size:14px;font-weight:600;color:var(--text-tertiary);letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;display:flex;align-items:center;gap:12px}
-        .marquee-dot{width:5px;height:5px;background:var(--accent);border-radius:50%;opacity:0.5}
+        .marquee-section{padding:22px 0;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--ink-2);position:relative}
+        .marquee-track{display:flex;gap:36px;animation:marquee 28s linear infinite;width:max-content;align-items:center}
+        .marquee-item{font-family:var(--disp);font-weight:800;font-size:30px;letter-spacing:0.04em;color:var(--bone);text-transform:uppercase;white-space:nowrap;display:flex;align-items:center;gap:36px}
+        .marquee-item.o{color:transparent;-webkit-text-stroke:1px var(--ash)}
+        .marquee-item::after{content:'✕';font-family:var(--mono);font-size:14px;color:var(--copper);-webkit-text-stroke:0}
         @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-        /* ===================== SECTIONS ===================== */
-        #products{background:var(--bg-alt);padding:140px 24px}
-        .section-header{text-align:center;max-width:680px;margin:0 auto 72px}
-        .section-label{font-size:14px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px}
-        .section-header h2{font-size:clamp(36px,5.5vw,60px);font-weight:700;letter-spacing:-0.035em;line-height:1.08}
-        .section-header p{font-size:19px;color:var(--text-secondary);margin-top:16px;line-height:1.6}
-        .products-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
-        .product-card{background:var(--card-bg);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform 0.4s ease,box-shadow 0.4s ease;position:relative;border:1px solid var(--border)}
-        .product-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-xl)}
-        .product-card-visual{height:280px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#0c0c0c 0%,#141414 50%,#1c1c1c 100%)}
-        .card-stick-group{display:flex;gap:8px;align-items:flex-end;transform:rotate(-3deg)}
-        .card-stick{width:28px;height:100px;border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 12px 32px rgba(0,0,0,0.4);position:relative;overflow:hidden}
-        .card-stick.s1{background:linear-gradient(170deg,#3a2e24,#1e1610);transform:translateY(-8px)}
-        .card-stick.s2{background:linear-gradient(170deg,#2a2a2a,#111111)}
-        .card-stick.s3{background:linear-gradient(170deg,#3a3632,#1e1a16);transform:translateY(-4px)}
-        .card-stick.s4{background:linear-gradient(170deg,#3a3020,#1e1810);transform:translateY(-2px)}
-        .card-stick::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent,transparent 6px,rgba(196,122,58,0.06) 6px,rgba(196,122,58,0.06) 7px);pointer-events:none}
-        .card-stick span{font-size:4px;font-weight:700;letter-spacing:0.1em;color:var(--accent);text-transform:uppercase;z-index:1}
-        .card-can-group{display:flex;gap:16px;align-items:flex-end}
-        .card-can{width:52px;height:150px;border-radius:8px 8px 10px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;box-shadow:0 12px 32px rgba(0,0,0,0.3);background:#181818;overflow:hidden}
-        .card-can.c1{transform:translateY(-10px)}
-        .card-can.c1::before{content:'';position:absolute;top:40px;left:0;right:0;height:24px;background:var(--accent)}
-        .card-can.c2::before{content:'';position:absolute;top:40px;left:0;right:0;height:24px;background:#333}
-        .card-can.c3{transform:translateY(-6px)}
-        .card-can.c3::before{content:'';position:absolute;top:40px;left:0;right:0;height:24px;background:#8a7e72}
-        .card-can.c4::before{content:'';position:absolute;top:40px;left:0;right:0;height:24px;background:#b8860b}
-        .card-can.c5{transform:translateY(-4px)}
-        .card-can.c5::before{content:'';position:absolute;top:40px;left:0;right:0;height:24px;background:#4a3020}
-        .card-can span{font-size:5px;font-weight:700;letter-spacing:0.12em;color:var(--accent);text-transform:uppercase;z-index:2}
-        .card-can-top{position:absolute;top:0;left:0;right:0;height:12px;background:linear-gradient(180deg,#2a2a2a,#1a1a1a);border-radius:8px 8px 0 0;z-index:2}
-        .product-card-visual::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60%;height:40%;background:radial-gradient(ellipse,rgba(196,122,58,0.02) 0%,transparent 70%);pointer-events:none}
-        .product-card-info{padding:36px 32px 40px}
-        .product-card-info h3{font-size:26px;font-weight:700;letter-spacing:-0.02em;margin-bottom:4px}
-        .product-card-info .price{font-size:17px;font-weight:600;color:var(--accent);margin-bottom:14px}
-        .product-card-info p{font-size:15px;color:var(--text-secondary);line-height:1.65}
-        .flavor-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-        .flavor-pill{font-size:12px;font-weight:600;padding:6px 14px;border-radius:980px;background:#222;color:var(--text-secondary);border:1px solid #333}
+        /* ===================== SECTION SCAFFOLD ===================== */
+        section{position:relative}
+        .wrap{max-width:1320px;margin:0 auto;padding:0 28px}
+        .sec-head{display:grid;grid-template-columns:auto 1fr;gap:8px 28px;align-items:baseline;margin-bottom:64px}
+        .sec-idx{font-family:var(--mono);font-size:13px;color:var(--copper);letter-spacing:0.1em}
+        .sec-tag{font-family:var(--mono);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ash);grid-column:2}
+        .sec-head h2{grid-column:2;font-family:var(--disp);font-weight:900;font-size:clamp(44px,6.5vw,92px);line-height:0.92;text-transform:uppercase;letter-spacing:0.005em;max-width:900px}
+        .sec-head h2 em{font-style:normal;color:var(--copper)}
+        .sec-head .sec-sub{grid-column:2;font-size:17px;color:var(--ash);max-width:560px;margin-top:18px;line-height:1.65}
 
-        /* ===================== INGREDIENT STRIP ===================== */
-        .ingredient-strip{padding:32px 0;overflow:hidden;border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border);background:var(--bg-dark)}
-        .ingredient-track{display:flex;gap:48px;animation:marquee 40s linear infinite;width:max-content}
-        .ingredient-item{font-size:13px;font-weight:500;color:var(--text-tertiary);white-space:nowrap;display:flex;align-items:center;gap:8px;letter-spacing:0.02em}
-        .ingredient-item strong{color:var(--accent);font-weight:700}
+        /* ===================== PRODUCTS ===================== */
+        #products{background:var(--ink);padding:130px 0 90px;border-bottom:1px solid var(--line)}
+        .product-row{display:grid;grid-template-columns:5fr 7fr;border:1px solid var(--line);background:var(--card);margin-bottom:28px;position:relative;transition:transform 0.25s ease,box-shadow 0.25s ease}
+        .product-row:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 rgba(200,114,46,0.22)}
+        .product-row::before,.product-row::after{content:'+';position:absolute;font-family:var(--mono);font-size:14px;color:var(--copper);line-height:1;z-index:2}
+        .product-row::before{top:-8px;left:-5px}
+        .product-row::after{bottom:-8px;right:-5px}
+        .product-row.flip{grid-template-columns:7fr 5fr}
+        .product-row.flip .product-visual{order:2}
+        .product-visual{display:flex;align-items:center;justify-content:center;min-height:380px;background:var(--ink-2);border-right:1px solid var(--line);position:relative;overflow:hidden;padding:48px 24px}
+        .product-row.flip .product-visual{border-right:none;border-left:1px solid var(--line)}
+        .product-visual .v-tag{position:absolute;top:16px;left:18px;font-family:var(--mono);font-size:10px;letter-spacing:0.16em;color:var(--ash-dim);text-transform:uppercase}
+        .product-visual .v-grid{position:absolute;inset:0;background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);background-size:40px 40px;opacity:0.6}
+        .card-stick-group{display:flex;gap:10px;align-items:flex-end;transform:rotate(-2deg);position:relative;z-index:1}
+        .card-stick{width:34px;height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid var(--line);position:relative;overflow:hidden;box-shadow:8px 10px 0 rgba(0,0,0,0.35)}
+        .card-stick.s1{background:linear-gradient(170deg,#2e2118,#16100a);transform:translateY(-10px)}
+        .card-stick.s2{background:linear-gradient(170deg,#242220,#0e0d0c)}
+        .card-stick.s3{background:linear-gradient(170deg,#2b2823,#14120e);transform:translateY(-5px)}
+        .card-stick.s4{background:linear-gradient(170deg,#2d2616,#16120a);transform:translateY(-2px)}
+        .card-stick span{font-family:var(--mono);font-size:6px;font-weight:600;letter-spacing:0.18em;color:var(--copper)}
+        .card-can-group{display:flex;gap:18px;align-items:flex-end;position:relative;z-index:1}
+        .card-can{width:58px;height:165px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;border:1px solid var(--line);border-radius:4px 4px 6px 6px;background:#141210;overflow:hidden;box-shadow:8px 10px 0 rgba(0,0,0,0.35)}
+        .card-can::before{content:'';position:absolute;top:44px;left:0;right:0;height:26px}
+        .card-can.c1{transform:translateY(-12px)}.card-can.c1::before{background:var(--copper)}
+        .card-can.c2::before{background:#3a3835}
+        .card-can.c3{transform:translateY(-7px)}.card-can.c3::before{background:#8d857a}
+        .card-can.c4::before{background:#b08820}
+        .card-can.c5{transform:translateY(-4px)}.card-can.c5::before{background:#4a3322}
+        .card-can span{font-family:var(--mono);font-size:6px;font-weight:600;letter-spacing:0.14em;color:var(--copper);z-index:2}
+        .card-can-top{position:absolute;top:0;left:0;right:0;height:12px;background:#1d1b18;border-bottom:1px solid var(--line);z-index:2}
+        .product-info{padding:44px 48px}
+        .product-info .p-kicker{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--copper);margin-bottom:10px}
+        .product-info h3{font-family:var(--disp);font-weight:900;font-size:clamp(36px,4vw,56px);text-transform:uppercase;line-height:0.95;margin-bottom:18px}
+        .product-info .p-desc{font-size:15px;color:var(--ash);line-height:1.7;max-width:480px;margin-bottom:26px}
+        .spec-table{font-family:var(--mono);font-size:12px;border-top:1px solid var(--line);margin-bottom:26px}
+        .spec-table .spec{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--line-soft);letter-spacing:0.04em}
+        .spec-table .spec span:first-child{color:var(--ash-dim);text-transform:uppercase;letter-spacing:0.12em;font-size:10px;padding-top:2px}
+        .spec-table .spec span:last-child{color:var(--bone)}
+        .spec-table .spec .hi{color:var(--copper);font-weight:600}
+        .flavor-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
+        .flavor-pill{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;padding:7px 12px;background:var(--ink-2);color:var(--ash);border:1px solid var(--line);display:inline-flex;align-items:center;gap:7px}
+        .flavor-pill i{width:8px;height:8px;display:inline-block;flex-shrink:0}
 
-        #science{padding:140px 24px}
-        .features-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
-        .feature{background:var(--card-bg);padding:44px 28px;text-align:center;transition:background 0.3s}
-        .feature:hover{background:var(--bg-alt)}
-        .feature-icon-wrap{width:64px;height:64px;margin:0 auto 24px;border-radius:18px;background:var(--accent-glow);display:flex;align-items:center;justify-content:center}
-        .feature-icon-wrap svg{width:28px;height:28px;stroke:var(--accent);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-        .feature h3{font-size:20px;font-weight:700;letter-spacing:-0.01em;margin-bottom:8px}
-        .feature p{font-size:14px;color:var(--text-secondary);line-height:1.6}
-        @media(max-width:900px){.features-grid{grid-template-columns:repeat(2,1fr)}}
-        @media(max-width:500px){.features-grid{grid-template-columns:1fr}}
+        /* ===================== INGREDIENT TICKER ===================== */
+        .ingredient-strip{padding:14px 0;overflow:hidden;border-bottom:1px solid var(--line);background:var(--ink-2)}
+        .ingredient-track{display:flex;gap:42px;animation:marquee 36s linear infinite;width:max-content}
+        .ingredient-item{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ash-dim);white-space:nowrap}
+        .ingredient-item strong{color:var(--copper);font-weight:600}
 
-        .big-quote{padding:120px 24px;text-align:center;background:var(--bg-dark);color:var(--text-primary);position:relative;overflow:hidden}
-        .big-quote::before{content:'\201C';position:absolute;top:-40px;left:50%;transform:translateX(-50%);font-size:300px;font-weight:700;color:rgba(196,122,58,0.03);line-height:1;pointer-events:none}
-        .big-quote blockquote{max-width:700px;margin:0 auto;font-size:clamp(24px,4vw,36px);font-weight:600;letter-spacing:-0.02em;line-height:1.4;position:relative;z-index:1}
-        .big-quote .quote-author{margin-top:24px;font-size:15px;color:var(--text-tertiary);font-weight:400}
+        /* ===================== SCIENCE / PROBLEM ===================== */
+        #science{padding:130px 0;background:var(--ink)}
+        .features-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+        .feature{background:var(--ink-2);padding:40px 30px 44px;position:relative;overflow:hidden;transition:background 0.25s}
+        .feature:hover{background:var(--ink-3)}
+        .feature .f-num{font-family:var(--disp);font-weight:900;font-size:88px;line-height:1;color:transparent;-webkit-text-stroke:1px var(--line);display:block;margin-bottom:18px;transition:-webkit-text-stroke-color 0.25s}
+        .feature:hover .f-num{-webkit-text-stroke-color:var(--copper)}
+        .feature h3{font-family:var(--disp);font-weight:800;font-size:24px;text-transform:uppercase;line-height:1.05;margin-bottom:12px;letter-spacing:0.01em}
+        .feature p{font-size:13.5px;color:var(--ash);line-height:1.7}
+        @media(max-width:980px){.features-grid{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:560px){.features-grid{grid-template-columns:1fr}}
 
-        #how{background:var(--bg-alt);padding:140px 24px}
-        .steps{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
-        .step{text-align:center;padding:40px 28px;background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow);transition:transform 0.3s,box-shadow 0.3s;position:relative;border:1px solid var(--border)}
-        .step:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
-        .step-number{width:56px;height:56px;border-radius:50%;background:var(--accent);color:#0c0c0c;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;margin:0 auto 20px}
-        .step h3{font-size:20px;font-weight:700;letter-spacing:-0.01em;margin-bottom:8px}
-        .step p{font-size:15px;color:var(--text-secondary);line-height:1.6}
-        .step:not(:last-child)::after{content:'';position:absolute;top:50%;right:-20px;width:12px;height:12px;border-top:2px solid var(--accent);border-right:2px solid var(--accent);transform:rotate(45deg);z-index:2;opacity:0.4}
-        @media(max-width:768px){.steps{grid-template-columns:1fr;gap:16px}.step::after{display:none}}
+        /* ===================== QUOTE ===================== */
+        .big-quote{padding:120px 28px;background:var(--ink-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+        .big-quote::before{content:'';position:absolute;top:0;bottom:0;left:50%;width:1px;background:var(--line);opacity:0.6}
+        .big-quote blockquote{max-width:880px;margin:0 auto;font-family:var(--disp);font-weight:700;font-size:clamp(28px,4.5vw,52px);line-height:1.12;text-transform:uppercase;text-align:center;position:relative;z-index:1;letter-spacing:0.01em}
+        .big-quote blockquote em{font-style:normal;color:var(--copper)}
+        .big-quote .quote-author{margin-top:32px;text-align:center;font-family:var(--mono);font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ash)}
 
-        #athletes{padding:140px 24px}
-        .testimonials-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
-        .testimonial{background:var(--card-bg);border-radius:var(--radius);padding:40px 36px;box-shadow:var(--shadow);transition:transform 0.3s;position:relative;border:1px solid var(--border)}
-        .testimonial:hover{transform:translateY(-4px)}
-        .testimonial .stars{display:flex;gap:3px;margin-bottom:20px}
-        .star{width:18px;height:18px}
-        .star svg{width:18px;height:18px;fill:var(--accent)}
-        .testimonial blockquote{font-size:16px;line-height:1.65;color:var(--text-primary);margin-bottom:24px;font-style:italic}
-        .testimonial-footer{display:flex;align-items:center;gap:12px}
-        .testimonial-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent-glow),rgba(196,122,58,0.3));display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--accent)}
-        .testimonial-info .testimonial-author{font-size:15px;font-weight:600}
-        .testimonial-info .testimonial-handle{font-size:13px;color:var(--text-tertiary)}
+        /* ===================== HOW / PROTOCOL ===================== */
+        #how{background:var(--ink);padding:130px 0}
+        .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+        .step{background:var(--card);padding:44px 34px 48px;position:relative;transition:background 0.25s}
+        .step:hover{background:var(--ink-3)}
+        .step-number{font-family:var(--disp);font-weight:900;font-size:64px;color:var(--copper);line-height:1;margin-bottom:20px}
+        .step h3{font-family:var(--disp);font-weight:800;font-size:26px;text-transform:uppercase;margin-bottom:10px;line-height:1.05}
+        .step p{font-size:14px;color:var(--ash);line-height:1.7}
+        @media(max-width:820px){.steps{grid-template-columns:1fr}}
 
-        .numbers{padding:100px 24px;background:var(--bg-alt);border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border)}
-        .numbers-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
-        .number-item .num{font-size:clamp(36px,5vw,52px);font-weight:700;letter-spacing:-0.03em;background:linear-gradient(135deg,var(--accent),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-        .number-item .num-label{font-size:14px;color:var(--text-secondary);margin-top:4px}
-        @media(max-width:600px){.numbers-grid{grid-template-columns:repeat(2,1fr);gap:32px}}
+        /* ===================== NUMBERS ===================== */
+        .numbers{padding:90px 28px;background:var(--ink-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+        .numbers-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}
+        .number-item{background:var(--ink-2);text-align:center;padding:36px 16px}
+        .number-item .num{font-family:var(--disp);font-weight:900;font-size:clamp(48px,6vw,84px);line-height:1;color:var(--bone)}
+        .number-item:first-child .num,.number-item:last-child .num{color:var(--copper)}
+        .number-item .num-label{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ash-dim);margin-top:12px}
+        @media(max-width:640px){.numbers-grid{grid-template-columns:repeat(2,1fr)}}
 
-        #waitlist{padding:140px 24px;background:var(--bg)}
-        .waitlist-box{max-width:580px;margin:0 auto;text-align:center}
-        .waitlist-box h2{font-size:clamp(36px,5vw,52px);font-weight:700;letter-spacing:-0.035em;line-height:1.1}
-        .waitlist-box .sub{font-size:18px;color:var(--text-secondary);margin-top:16px;line-height:1.6}
-        .email-form{display:flex;gap:12px;margin-top:36px;flex-wrap:wrap;justify-content:center}
-        .email-form input[type="email"]{flex:1;min-width:260px;padding:18px 26px;border-radius:980px;border:1.5px solid var(--border);background:var(--card-bg);color:var(--text-primary);font-size:17px;font-family:inherit;outline:none;transition:border-color 0.2s,box-shadow 0.2s}
-        .email-form input[type="email"]:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-glow)}
-        .email-form input[type="email"]::placeholder{color:var(--text-tertiary)}
-        .email-form button{padding:18px 36px;border-radius:980px;background:var(--accent);color:#0c0c0c;font-size:17px;font-weight:600;font-family:inherit;border:none;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 16px rgba(0,0,0,0.2)}
-        .email-form button:hover{transform:scale(1.03);box-shadow:0 8px 32px rgba(0,0,0,0.3)}
-        .form-note{font-size:13px;color:var(--text-tertiary);margin-top:16px}
-        .waitlist-perks{display:flex;gap:24px;justify-content:center;margin-top:28px;flex-wrap:wrap}
-        .perk{font-size:13px;color:var(--text-secondary);display:flex;align-items:center;gap:6px}
-        .perk svg{width:16px;height:16px;stroke:var(--accent);fill:none;stroke-width:2}
-        .success-message{display:none;padding:24px;background:var(--accent-glow);border:1px solid rgba(196,122,58,0.2);border-radius:var(--radius-sm);margin-top:24px;font-size:17px;font-weight:500;color:var(--accent)}
+        /* ===================== FIELD REPORTS ===================== */
+        #athletes{padding:130px 0;background:var(--ink)}
+        .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+        .testimonial{background:var(--card);border:1px solid var(--line);padding:0;transition:transform 0.25s,box-shadow 0.25s;display:flex;flex-direction:column}
+        .testimonial:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 rgba(0,0,0,0.45)}
+        .testimonial:nth-child(2){transform:translateY(24px)}
+        .testimonial:nth-child(2):hover{transform:translate(-3px,21px)}
+        .t-head{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:11px;letter-spacing:0.1em}
+        .t-head .stars{color:var(--copper);letter-spacing:0.18em}
+        .t-head .t-id{color:var(--ash-dim)}
+        .testimonial blockquote{padding:26px 24px;font-size:15px;line-height:1.7;color:var(--bone);flex:1}
+        .testimonial-footer{padding:16px 24px;border-top:1px solid var(--line-soft);font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase}
+        .testimonial-author{color:var(--bone);font-weight:600}
+        .testimonial-handle{color:var(--ash-dim);margin-top:2px}
+        @media(max-width:980px){.testimonials-grid{grid-template-columns:1fr}.testimonial:nth-child(2){transform:none}.testimonial:nth-child(2):hover{transform:translate(-3px,-3px)}}
 
-        footer{padding:60px 24px 40px;text-align:center;border-top:0.5px solid var(--border);background:var(--bg)}
-        .footer-inner{max-width:800px;margin:0 auto}
-        .footer-logo{font-size:20px;font-weight:700;letter-spacing:0.05em;margin-bottom:20px;color:var(--text-primary);text-transform:uppercase}
-        .footer-links{display:flex;gap:28px;justify-content:center;list-style:none;margin-bottom:28px;flex-wrap:wrap}
-        .footer-links a{font-size:14px;color:var(--text-secondary);text-decoration:none;transition:color 0.2s}
-        .footer-links a:hover{color:var(--accent)}
-        .footer-social{display:flex;gap:16px;justify-content:center;margin-bottom:28px}
-        .footer-social a{width:40px;height:40px;border-radius:50%;background:var(--bg-alt);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:background 0.2s,border-color 0.2s}
-        .footer-social a:hover{background:var(--accent-glow);border-color:rgba(196,122,58,0.3)}
-        .footer-social svg{width:18px;height:18px;fill:var(--text-secondary)}
-        .footer-copy{font-size:13px;color:var(--text-tertiary)}
+        /* ===================== WAITLIST ===================== */
+        #waitlist{padding:130px 0;background:var(--ink);border-top:1px solid var(--line)}
+        .waitlist-box{max-width:720px;margin:0 auto;padding:0 28px;text-align:left}
+        .waitlist-box .sec-idx{display:block;margin-bottom:8px}
+        .waitlist-box h2{font-family:var(--disp);font-weight:900;font-size:clamp(48px,7vw,96px);line-height:0.9;text-transform:uppercase}
+        .waitlist-box h2 em{font-style:normal;color:var(--copper)}
+        .waitlist-box .sub{font-size:16px;color:var(--ash);margin-top:20px;line-height:1.65;max-width:480px}
+        .email-form{display:flex;margin-top:36px;border:1px solid var(--line);background:var(--ink-2)}
+        .email-form input[type="email"]{flex:1;min-width:0;padding:18px 20px;border:none;background:transparent;color:var(--bone);font-size:15px;font-family:var(--mono);outline:none}
+        .email-form input[type="email"]::placeholder{color:var(--ash-dim)}
+        .email-form input[type="email"]:focus{background:var(--ink-3)}
+        .email-form button{padding:18px 30px;background:var(--copper);color:var(--ink);font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;border:none;border-left:1px solid var(--copper);cursor:pointer;transition:background 0.15s;white-space:nowrap}
+        .email-form button:hover{background:var(--copper-hot)}
+        .email-form button:disabled{opacity:0.6;cursor:wait}
+        .form-note{font-family:var(--mono);font-size:10px;letter-spacing:0.08em;color:var(--ash-dim);margin-top:14px;text-transform:uppercase}
+        .waitlist-perks{display:flex;gap:24px;margin-top:22px;flex-wrap:wrap}
+        .perk{font-family:var(--mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ash);display:flex;align-items:center;gap:8px}
+        .perk::before{content:'▸';color:var(--copper)}
+        .success-message{display:none;padding:22px 24px;background:var(--copper-dim);border:1px solid var(--copper);margin-top:24px;font-family:var(--mono);font-size:13px;letter-spacing:0.04em;color:var(--copper)}
+        @media(max-width:560px){.email-form{flex-direction:column}.email-form button{border-left:none;border-top:1px solid var(--line);padding:16px}}
 
-        /* ===================== MODAL / PRE-ORDER ===================== */
-        .modal-overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:24px;overflow-y:auto}
+        /* ===================== FOOTER ===================== */
+        footer{background:var(--ink-2);border-top:1px solid var(--line);padding:0 0 36px;overflow:hidden}
+        .footer-word{font-family:var(--disp);font-weight:900;font-size:clamp(90px,16vw,260px);line-height:0.95;text-transform:uppercase;text-align:center;color:transparent;-webkit-text-stroke:1px var(--line);user-select:none;letter-spacing:0.02em;margin:30px 0 10px;transition:-webkit-text-stroke-color 0.4s}
+        .footer-word:hover{-webkit-text-stroke-color:var(--copper)}
+        .footer-inner{max-width:1320px;margin:0 auto;padding:0 28px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:28px}
+        .footer-links{display:flex;gap:4px;list-style:none;flex-wrap:wrap}
+        .footer-links a{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ash);text-decoration:none;padding:6px 12px;transition:color 0.15s}
+        .footer-links a:hover{color:var(--copper)}
+        .footer-social{display:flex;gap:8px}
+        .footer-social a{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--ash);text-decoration:none;border:1px solid var(--line);padding:8px 14px;transition:color 0.15s,border-color 0.15s}
+        .footer-social a:hover{color:var(--copper);border-color:var(--copper)}
+        .footer-copy{font-family:var(--mono);font-size:10px;letter-spacing:0.08em;color:var(--ash-dim);text-transform:uppercase}
+
+        /* ===================== ORDER DRAWER ===================== */
+        .modal-overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(8,8,7,0.72);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);justify-content:flex-end}
         .modal-overlay.open{display:flex}
-        .modal{background:var(--card-bg);border-radius:var(--radius);max-width:640px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow-xl);animation:modalIn 0.3s ease;border:1px solid var(--border)}
-        @keyframes modalIn{from{opacity:0;transform:scale(0.95) translateY(16px)}to{opacity:1;transform:scale(1) translateY(0)}}
-        .modal-header{display:flex;align-items:center;justify-content:space-between;padding:28px 32px 0;position:sticky;top:0;background:var(--card-bg);z-index:1;border-radius:var(--radius) var(--radius) 0 0}
-        .modal-header h2{font-size:24px;font-weight:700;letter-spacing:-0.02em}
-        .modal-close{width:36px;height:36px;border-radius:50%;border:none;background:var(--bg-alt);color:var(--text-secondary);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
-        .modal-close:hover{background:var(--border)}
-        .modal-body{padding:24px 32px 32px}
-        .order-product{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--border)}
-        .order-product:last-of-type{border-bottom:none}
-        .order-product-info{display:flex;align-items:center;gap:14px}
-        .order-product-swatch{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:var(--accent);letter-spacing:0.05em;flex-shrink:0}
+        .modal{background:var(--ink-2);border-left:1px solid var(--line);width:100%;max-width:520px;height:100%;display:flex;flex-direction:column;animation:drawerIn 0.35s cubic-bezier(0.2,0.8,0.2,1);box-shadow:-24px 0 80px rgba(0,0,0,0.5)}
+        @keyframes drawerIn{from{transform:translateX(60px);opacity:0}to{transform:translateX(0);opacity:1}}
+        .modal-header{padding:22px 28px 0;flex-shrink:0}
+        .modal-header-row{display:flex;align-items:center;justify-content:space-between;gap:16px}
+        .modal-header h2{font-family:var(--disp);font-weight:900;font-size:32px;text-transform:uppercase;letter-spacing:0.01em}
+        .modal-ref{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;color:var(--ash-dim);text-transform:uppercase;margin-top:2px}
+        .modal-close{width:38px;height:38px;border:1px solid var(--line);background:transparent;color:var(--ash);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:color 0.15s,border-color 0.15s;flex-shrink:0;font-family:var(--mono)}
+        .modal-close:hover{color:var(--copper);border-color:var(--copper)}
+        .drawer-steps{display:flex;gap:0;margin-top:18px;border:1px solid var(--line)}
+        .dstep{flex:1;font-family:var(--mono);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ash-dim);padding:9px 6px;text-align:center;border-right:1px solid var(--line);background:var(--ink);transition:background 0.2s,color 0.2s}
+        .dstep:last-child{border-right:none}
+        .dstep.on{background:var(--copper-dim);color:var(--copper)}
+        .modal-body{padding:20px 28px 28px;overflow-y:auto;flex:1}
+        .order-section-label{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--ash-dim);text-transform:uppercase;letter-spacing:0.18em;margin:22px 0 10px;display:flex;align-items:center;gap:12px}
+        .order-section-label::after{content:'';flex:1;height:1px;background:var(--line)}
+        .order-product{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid var(--line-soft)}
+        .order-product-info{display:flex;align-items:center;gap:14px;min-width:0}
+        .order-product-swatch{width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:8px;font-weight:600;color:rgba(232,226,214,0.85);letter-spacing:0.06em;flex-shrink:0;border:1px solid var(--line)}
         .swatch-blood-orange{background:linear-gradient(135deg,#8b3a1a,#5a2210)}
-        .swatch-stick-unflavored{background:linear-gradient(135deg,#333,#111)}
-        .swatch-vanilla{background:linear-gradient(135deg,#6a6056,#4a4640)}
+        .swatch-stick-unflavored{background:linear-gradient(135deg,#33312e,#141312)}
+        .swatch-vanilla{background:linear-gradient(135deg,#6a6056,#46423c)}
         .swatch-tropical{background:linear-gradient(135deg,#8b6b20,#5a4510)}
-        .swatch-can-blood-orange{background:linear-gradient(135deg,#c47a3a,#a86428)}
-        .swatch-can-unflavored{background:linear-gradient(135deg,#333,#111)}
-        .swatch-can-vanilla{background:linear-gradient(135deg,#8a7e72,#6a6056)}
-        .swatch-mango{background:linear-gradient(135deg,#b8860b,#8a6400)}
-        .swatch-chocolate{background:linear-gradient(135deg,#4a3020,#2a1a10)}
-        .order-product-name{font-size:15px;font-weight:600}
-        .order-product-price{font-size:13px;color:var(--text-secondary)}
-        .qty-control{display:flex;align-items:center;border:1.5px solid var(--border);border-radius:10px;overflow:hidden}
-        .qty-btn{width:36px;height:36px;border:none;background:var(--bg-alt);color:var(--text-primary);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.15s;font-family:inherit}
-        .qty-btn:hover{background:var(--border)}
-        .qty-val{width:40px;text-align:center;font-size:15px;font-weight:600;border:none;background:transparent;color:var(--text-primary);font-family:inherit}
-        .order-summary{background:var(--bg-alt);border-radius:var(--radius-sm);padding:20px;margin-top:20px}
-        .order-summary-row{display:flex;justify-content:space-between;font-size:14px;color:var(--text-secondary);padding:4px 0}
-        .order-summary-total{display:flex;justify-content:space-between;font-size:18px;font-weight:700;padding:12px 0 0;border-top:1.5px solid var(--border);margin-top:8px}
-        .order-section-label{font-size:13px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin:24px 0 12px}
+        .swatch-can-blood-orange{background:linear-gradient(135deg,#c8722e,#9c5a22)}
+        .swatch-can-unflavored{background:linear-gradient(135deg,#33312e,#141312)}
+        .swatch-can-vanilla{background:linear-gradient(135deg,#8d857a,#675f54)}
+        .swatch-mango{background:linear-gradient(135deg,#b08820,#7a5c0e)}
+        .swatch-chocolate{background:linear-gradient(135deg,#4a3322,#291b10)}
+        .order-product-name{font-size:14px;font-weight:600;letter-spacing:0.01em}
+        .order-product-price{font-family:var(--mono);font-size:11px;color:var(--ash-dim);margin-top:1px}
+        .qty-control{display:flex;align-items:center;border:1px solid var(--line);flex-shrink:0}
+        .qty-btn{width:34px;height:34px;border:none;background:var(--ink);color:var(--bone);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.15s,color 0.15s;font-family:var(--mono)}
+        .qty-btn:hover{background:var(--copper);color:var(--ink)}
+        .qty-val{width:38px;height:34px;text-align:center;font-family:var(--mono);font-size:13px;font-weight:600;border:none;border-left:1px solid var(--line);border-right:1px solid var(--line);background:transparent;color:var(--bone)}
+        .order-foot{position:sticky;bottom:-28px;margin:18px -28px -28px;padding:16px 28px 24px;background:var(--ink-2);border-top:1px solid var(--line)}
+        .order-summary{font-family:var(--mono);font-size:12px;margin-bottom:14px}
+        .order-summary-row{display:flex;justify-content:space-between;gap:12px;color:var(--ash);padding:3px 0;letter-spacing:0.02em}
+        .order-summary-total{display:flex;justify-content:space-between;font-family:var(--mono);font-size:16px;font-weight:600;color:var(--bone);padding-top:10px;border-top:1px dashed var(--line);margin-top:8px}
+        .order-summary-total span:last-child{color:var(--copper)}
+        .btn-order{width:100%;padding:17px;background:var(--copper);color:var(--ink);font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;border:none;cursor:pointer;transition:background 0.15s,transform 0.12s,box-shadow 0.12s;box-shadow:4px 4px 0 rgba(200,114,46,0.25)}
+        .btn-order:hover:not(:disabled){background:var(--copper-hot);transform:translate(-2px,-2px);box-shadow:6px 6px 0 rgba(200,114,46,0.25)}
+        .btn-order:active:not(:disabled){transform:translate(1px,1px);box-shadow:2px 2px 0 rgba(200,114,46,0.25)}
+        .btn-order:disabled{opacity:0.35;cursor:not-allowed;box-shadow:none}
         .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
         .form-row.full{grid-template-columns:1fr}
-        .form-field{display:flex;flex-direction:column;gap:4px}
-        .form-field label{font-size:13px;font-weight:500;color:var(--text-secondary)}
-        .form-field input,.form-field textarea{padding:12px 16px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg);color:var(--text-primary);font-size:15px;font-family:inherit;outline:none;transition:border-color 0.2s,box-shadow 0.2s}
-        .form-field input:focus,.form-field textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+        .form-field{display:flex;flex-direction:column;gap:5px}
+        .form-field label{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--ash-dim)}
+        .form-field input,.form-field textarea{padding:12px 14px;border:1px solid var(--line);background:var(--ink);color:var(--bone);font-size:14px;font-family:var(--body);outline:none;transition:border-color 0.15s;border-radius:0;-webkit-appearance:none}
+        .form-field input:focus,.form-field textarea:focus{border-color:var(--copper)}
         .form-field textarea{resize:vertical;min-height:60px}
-        .btn-order{width:100%;padding:18px;border-radius:980px;background:var(--accent);color:#0c0c0c;font-size:17px;font-weight:600;font-family:inherit;border:none;cursor:pointer;margin-top:24px;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 16px rgba(0,0,0,0.2)}
-        .btn-order:hover{transform:scale(1.02);box-shadow:0 8px 32px rgba(0,0,0,0.3)}
-        .btn-order:disabled{opacity:0.5;cursor:not-allowed;transform:none}
-        .order-success{text-align:center;padding:48px 24px}
-        .order-success-icon{width:72px;height:72px;border-radius:50%;background:var(--accent-glow);display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
-        .order-success-icon svg{width:32px;height:32px;stroke:var(--accent);fill:none;stroke-width:2.5}
-        .order-success h3{font-size:24px;font-weight:700;margin-bottom:8px}
-        .order-success p{font-size:15px;color:var(--text-secondary);line-height:1.6}
-        .order-id{display:inline-block;background:var(--bg-alt);padding:6px 16px;border-radius:8px;font-size:14px;font-weight:600;font-family:monospace;margin-top:12px;color:var(--accent)}
-        .social-share{display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap}
-        .share-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:980px;font-size:13px;font-weight:600;text-decoration:none;border:1.5px solid var(--border);color:var(--text-secondary);background:var(--bg-alt);cursor:pointer;transition:border-color 0.2s,color 0.2s}
-        .share-btn:hover{border-color:var(--accent);color:var(--accent)}
-        .btn-back{background:none;border:none;color:var(--accent);font-size:14px;font-weight:600;cursor:pointer;padding:0;margin-bottom:8px;font-family:inherit;display:flex;align-items:center;gap:4px}
+        .btn-back{background:none;border:none;color:var(--copper);font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;padding:0;margin:4px 0 10px;display:flex;align-items:center;gap:8px}
         .btn-back:hover{text-decoration:underline}
-        @media(max-width:600px){.form-row{grid-template-columns:1fr}.modal-body{padding:20px}.modal-header{padding:20px 20px 0}}
+        .order-summary2-box{border:1px dashed var(--line);padding:16px;margin-top:20px}
+        /* Receipt confirmation */
+        .order-success{text-align:center;padding:36px 8px}
+        .order-success-icon{width:64px;height:64px;border:1px solid var(--copper);background:var(--copper-dim);display:flex;align-items:center;justify-content:center;margin:0 auto 22px}
+        .order-success-icon svg{width:28px;height:28px;stroke:var(--copper);fill:none;stroke-width:2.5}
+        .order-success h3{font-family:var(--disp);font-weight:900;font-size:34px;text-transform:uppercase;margin-bottom:10px}
+        .order-success p{font-size:14px;color:var(--ash);line-height:1.7;max-width:340px;margin:0 auto}
+        .receipt{border:1px dashed var(--line);margin:24px auto 0;max-width:320px;padding:18px 20px;text-align:left;font-family:var(--mono);font-size:11px;color:var(--ash);letter-spacing:0.04em}
+        .receipt .r-row{display:flex;justify-content:space-between;padding:3px 0}
+        .receipt .r-row span:last-child{color:var(--bone)}
+        .order-id{display:block;font-family:var(--mono);font-size:15px;font-weight:600;color:var(--copper);letter-spacing:0.06em;text-align:center;padding:10px 0 4px}
+        .barcode{height:36px;margin-top:12px;background:repeating-linear-gradient(90deg,var(--ash) 0 2px,transparent 2px 5px,var(--ash) 5px 6px,transparent 6px 11px,var(--ash) 11px 14px,transparent 14px 17px);opacity:0.7}
+        .social-share{display:flex;gap:10px;justify-content:center;margin-top:26px;flex-wrap:wrap}
+        .share-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);color:var(--ash);background:transparent;cursor:pointer;transition:border-color 0.15s,color 0.15s}
+        .share-btn:hover{border-color:var(--copper);color:var(--copper)}
+        @media(max-width:600px){.form-row{grid-template-columns:1fr}.modal{max-width:100%}.modal-body{padding:16px 20px 24px}.modal-header{padding:18px 20px 0}.order-foot{margin:18px -20px -24px;padding:14px 20px 20px}}
 
         /* Spinner */
-        .spinner{display:inline-block;width:20px;height:20px;border:2.5px solid rgba(12,12,12,0.2);border-top-color:#0c0c0c;border-radius:50%;animation:spin 0.6s linear infinite;vertical-align:middle;margin-right:8px}
+        .spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(10,9,8,0.25);border-top-color:var(--ink);border-radius:50%;animation:spin 0.6s linear infinite;vertical-align:middle;margin-right:8px}
         @keyframes spin{to{transform:rotate(360deg)}}
 
-        /* Toast notifications */
-        .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--card-bg);color:var(--text-primary);padding:14px 28px;border-radius:14px;font-size:15px;font-weight:500;z-index:300;box-shadow:var(--shadow-lg);transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);pointer-events:none;border:1px solid var(--border)}
+        /* Toast */
+        .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(110px);background:var(--ink-3);color:var(--bone);padding:13px 24px;font-family:var(--mono);font-size:12px;letter-spacing:0.06em;z-index:991;border:1px solid var(--copper);box-shadow:6px 6px 0 rgba(0,0,0,0.45);transition:transform 0.35s cubic-bezier(0.2,0.8,0.2,1);pointer-events:none}
         .toast.show{transform:translateX(-50%) translateY(0)}
-        .toast.error{background:var(--danger);border-color:var(--danger)}
+        .toast.error{border-color:var(--danger);color:var(--danger)}
 
-        /* ===================== ADMIN DASHBOARD ===================== */
-        .admin-page{display:none;min-height:100vh;padding:80px 24px 40px;background:var(--bg)}
+        /* ===================== ADMIN ===================== */
+        .admin-page{display:none;min-height:100vh;padding:60px 24px 40px;background:var(--ink)}
         .admin-page.active{display:block}
-        .admin-header{max-width:1100px;margin:0 auto 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
-        .admin-header h1{font-size:28px;font-weight:700;letter-spacing:-0.02em}
-        .admin-actions{display:flex;gap:12px;flex-wrap:wrap}
-        .btn-admin{padding:10px 22px;border-radius:980px;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;transition:transform 0.2s;border:1.5px solid var(--border);background:var(--card-bg);color:var(--text-primary)}
-        .btn-admin:hover{transform:scale(1.02)}
-        .btn-admin.primary{background:var(--accent);color:#0c0c0c;border-color:var(--accent)}
-        .btn-admin.danger{background:transparent;border-color:var(--danger);color:var(--danger)}
-        .admin-stats{max-width:1100px;margin:0 auto 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
-        .admin-stat{background:var(--card-bg);border-radius:var(--radius-sm);padding:24px;box-shadow:var(--shadow);border:1px solid var(--border)}
-        .admin-stat .stat-val{font-size:32px;font-weight:700;letter-spacing:-0.02em}
-        .admin-stat .stat-val.gold{color:var(--accent)}
-        .admin-stat .stat-label{font-size:13px;color:var(--text-secondary);margin-top:4px}
-
-        .admin-toolbar{max-width:1100px;margin:0 auto 20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-        .admin-search{flex:1;min-width:200px;padding:12px 20px;border-radius:12px;border:1.5px solid var(--border);background:var(--card-bg);color:var(--text-primary);font-size:15px;font-family:inherit;outline:none;transition:border-color 0.2s}
-        .admin-search:focus{border-color:var(--accent)}
-        .admin-filter{padding:10px 18px;border-radius:10px;border:1.5px solid var(--border);background:var(--card-bg);color:var(--text-primary);font-size:14px;font-family:inherit;cursor:pointer;outline:none}
-
-        .admin-table-wrap{max-width:1100px;margin:0 auto;background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow);overflow-x:auto;border:1px solid var(--border)}
-        .admin-table{width:100%;border-collapse:collapse;font-size:14px;min-width:800px}
-        .admin-table th{text-align:left;padding:14px 16px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-tertiary);background:var(--bg-alt);border-bottom:1px solid var(--border)}
-        .admin-table td{padding:14px 16px;border-bottom:1px solid var(--border);vertical-align:top}
+        .admin-header{max-width:1180px;margin:0 auto 28px;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px}
+        .admin-header h1{font-family:var(--disp);font-weight:900;font-size:40px;text-transform:uppercase;line-height:1}
+        .admin-actions{display:flex;gap:10px;flex-wrap:wrap}
+        .btn-admin{padding:10px 20px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:border-color 0.15s,color 0.15s;border:1px solid var(--line);background:var(--card);color:var(--bone)}
+        .btn-admin:hover{border-color:var(--copper);color:var(--copper)}
+        .btn-admin.primary{background:var(--copper);color:var(--ink);border-color:var(--copper)}
+        .btn-admin.primary:hover{background:var(--copper-hot);color:var(--ink)}
+        .admin-stats{max-width:1180px;margin:0 auto 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+        .admin-stat{background:var(--card);padding:22px 24px}
+        .admin-stat .stat-val{font-family:var(--disp);font-weight:900;font-size:36px;line-height:1}
+        .admin-stat .stat-val.gold{color:var(--copper)}
+        .admin-stat .stat-label{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ash-dim);margin-top:8px}
+        .admin-toolbar{max-width:1180px;margin:0 auto 18px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+        .admin-search{flex:1;min-width:200px;padding:12px 16px;border:1px solid var(--line);background:var(--card);color:var(--bone);font-size:13px;font-family:var(--mono);outline:none;transition:border-color 0.15s}
+        .admin-search:focus{border-color:var(--copper)}
+        .admin-filter{padding:11px 14px;border:1px solid var(--line);background:var(--card);color:var(--bone);font-size:12px;font-family:var(--mono);cursor:pointer;outline:none;border-radius:0}
+        .admin-table-wrap{max-width:1180px;margin:0 auto;background:var(--card);border:1px solid var(--line);overflow-x:auto}
+        .admin-table{width:100%;border-collapse:collapse;font-size:13px;min-width:840px}
+        .admin-table th{text-align:left;padding:12px 16px;font-family:var(--mono);font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:0.16em;color:var(--ash-dim);background:var(--ink-2);border-bottom:1px solid var(--line)}
+        .admin-table td{padding:13px 16px;border-bottom:1px solid var(--line-soft);vertical-align:top}
         .admin-table tr:last-child td{border-bottom:none}
-        .admin-table tr:hover td{background:var(--bg-alt)}
-        .order-items-list{font-size:13px;color:var(--text-secondary);line-height:1.6}
-        .order-status{display:inline-block;padding:3px 10px;border-radius:980px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;cursor:pointer;transition:opacity 0.2s;border:none;font-family:inherit}
+        .admin-table tr:hover td{background:var(--ink-3)}
+        .order-items-list{font-size:12px;color:var(--ash);line-height:1.6}
+        .order-status{display:inline-block;padding:4px 10px;font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;cursor:pointer;transition:opacity 0.15s;border:1px solid}
         .order-status:hover{opacity:0.7}
-        .order-status.pending{background:rgba(196,122,58,0.12);color:var(--accent)}
-        .order-status.confirmed{background:rgba(138,126,114,0.12);color:var(--secondary)}
-        .order-status.shipped{background:rgba(0,122,255,0.12);color:#007aff}
-        .order-status.cancelled{background:rgba(255,59,48,0.12);color:var(--danger)}
-        .admin-empty{text-align:center;padding:80px 24px;color:var(--text-tertiary);font-size:16px}
-        .admin-login{max-width:400px;margin:120px auto;text-align:center;padding:0 24px}
-        .admin-login h2{font-size:24px;font-weight:700;margin-bottom:8px}
-        .admin-login p{font-size:15px;color:var(--text-secondary);margin-bottom:24px}
-        .admin-login input{width:100%;padding:16px 20px;border-radius:12px;border:1.5px solid var(--border);background:var(--card-bg);color:var(--text-primary);font-size:16px;font-family:inherit;outline:none;text-align:center;margin-bottom:16px;transition:border-color 0.2s}
-        .admin-login input:focus{border-color:var(--accent)}
-        .admin-login .btn-order{margin-top:0}
-        .admin-login-error{font-size:13px;color:var(--danger);margin-top:8px;display:none}
-        .admin-realtime{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--success);font-weight:500}
-        .admin-realtime .live-dot{width:8px;height:8px;background:var(--success);border-radius:50%;animation:blink 2s ease-in-out infinite}
-        .order-address{font-size:12px;color:var(--text-tertiary);line-height:1.4;margin-top:2px}
-        .order-notes{font-size:12px;color:var(--text-tertiary);font-style:italic;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-        .order-delete{background:none;border:none;color:var(--text-tertiary);cursor:pointer;font-size:16px;padding:4px;border-radius:6px;transition:color 0.2s,background 0.2s}
-        .order-delete:hover{color:var(--danger);background:rgba(255,59,48,0.08)}
-
+        .order-status.pending{background:var(--copper-dim);color:var(--copper);border-color:var(--copper)}
+        .order-status.confirmed{background:rgba(141,133,122,0.1);color:var(--ash);border-color:var(--ash)}
+        .order-status.shipped{background:rgba(74,123,166,0.12);color:var(--blue);border-color:var(--blue)}
+        .order-status.cancelled{background:rgba(212,69,44,0.1);color:var(--danger);border-color:var(--danger)}
+        .admin-empty{text-align:center;padding:80px 24px;color:var(--ash-dim);font-family:var(--mono);font-size:13px;letter-spacing:0.08em;text-transform:uppercase}
+        .admin-login{max-width:380px;margin:120px auto;padding:0 24px;text-align:center}
+        .admin-login h2{font-family:var(--disp);font-weight:900;font-size:36px;text-transform:uppercase}
+        .admin-login p{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ash-dim);margin:10px 0 26px}
+        .admin-login input{width:100%;padding:14px 16px;border:1px solid var(--line);background:var(--card);color:var(--bone);font-size:14px;font-family:var(--mono);outline:none;margin-bottom:12px;transition:border-color 0.15s;border-radius:0}
+        .admin-login input:focus{border-color:var(--copper)}
+        .admin-login .btn-order{margin-top:6px}
+        .admin-login-error{font-family:var(--mono);font-size:11px;color:var(--danger);margin-top:12px;display:none}
+        .admin-realtime{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--copper);margin-top:6px}
+        .admin-realtime .live-dot{width:7px;height:7px;background:var(--copper);animation:blink 1.6s steps(2,start) infinite}
+        .order-address{font-size:11px;color:var(--ash-dim);line-height:1.5;margin-top:2px}
+        .order-delete{background:none;border:1px solid transparent;color:var(--ash-dim);cursor:pointer;font-size:13px;padding:4px 8px;transition:color 0.15s,border-color 0.15s;font-family:var(--mono)}
+        .order-delete:hover{color:var(--danger);border-color:var(--danger)}
         @media(max-width:768px){.admin-table{font-size:12px}.admin-table th,.admin-table td{padding:10px 12px}}
 
         /* ===================== ANIMATIONS ===================== */
-        @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-        .reveal{opacity:0;transform:translateY(36px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94)}
+        @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+        .reveal{opacity:0;transform:translateY(32px);transition:opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94)}
         .reveal.visible{opacity:1;transform:translateY(0)}
         .reveal-delay-1{transition-delay:0.1s}
         .reveal-delay-2{transition-delay:0.2s}
         .reveal-delay-3{transition-delay:0.3s}
 
+        /* ===================== REDUCED MOTION ===================== */
+        @media(prefers-reduced-motion:reduce){
+            *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}
+            html{scroll-behavior:auto}
+        }
+
         /* ===================== RESPONSIVE ===================== */
-        @media(max-width:768px){
-            .hero{padding:110px 20px 70px}
-            section{padding:100px 20px}
-            #products,#science,#how,#athletes{padding:100px 20px}
-            .hero-showcase{gap:16px;flex-wrap:wrap;justify-content:center}
-            .stick{width:32px;height:120px}
-            .can{width:76px;height:220px}
-            .email-form{flex-direction:column}
-            .email-form input[type="email"]{min-width:auto;width:100%}
-            .email-form button{width:100%}
-            .step::after{display:none}
+        @media(max-width:1080px){
+            .hero-inner{grid-template-columns:minmax(0,1fr);gap:64px}
+            .hero-stage{min-height:380px}
+        }
+        @media(max-width:820px){
+            .hero{padding:120px 20px 60px}
+            #products,#science,#how,#athletes,#waitlist{padding-top:90px;padding-bottom:90px}
+            .wrap{padding:0 20px}
+            .sec-head{grid-template-columns:1fr;gap:6px;margin-bottom:40px}
+            .sec-tag,.sec-head h2,.sec-head .sec-sub{grid-column:1}
+            .product-row,.product-row.flip{grid-template-columns:1fr}
+            .product-row.flip .product-visual{order:0;border-left:none}
+            .product-visual{border-right:none;border-bottom:1px solid var(--line);min-height:280px}
+            .product-info{padding:30px 24px}
+            .hero-showcase{gap:12px}
+            .stick{width:28px;height:120px}
+            .can{width:78px;height:228px}
+            .can-color-band{top:66px;height:44px}
+            .can-flavor{font-size:16px}
+            .marquee-item{font-size:22px}
         }
     </style>
 </head>
@@ -391,210 +461,312 @@
 <!-- NAV -->
 <nav>
     <div class="nav-inner">
-        <a href="#" class="nav-logo">MANKIT</a>
-        <ul class="nav-links">
-            <li><a href="#products">Products</a></li>
-            <li><a href="#science">Science</a></li>
-            <li><a href="#how">How It Works</a></li>
-            <li><a href="#athletes">Results</a></li>
-            <li><a href="#preorder" class="nav-cta" onclick="event.preventDefault();openPreorder()">Pre-Order</a></li>
+        <a href="#" class="nav-logo"><span class="mark">MK</span><span class="word">Mankit</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#products">01 / Lineup</a></li>
+            <li><a href="#science">02 / Problem</a></li>
+            <li><a href="#how">03 / Protocol</a></li>
+            <li><a href="#athletes">04 / Reports</a></li>
+            <li><a href="#preorder" class="nav-cta" onclick="event.preventDefault();openPreorder()">Pre-Order &rarr;</a></li>
         </ul>
-        <button class="nav-menu-btn" onclick="openPreorder()" aria-label="Pre-order">&#8594;</button>
+        <button class="nav-menu-btn" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">&#9776;</button>
     </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="mainSite">
-    <div class="hero-particles">
-        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
-        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
-    </div>
-    <span class="hero-badge"><span class="dot"></span> Pre-orders open — first batch ships April <span class="countdown" id="countdown"></span></span>
-    <h1 class="glitch">Your recovery is <span class="accent">broken.</span></h1>
-    <p class="hero-sub">You train hard and then wait hours to refuel. By then the damage is done. MANKIT puts 30g protein and full electrolytes in one drink — so recovery starts the second you finish your last rep.</p>
-    <div class="hero-actions">
-        <a href="#preorder" class="btn-primary" onclick="event.preventDefault();openPreorder()">
-            Pre-Order Now
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="#products" class="btn-secondary">Explore Products</a>
-    </div>
-    <div class="hero-showcase" id="heroShowcase">
-        <div class="stick"><div class="stick-body copper"><div class="stick-label"><span class="stick-brand">MANKIT</span><span class="stick-flavor">Iron<br>Forge</span></div></div><div class="product-shadow"></div></div>
-        <div class="can"><div class="can-body burnt-copper"><div class="can-color-band"></div><div class="can-top"></div><div class="can-tab"></div><div class="can-label"><span class="can-brand">MANKIT</span><div class="can-divider"></div><span class="can-flavor">Ironside</span><span class="can-sub">30g Protein</span><span class="can-ml">355ml / 12 fl oz</span></div><div class="can-seal"></div><div class="can-bottom"></div></div><div class="product-shadow"></div></div>
-        <div class="can"><div class="can-body matte-black"><div class="can-color-band"></div><div class="can-top"></div><div class="can-tab"></div><div class="can-label"><span class="can-brand">MANKIT</span><div class="can-divider"></div><span class="can-flavor">Blackout</span><span class="can-sub">30g Protein</span><span class="can-ml">355ml / 12 fl oz</span></div><div class="can-seal"></div><div class="can-bottom"></div></div><div class="product-shadow"></div></div>
-        <div class="can"><div class="can-body warm-stone"><div class="can-color-band"></div><div class="can-top"></div><div class="can-tab"></div><div class="can-label"><span class="can-brand">MANKIT</span><div class="can-divider"></div><span class="can-flavor">Concrete</span><span class="can-sub">30g Protein</span><span class="can-ml">355ml / 12 fl oz</span></div><div class="can-seal"></div><div class="can-bottom"></div></div><div class="product-shadow"></div></div>
-        <div class="stick"><div class="stick-body dark"><div class="stick-label"><span class="stick-brand">MANKIT</span><span class="stick-flavor">Black<br>Ops</span></div></div><div class="product-shadow"></div></div>
+    <div class="hero-inner">
+        <div class="hero-copy">
+            <span class="hero-badge" id="heroBadge"><span class="dot"></span> Pre-orders open / batch 001 ships April <span class="countdown" id="countdown"></span></span>
+            <h1>Your<br>recovery<br>is <span class="accent">broken.</span></h1>
+            <p class="hero-sub">You train hard, then wait hours to refuel. By then the damage is done. <strong>MANKIT puts 30g protein and a full electrolyte panel in one drink</strong> — recovery starts the second you finish your last rep.</p>
+            <div class="hero-actions">
+                <a href="#preorder" class="btn-primary" onclick="event.preventDefault();openPreorder()">Pre-Order Now <span class="btn-arrow">&rarr;</span></a>
+                <a href="#products" class="btn-secondary">See The Lineup</a>
+            </div>
+            <div class="hero-specline"><span><b>30G</b> protein</span><span><b>1200MG</b> sodium</span><span><b>0G</b> sugar</span><span><b>3RD-PARTY</b> tested</span></div>
+        </div>
+        <div class="hero-stage">
+            <span class="ghost" aria-hidden="true">MK</span>
+            <div class="hero-showcase" id="heroShowcase">
+                <div class="stick"><div class="stick-body copper"><div class="stick-label"><span class="stick-brand">MANKIT</span><span class="stick-flavor">Iron<br>Forge</span></div></div><div class="product-shadow"></div></div>
+                <div class="can"><div class="can-body burnt-copper"><div class="can-color-band"></div><div class="can-top"></div><div class="can-tab"></div><div class="can-label"><span class="can-brand">MANKIT</span><div class="can-divider"></div><span class="can-flavor">Ironside</span><span class="can-sub">30g Protein + Electrolytes</span><span class="can-ml">355ML / 12 FL OZ</span></div><div class="can-seal">MK-01</div><div class="can-bottom"></div></div><div class="product-shadow"></div></div>
+                <div class="can"><div class="can-body matte-black"><div class="can-color-band"></div><div class="can-top"></div><div class="can-tab"></div><div class="can-label"><span class="can-brand">MANKIT</span><div class="can-divider"></div><span class="can-flavor">Blackout</span><span class="can-sub">30g Protein + Electrolytes</span><span class="can-ml">355ML / 12 FL OZ</span></div><div class="can-seal">MK-02</div><div class="can-bottom"></div></div><div class="product-shadow"></div></div>
+                <div class="can"><div class="can-body warm-stone"><div class="can-color-band"></div><div class="can-top"></div><div class="can-tab"></div><div class="can-label"><span class="can-brand">MANKIT</span><div class="can-divider"></div><span class="can-flavor">Concrete</span><span class="can-sub">30g Protein + Electrolytes</span><span class="can-ml">355ML / 12 FL OZ</span></div><div class="can-seal">MK-03</div><div class="can-bottom"></div></div><div class="product-shadow"></div></div>
+                <div class="stick"><div class="stick-body dark"><div class="stick-label"><span class="stick-brand">MANKIT</span><span class="stick-flavor">Black<br>Ops</span></div></div><div class="product-shadow"></div></div>
+            </div>
+        </div>
     </div>
 </section>
 
 <!-- MARQUEE -->
-<div class="marquee-section">
+<div class="marquee-section" aria-hidden="true">
     <div class="marquee-track">
-        <span class="marquee-item"><span class="marquee-dot"></span>30g protein per serve</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Full electrolyte panel</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Zero sugar</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Recovery starts now</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>No more two shakers</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>One drink. Done.</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Lab tested</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Built for intensity</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>30g protein per serve</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Full electrolyte panel</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Zero sugar</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Recovery starts now</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>No more two shakers</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>One drink. Done.</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Lab tested</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Built for intensity</span>
+        <span class="marquee-item">Built Different</span>
+        <span class="marquee-item o">30g Protein</span>
+        <span class="marquee-item">Zero Sugar</span>
+        <span class="marquee-item o">Full Electrolytes</span>
+        <span class="marquee-item">One Drink. Done.</span>
+        <span class="marquee-item o">Lab Tested</span>
+        <span class="marquee-item">Built Different</span>
+        <span class="marquee-item o">30g Protein</span>
+        <span class="marquee-item">Zero Sugar</span>
+        <span class="marquee-item o">Full Electrolytes</span>
+        <span class="marquee-item">One Drink. Done.</span>
+        <span class="marquee-item o">Lab Tested</span>
     </div>
 </div>
 
 <!-- PRODUCTS -->
 <section id="products">
-    <div class="section-header reveal"><p class="section-label">Products</p><h2>One drink replaces your whole post-workout stack.</h2><p>Protein powder. Electrolyte mix. Recovery shake. You used to need three products. Now you need one.</p></div>
-    <div class="products-grid">
-        <div class="product-card reveal">
-            <div class="product-card-visual"><div class="card-stick-group"><div class="card-stick s1"><span>MK</span></div><div class="card-stick s2"><span>MK</span></div><div class="card-stick s3"><span>MK</span></div><div class="card-stick s4"><span>MK</span></div></div></div>
-            <div class="product-card-info"><h3>Powder Sticks</h3><p class="price">From $22 / box of 12</p><p>Throw one in your gym bag. After your last set, tear it into water — 30g protein and full electrolytes hitting your muscles before you even leave the building.</p><div class="flavor-pills"><span class="flavor-pill">Iron Forge</span><span class="flavor-pill">Black Ops</span><span class="flavor-pill">Granite</span><span class="flavor-pill">War Paint</span></div></div>
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <span class="sec-idx">/01</span>
+            <span class="sec-tag">The Lineup</span>
+            <h2>One drink replaces the <em>whole stack.</em></h2>
+            <p class="sec-sub">Protein powder. Electrolyte mix. Recovery shake. You used to need three products. Now you need one.</p>
         </div>
-        <div class="product-card reveal reveal-delay-1">
-            <div class="product-card-visual"><div class="card-can-group"><div class="card-can c1"><div class="card-can-top"></div><span>Iron</span></div><div class="card-can c2"><div class="card-can-top"></div><span>Black</span></div><div class="card-can c3"><div class="card-can-top"></div><span>Stone</span></div></div></div>
-            <div class="product-card-info"><h3>RTD Cans</h3><p class="price">From $28 / pack of 6</p><p>Keep a pack in your gym locker. Crack one open the second you rack your last weight. No shaker, no mixing, no waiting to get home.</p><div class="flavor-pills"><span class="flavor-pill">Ironside</span><span class="flavor-pill">Blackout</span><span class="flavor-pill">Concrete</span><span class="flavor-pill">Warzone</span><span class="flavor-pill">Titan</span></div></div>
+
+        <div class="product-row reveal">
+            <div class="product-visual">
+                <span class="v-tag">FIG. A — POWDER</span>
+                <div class="v-grid"></div>
+                <div class="card-stick-group"><div class="card-stick s1"><span>MK</span></div><div class="card-stick s2"><span>MK</span></div><div class="card-stick s3"><span>MK</span></div><div class="card-stick s4"><span>MK</span></div></div>
+            </div>
+            <div class="product-info">
+                <p class="p-kicker">For the gym bag</p>
+                <h3>Powder Sticks</h3>
+                <p class="p-desc">Tear one into water after your last set — 30g protein and full electrolytes hitting your muscles before you even leave the building.</p>
+                <div class="spec-table">
+                    <div class="spec"><span>Format</span><span>Box of 12 single-serve sticks</span></div>
+                    <div class="spec"><span>Protein</span><span class="hi">30G whey isolate / serve</span></div>
+                    <div class="spec"><span>Mix time</span><span>10 seconds — no shaker ball</span></div>
+                    <div class="spec"><span>Price</span><span class="hi">From $22 / box</span></div>
+                </div>
+                <div class="flavor-pills">
+                    <span class="flavor-pill"><i style="background:#8b3a1a"></i>Iron Forge</span>
+                    <span class="flavor-pill"><i style="background:#33312e"></i>Black Ops</span>
+                    <span class="flavor-pill"><i style="background:#8d857a"></i>Granite</span>
+                    <span class="flavor-pill"><i style="background:#b08820"></i>War Paint</span>
+                </div>
+                <button class="btn-primary" onclick="openPreorder()">Add To Order <span class="btn-arrow">&rarr;</span></button>
+            </div>
+        </div>
+
+        <div class="product-row flip reveal">
+            <div class="product-visual">
+                <span class="v-tag">FIG. B — READY TO DRINK</span>
+                <div class="v-grid"></div>
+                <div class="card-can-group"><div class="card-can c1"><div class="card-can-top"></div><span>IRON</span></div><div class="card-can c2"><div class="card-can-top"></div><span>BLCK</span></div><div class="card-can c3"><div class="card-can-top"></div><span>STNE</span></div></div>
+            </div>
+            <div class="product-info">
+                <p class="p-kicker">For the locker</p>
+                <h3>RTD Cans</h3>
+                <p class="p-desc">Crack one open the second you rack your last weight. No shaker, no mixing, no waiting to get home.</p>
+                <div class="spec-table">
+                    <div class="spec"><span>Format</span><span>Pack of 6 × 355ml cans</span></div>
+                    <div class="spec"><span>Protein</span><span class="hi">30G / can, pre-mixed cold</span></div>
+                    <div class="spec"><span>Prep</span><span>None. Open. Drink. Done.</span></div>
+                    <div class="spec"><span>Price</span><span class="hi">From $28 / pack</span></div>
+                </div>
+                <div class="flavor-pills">
+                    <span class="flavor-pill"><i style="background:#c8722e"></i>Ironside</span>
+                    <span class="flavor-pill"><i style="background:#33312e"></i>Blackout</span>
+                    <span class="flavor-pill"><i style="background:#8d857a"></i>Concrete</span>
+                    <span class="flavor-pill"><i style="background:#b08820"></i>Warzone</span>
+                    <span class="flavor-pill"><i style="background:#4a3322"></i>Titan</span>
+                </div>
+                <button class="btn-primary" onclick="openPreorder()">Add To Order <span class="btn-arrow">&rarr;</span></button>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- INGREDIENT TRANSPARENCY STRIP -->
-<div class="ingredient-strip">
+<!-- INGREDIENT TICKER -->
+<div class="ingredient-strip" aria-hidden="true">
     <div class="ingredient-track">
-        <span class="ingredient-item"><strong>30g</strong> Protein — muscle rebuild</span>
-        <span class="ingredient-item"><strong>1200mg</strong> Sodium — prevents cramping</span>
-        <span class="ingredient-item"><strong>500mg</strong> Potassium — nerve function</span>
-        <span class="ingredient-item"><strong>250mg</strong> Magnesium — reduces fatigue</span>
-        <span class="ingredient-item"><strong>0g</strong> Sugar — no crash</span>
-        <span class="ingredient-item"><strong>8g</strong> BCAAs — stops muscle breakdown</span>
-        <span class="ingredient-item"><strong>150mg</strong> Calcium — bone density</span>
-        <span class="ingredient-item"><strong>0</strong> Artificial colors — nothing to hide</span>
-        <span class="ingredient-item"><strong>30g</strong> Protein — muscle rebuild</span>
-        <span class="ingredient-item"><strong>1200mg</strong> Sodium — prevents cramping</span>
-        <span class="ingredient-item"><strong>500mg</strong> Potassium — nerve function</span>
-        <span class="ingredient-item"><strong>250mg</strong> Magnesium — reduces fatigue</span>
-        <span class="ingredient-item"><strong>0g</strong> Sugar — no crash</span>
-        <span class="ingredient-item"><strong>8g</strong> BCAAs — stops muscle breakdown</span>
-        <span class="ingredient-item"><strong>150mg</strong> Calcium — bone density</span>
-        <span class="ingredient-item"><strong>0</strong> Artificial colors — nothing to hide</span>
+        <span class="ingredient-item"><strong>NA 1200MG</strong> — prevents cramping</span>
+        <span class="ingredient-item"><strong>K 500MG</strong> — nerve function</span>
+        <span class="ingredient-item"><strong>MG 250MG</strong> — reduces fatigue</span>
+        <span class="ingredient-item"><strong>CA 150MG</strong> — bone density</span>
+        <span class="ingredient-item"><strong>BCAA 8G</strong> — stops muscle breakdown</span>
+        <span class="ingredient-item"><strong>SUGAR 0G</strong> — no crash</span>
+        <span class="ingredient-item"><strong>COLORS 0</strong> — nothing to hide</span>
+        <span class="ingredient-item"><strong>NA 1200MG</strong> — prevents cramping</span>
+        <span class="ingredient-item"><strong>K 500MG</strong> — nerve function</span>
+        <span class="ingredient-item"><strong>MG 250MG</strong> — reduces fatigue</span>
+        <span class="ingredient-item"><strong>CA 150MG</strong> — bone density</span>
+        <span class="ingredient-item"><strong>BCAA 8G</strong> — stops muscle breakdown</span>
+        <span class="ingredient-item"><strong>SUGAR 0G</strong> — no crash</span>
+        <span class="ingredient-item"><strong>COLORS 0</strong> — nothing to hide</span>
     </div>
 </div>
 
-<!-- THE SCIENCE -->
+<!-- THE PROBLEM -->
 <section id="science">
-    <div class="section-header reveal"><p class="section-label">The Problem</p><h2>The problem with your post-workout routine.</h2><p>You finish a brutal workout. Then you go home, make a shake, hope it's enough. By then you've lost the recovery window.</p></div>
-    <div class="features-grid reveal">
-        <div class="feature"><div class="feature-icon-wrap"><svg viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M6.5 17.5l11-11"/><circle cx="12" cy="12" r="10"/></svg></div><h3>Your muscles are starving</h3><p>30g whey isolate — more than most shakes — absorbed fast because you're drinking it immediately, not 45 minutes later at your kitchen counter.</p></div>
-        <div class="feature"><div class="feature-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><h3>You're more dehydrated than you think</h3><p>Sodium, potassium, magnesium, calcium. You sweat out all four. Water alone doesn't replace them. That's why you cramp, drag, and underperform next session.</p></div>
-        <div class="feature"><div class="feature-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>You read every label</h3><p>No sugar, no artificial colors, no proprietary blends. Every ingredient listed, every batch third-party tested. If you track macros, you'll respect this label.</p></div>
-        <div class="feature"><div class="feature-icon-wrap"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>The window is closing</h3><p>Your body starts cannibalizing muscle within 30 minutes post-workout. MANKIT mixes in 10 seconds — no blender needed. Recovery starts before you leave the gym floor.</p></div>
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <span class="sec-idx">/02</span>
+            <span class="sec-tag">The Problem</span>
+            <h2>Your routine is <em>costing you.</em></h2>
+            <p class="sec-sub">You finish a brutal workout. Then you go home, make a shake, and hope it's enough. By then you've lost the recovery window.</p>
+        </div>
+        <div class="features-grid reveal">
+            <div class="feature"><span class="f-num">01</span><h3>Your muscles are starving</h3><p>30g whey isolate — more than most shakes — absorbed fast because you're drinking it immediately, not 45 minutes later at your kitchen counter.</p></div>
+            <div class="feature"><span class="f-num">02</span><h3>You're drier than you think</h3><p>Sodium, potassium, magnesium, calcium. You sweat out all four. Water alone doesn't replace them. That's why you cramp, drag, and underperform next session.</p></div>
+            <div class="feature"><span class="f-num">03</span><h3>You read every label</h3><p>No sugar, no artificial colors, no proprietary blends. Every ingredient listed, every batch third-party tested. If you track macros, you'll respect this label.</p></div>
+            <div class="feature"><span class="f-num">04</span><h3>The window is closing</h3><p>Your body starts cannibalizing muscle within 30 minutes post-workout. MANKIT mixes in 10 seconds — recovery starts before you leave the gym floor.</p></div>
+        </div>
     </div>
 </section>
 
 <!-- BIG QUOTE -->
 <section class="big-quote reveal">
-    <blockquote>"I got tired of the post-workout circus. Shaker bottle, electrolyte packet, BCAA pills, then rush home for a real meal. I thought — what if one drink covered it all? That's MANKIT."</blockquote>
-    <p class="quote-author">Ryan Hutzley, Founder</p>
+    <blockquote>"I got tired of the post-workout circus. Shaker bottle, electrolyte packet, BCAA pills. I thought — <em>what if one drink covered it all?</em> That's MANKIT."</blockquote>
+    <p class="quote-author">— Ryan Hutzley / Founder</p>
 </section>
 
-<!-- HOW IT WORKS -->
+<!-- PROTOCOL -->
 <section id="how">
-    <div class="section-header reveal"><p class="section-label">How It Works</p><h2>Kill the post-workout circus.</h2></div>
-    <div class="steps">
-        <div class="step reveal"><div class="step-number">1</div><h3>Pick your weapon</h3><p>Sticks for the gym bag, cans for the locker. Either way, you're carrying one drink instead of a whole supplement stack.</p></div>
-        <div class="step reveal reveal-delay-1"><div class="step-number">2</div><h3>Delivered to your door</h3><p>Shipped free. Subscribe monthly so you never run out, or order once. Cancel anytime.</p></div>
-        <div class="step reveal reveal-delay-2"><div class="step-number">3</div><h3>Recover while they're still mixing</h3><p>30g protein and full electrolytes hitting your muscles while everyone else is still looking for their shaker bottle.</p></div>
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <span class="sec-idx">/03</span>
+            <span class="sec-tag">Protocol</span>
+            <h2>Kill the post-workout <em>circus.</em></h2>
+        </div>
+        <div class="steps">
+            <div class="step reveal"><div class="step-number">01</div><h3>Pick your weapon</h3><p>Sticks for the gym bag, cans for the locker. Either way, you're carrying one drink instead of a whole supplement stack.</p></div>
+            <div class="step reveal reveal-delay-1"><div class="step-number">02</div><h3>Delivered to your door</h3><p>Shipped free. Subscribe monthly so you never run out, or order once. Cancel anytime.</p></div>
+            <div class="step reveal reveal-delay-2"><div class="step-number">03</div><h3>Recover while they mix</h3><p>30g protein and full electrolytes hitting your muscles while everyone else is still looking for their shaker bottle.</p></div>
+        </div>
     </div>
 </section>
 
 <!-- NUMBERS -->
 <div class="numbers reveal" id="numbersSection">
     <div class="numbers-grid">
-        <div class="number-item"><div class="num" data-target="5000" data-suffix="+">0</div><div class="num-label">Guys who ditched the shaker bag</div></div>
+        <div class="number-item"><div class="num" data-target="5000" data-suffix="+">0</div><div class="num-label">Ditched the shaker bag</div></div>
         <div class="number-item"><div class="num" data-target="4.8" data-decimal="true">0</div><div class="num-label">Avg. tester rating</div></div>
         <div class="number-item"><div class="num" data-target="30" data-suffix="g">0</div><div class="num-label">Protein per serve</div></div>
         <div class="number-item"><div class="num" data-target="0" data-suffix="g" data-static="true">0g</div><div class="num-label">Sugar. Period.</div></div>
     </div>
 </div>
 
-<!-- TESTIMONIALS -->
+<!-- FIELD REPORTS -->
 <section id="athletes">
-    <div class="section-header reveal"><p class="section-label">Results</p><h2>They had the same problem.</h2></div>
-    <div class="testimonials-grid">
-        <div class="testimonial reveal"><div class="stars"><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div></div><blockquote>"I was spending 20 minutes after every session mixing protein, adding electrolytes, popping BCAAs. Now I grab a MANKIT can from my locker and I'm done. My recovery time dropped noticeably."</blockquote><div class="testimonial-footer"><div class="testimonial-avatar">J</div><div class="testimonial-info"><div class="testimonial-author">Jake T.</div><div class="testimonial-handle">Powerlifter</div></div></div></div>
-        <div class="testimonial reveal reveal-delay-1"><div class="stars"><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div></div><blockquote>"I used to skip post-workout nutrition because I was rushing to work. Now I keep MANKIT sticks in my briefcase. Tear one into my water bottle in the parking lot. No excuses anymore."</blockquote><div class="testimonial-footer"><div class="testimonial-avatar">R</div><div class="testimonial-info"><div class="testimonial-author">Ryan M.</div><div class="testimonial-handle">Morning lifter</div></div></div></div>
-        <div class="testimonial reveal reveal-delay-2"><div class="stars"><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div></div><blockquote>"I've tried every protein drink on the market. Most taste like chalk and don't have electrolytes. MANKIT actually tastes good AND replaces my Gatorade and protein shake. One product, done."</blockquote><div class="testimonial-footer"><div class="testimonial-avatar">C</div><div class="testimonial-info"><div class="testimonial-author">Carlos D.</div><div class="testimonial-handle">Personal trainer</div></div></div></div>
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <span class="sec-idx">/04</span>
+            <span class="sec-tag">Field Reports</span>
+            <h2>They had the <em>same problem.</em></h2>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial reveal">
+                <div class="t-head"><span class="stars">★★★★★</span><span class="t-id">RPT-001</span></div>
+                <blockquote>"I was spending 20 minutes after every session mixing protein, adding electrolytes, popping BCAAs. Now I grab a MANKIT can from my locker and I'm done. My recovery time dropped noticeably."</blockquote>
+                <div class="testimonial-footer"><div class="testimonial-author">Jake T.</div><div class="testimonial-handle">Powerlifter</div></div>
+            </div>
+            <div class="testimonial reveal reveal-delay-1">
+                <div class="t-head"><span class="stars">★★★★★</span><span class="t-id">RPT-002</span></div>
+                <blockquote>"I used to skip post-workout nutrition because I was rushing to work. Now I keep MANKIT sticks in my briefcase. Tear one into my water bottle in the parking lot. No excuses anymore."</blockquote>
+                <div class="testimonial-footer"><div class="testimonial-author">Ryan M.</div><div class="testimonial-handle">Morning lifter</div></div>
+            </div>
+            <div class="testimonial reveal reveal-delay-2">
+                <div class="t-head"><span class="stars">★★★★★</span><span class="t-id">RPT-003</span></div>
+                <blockquote>"I've tried every protein drink on the market. Most taste like chalk and don't have electrolytes. MANKIT actually tastes good AND replaces my Gatorade and protein shake. One product, done."</blockquote>
+                <div class="testimonial-footer"><div class="testimonial-author">Carlos D.</div><div class="testimonial-handle">Personal trainer</div></div>
+            </div>
+        </div>
     </div>
 </section>
 
 <!-- WAITLIST -->
 <section id="waitlist">
     <div class="waitlist-box reveal">
-        <p class="section-label">Early Access</p>
-        <h2>Done with the post-workout circus?</h2>
-        <p class="sub">Join 5,000+ lifters who are switching. Early pricing and free samples when we ship.</p>
+        <span class="sec-idx">/05 — Early Access</span>
+        <h2>Get on <em>the list.</em></h2>
+        <p class="sub">Join 5,000+ lifters who are switching. Early pricing and free samples when batch 001 ships.</p>
         <form class="email-form" id="waitlistForm">
-            <input type="email" placeholder="Enter your email" required aria-label="Email address">
+            <input type="email" placeholder="YOUR@EMAIL.COM" required aria-label="Email address">
             <button type="submit">Join Waitlist</button>
         </form>
         <div class="waitlist-perks">
-            <span class="perk"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Free samples</span>
-            <span class="perk"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Early pricing</span>
-            <span class="perk"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> No spam</span>
+            <span class="perk">Free samples</span>
+            <span class="perk">Early pricing</span>
+            <span class="perk">No spam</span>
         </div>
         <p class="form-note">Unsubscribe anytime. We respect your inbox.</p>
-        <div class="success-message" id="successMsg">You're on the list. We'll be in touch soon.</div>
+        <div class="success-message" id="successMsg">&gt;&gt; You're on the list. We'll be in touch soon.</div>
     </div>
 </section>
 
-<!-- PRE-ORDER MODAL -->
+<!-- ORDER DRAWER -->
 <div class="modal-overlay" id="preorderModal">
-    <div class="modal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="modal-header">
-            <h2 id="modalTitle">Pre-Order</h2>
-            <button class="modal-close" onclick="closePreorder()">&times;</button>
+            <div class="modal-header-row">
+                <div><h2 id="modalTitle">Order Sheet</h2><div class="modal-ref">REF MK/26 — BATCH 001</div></div>
+                <button class="modal-close" onclick="closePreorder()" aria-label="Close">&#x2715;</button>
+            </div>
+            <div class="drawer-steps" id="drawerSteps">
+                <span class="dstep on">01 Select</span>
+                <span class="dstep">02 Ship</span>
+                <span class="dstep">03 Confirmed</span>
+            </div>
         </div>
         <div class="modal-body" id="modalBody">
             <div id="orderStep1">
                 <p class="order-section-label">Powder Sticks — Box of 12</p>
-                <div class="order-product" data-id="stick-blood-orange" data-price="24" data-name="Iron Forge Sticks (12)"><div class="order-product-info"><div class="order-product-swatch swatch-blood-orange">MK</div><div><div class="order-product-name">Iron Forge</div><div class="order-product-price">$24.00 / box</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)">+</button></div></div>
-                <div class="order-product" data-id="stick-unflavored" data-price="22" data-name="Black Ops Sticks (12)"><div class="order-product-info"><div class="order-product-swatch swatch-stick-unflavored">MK</div><div><div class="order-product-name">Black Ops (Unflavored)</div><div class="order-product-price">$22.00 / box</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)">+</button></div></div>
-                <div class="order-product" data-id="stick-vanilla" data-price="24" data-name="Granite Sticks (12)"><div class="order-product-info"><div class="order-product-swatch swatch-vanilla">MK</div><div><div class="order-product-name">Granite</div><div class="order-product-price">$24.00 / box</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)">+</button></div></div>
-                <div class="order-product" data-id="stick-tropical" data-price="26" data-name="War Paint Sticks (12)"><div class="order-product-info"><div class="order-product-swatch swatch-tropical">MK</div><div><div class="order-product-name">War Paint</div><div class="order-product-price">$26.00 / box</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)">+</button></div></div>
+                <div class="order-product" data-id="stick-blood-orange" data-price="24" data-name="Iron Forge Sticks (12)"><div class="order-product-info"><div class="order-product-swatch swatch-blood-orange">MK</div><div><div class="order-product-name">Iron Forge</div><div class="order-product-price">$24.00 / BOX</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)" aria-label="Decrease quantity">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)" aria-label="Increase quantity">+</button></div></div>
+                <div class="order-product" data-id="stick-unflavored" data-price="22" data-name="Black Ops Sticks (12)"><div class="order-product-info"><div class="order-product-swatch swatch-stick-unflavored">MK</div><div><div class="order-product-name">Black Ops (Unflavored)</div><div class="order-product-price">$22.00 / BOX</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)" aria-label="Decrease quantity">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)" aria-label="Increase quantity">+</button></div></div>
+                <div class="order-product" data-id="stick-vanilla" data-price="24" data-name="Granite Sticks (12)"><div class="order-product-info"><div class="order-product-swatch swatch-vanilla">MK</div><div><div class="order-product-name">Granite</div><div class="order-product-price">$24.00 / BOX</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)" aria-label="Decrease quantity">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)" aria-label="Increase quantity">+</button></div></div>
+                <div class="order-product" data-id="stick-tropical" data-price="26" data-name="War Paint Sticks (12)"><div class="order-product-info"><div class="order-product-swatch swatch-tropical">MK</div><div><div class="order-product-name">War Paint</div><div class="order-product-price">$26.00 / BOX</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)" aria-label="Decrease quantity">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)" aria-label="Increase quantity">+</button></div></div>
                 <p class="order-section-label">RTD Cans — Pack of 6</p>
-                <div class="order-product" data-id="can-blood-orange" data-price="30" data-name="Ironside Cans (6)"><div class="order-product-info"><div class="order-product-swatch swatch-can-blood-orange">MK</div><div><div class="order-product-name">Ironside</div><div class="order-product-price">$30.00 / pack</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)">+</button></div></div>
-                <div class="order-product" data-id="can-unflavored" data-price="28" data-name="Blackout Cans (6)"><div class="order-product-info"><div class="order-product-swatch swatch-can-unflavored">MK</div><div><div class="order-product-name">Blackout (Unflavored)</div><div class="order-product-price">$28.00 / pack</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)">+</button></div></div>
-                <div class="order-product" data-id="can-vanilla" data-price="30" data-name="Concrete Cans (6)"><div class="order-product-info"><div class="order-product-swatch swatch-can-vanilla">MK</div><div><div class="order-product-name">Concrete</div><div class="order-product-price">$30.00 / pack</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)">+</button></div></div>
-                <div class="order-product" data-id="can-mango" data-price="32" data-name="Warzone Cans (6)"><div class="order-product-info"><div class="order-product-swatch swatch-mango">MK</div><div><div class="order-product-name">Warzone</div><div class="order-product-price">$32.00 / pack</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)">+</button></div></div>
-                <div class="order-product" data-id="can-chocolate" data-price="32" data-name="Titan Cans (6)"><div class="order-product-info"><div class="order-product-swatch swatch-chocolate">MK</div><div><div class="order-product-name">Titan</div><div class="order-product-price">$32.00 / pack</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)">+</button></div></div>
-                <div class="order-summary" id="orderSummary" style="display:none"><div id="summaryLines"></div><div class="order-summary-total"><span>Total</span><span id="summaryTotal">$0.00</span></div></div>
-                <button class="btn-order" id="btnNext" onclick="goToStep2()" disabled>Continue to Details</button>
+                <div class="order-product" data-id="can-blood-orange" data-price="30" data-name="Ironside Cans (6)"><div class="order-product-info"><div class="order-product-swatch swatch-can-blood-orange">MK</div><div><div class="order-product-name">Ironside</div><div class="order-product-price">$30.00 / PACK</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)" aria-label="Decrease quantity">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)" aria-label="Increase quantity">+</button></div></div>
+                <div class="order-product" data-id="can-unflavored" data-price="28" data-name="Blackout Cans (6)"><div class="order-product-info"><div class="order-product-swatch swatch-can-unflavored">MK</div><div><div class="order-product-name">Blackout (Unflavored)</div><div class="order-product-price">$28.00 / PACK</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)" aria-label="Decrease quantity">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)" aria-label="Increase quantity">+</button></div></div>
+                <div class="order-product" data-id="can-vanilla" data-price="30" data-name="Concrete Cans (6)"><div class="order-product-info"><div class="order-product-swatch swatch-can-vanilla">MK</div><div><div class="order-product-name">Concrete</div><div class="order-product-price">$30.00 / PACK</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)" aria-label="Decrease quantity">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)" aria-label="Increase quantity">+</button></div></div>
+                <div class="order-product" data-id="can-mango" data-price="32" data-name="Warzone Cans (6)"><div class="order-product-info"><div class="order-product-swatch swatch-mango">MK</div><div><div class="order-product-name">Warzone</div><div class="order-product-price">$32.00 / PACK</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)" aria-label="Decrease quantity">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)" aria-label="Increase quantity">+</button></div></div>
+                <div class="order-product" data-id="can-chocolate" data-price="32" data-name="Titan Cans (6)"><div class="order-product-info"><div class="order-product-swatch swatch-chocolate">MK</div><div><div class="order-product-name">Titan</div><div class="order-product-price">$32.00 / PACK</div></div></div><div class="qty-control"><button class="qty-btn" onclick="changeQty(this,-1)" aria-label="Decrease quantity">-</button><input class="qty-val" type="text" value="0" readonly><button class="qty-btn" onclick="changeQty(this,1)" aria-label="Increase quantity">+</button></div></div>
+                <div class="order-foot">
+                    <div class="order-summary" id="orderSummary" style="display:none"><div id="summaryLines"></div><div class="order-summary-total"><span>TOTAL</span><span id="summaryTotal">$0.00</span></div></div>
+                    <button class="btn-order" id="btnNext" onclick="goToStep2()" disabled>Continue To Details &rarr;</button>
+                </div>
             </div>
             <div id="orderStep2" style="display:none">
-                <button class="btn-back" onclick="backToStep1()">&#8592; Back to products</button>
+                <button class="btn-back" onclick="backToStep1()">&larr; Back to products</button>
                 <form id="customerForm" onsubmit="submitOrder(event)">
                     <p class="order-section-label">Your Information</p>
-                    <div class="form-row"><div class="form-field"><label>First Name *</label><input type="text" id="custFirst" required maxlength="50"></div><div class="form-field"><label>Last Name *</label><input type="text" id="custLast" required maxlength="50"></div></div>
-                    <div class="form-row"><div class="form-field"><label>Email *</label><input type="email" id="custEmail" required maxlength="100"></div><div class="form-field"><label>Phone *</label><input type="tel" id="custPhone" required maxlength="20" pattern="[0-9+\-\s\(\)]{7,20}"></div></div>
+                    <div class="form-row"><div class="form-field"><label>First Name *</label><input type="text" id="custFirst" required maxlength="50" autocomplete="given-name"></div><div class="form-field"><label>Last Name *</label><input type="text" id="custLast" required maxlength="50" autocomplete="family-name"></div></div>
+                    <div class="form-row"><div class="form-field"><label>Email *</label><input type="email" id="custEmail" required maxlength="100" autocomplete="email"></div><div class="form-field"><label>Phone *</label><input type="tel" id="custPhone" required maxlength="20" pattern="[0-9+\-\s\(\)]{7,20}" autocomplete="tel"></div></div>
                     <p class="order-section-label">Shipping Address</p>
-                    <div class="form-row full"><div class="form-field"><label>Street Address *</label><input type="text" id="custAddress" required maxlength="200"></div></div>
-                    <div class="form-row"><div class="form-field"><label>City *</label><input type="text" id="custCity" required maxlength="100"></div><div class="form-field"><label>State / Province *</label><input type="text" id="custState" required maxlength="100"></div></div>
-                    <div class="form-row"><div class="form-field"><label>ZIP / Postal Code *</label><input type="text" id="custZip" required maxlength="20"></div><div class="form-field"><label>Country *</label><input type="text" id="custCountry" value="United States" required maxlength="100"></div></div>
-                    <p class="order-section-label">Notes (optional)</p>
+                    <div class="form-row full"><div class="form-field"><label>Street Address *</label><input type="text" id="custAddress" required maxlength="200" autocomplete="street-address"></div></div>
+                    <div class="form-row"><div class="form-field"><label>City *</label><input type="text" id="custCity" required maxlength="100" autocomplete="address-level2"></div><div class="form-field"><label>State / Province *</label><input type="text" id="custState" required maxlength="100" autocomplete="address-level1"></div></div>
+                    <div class="form-row"><div class="form-field"><label>ZIP / Postal Code *</label><input type="text" id="custZip" required maxlength="20" autocomplete="postal-code"></div><div class="form-field"><label>Country *</label><input type="text" id="custCountry" value="United States" required maxlength="100" autocomplete="country-name"></div></div>
+                    <p class="order-section-label">Notes (Optional)</p>
                     <div class="form-row full"><div class="form-field"><textarea id="custNotes" placeholder="Any special requests..." maxlength="500"></textarea></div></div>
-                    <div class="order-summary" id="orderSummary2"></div>
-                    <button class="btn-order" type="submit" id="btnSubmitOrder">Place Pre-Order</button>
+                    <div class="order-summary order-summary2-box" id="orderSummary2"></div>
+                    <div class="order-foot">
+                        <button class="btn-order" type="submit" id="btnSubmitOrder">Place Pre-Order &rarr;</button>
+                    </div>
                 </form>
             </div>
             <div id="orderStep3" style="display:none">
-                <div class="order-success"><div class="order-success-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><h3>Pre-Order Confirmed!</h3><p>Thank you for your order. We'll reach out via email with updates on shipping and your early access perks.</p><div class="order-id" id="confirmOrderId"></div><div class="social-share" id="socialShare"><a class="share-btn" id="shareTwitter" target="_blank" rel="noopener">&#x1D54F; Share on X</a><a class="share-btn" id="shareCopy" onclick="copyShareText()">&#128203; Copy</a></div></div>
+                <div class="order-success">
+                    <div class="order-success-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <h3>Order Locked In</h3>
+                    <p>We'll reach out via email with shipping updates and your early access perks.</p>
+                    <div class="receipt">
+                        <div class="r-row"><span>STATUS</span><span>PENDING</span></div>
+                        <div class="r-row"><span>BATCH</span><span>001 — APRIL</span></div>
+                        <div class="r-row"><span>SHIPPING</span><span>FREE</span></div>
+                        <span class="order-id" id="confirmOrderId"></span>
+                        <div class="barcode" aria-hidden="true"></div>
+                    </div>
+                    <div class="social-share" id="socialShare">
+                        <a class="share-btn" id="shareTwitter" target="_blank" rel="noopener">Share on X</a>
+                        <a class="share-btn" id="shareCopy" onclick="copyShareText()">Copy Text</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -604,30 +776,30 @@
 <div class="admin-page" id="adminPage">
     <div class="admin-login" id="adminLogin">
         <h2>Admin Access</h2>
-        <p>Sign in with your admin email to view orders.</p>
-        <input type="email" id="adminEmail" placeholder="Admin email">
-        <input type="password" id="adminPass" placeholder="Password" onkeydown="if(event.key==='Enter')adminAuth()">
+        <p>Sign in with your admin email</p>
+        <input type="email" id="adminEmail" placeholder="ADMIN EMAIL" autocomplete="username">
+        <input type="password" id="adminPass" placeholder="PASSWORD" autocomplete="current-password" onkeydown="if(event.key==='Enter')adminAuth()">
         <button class="btn-order" onclick="adminAuth()" id="btnAdminLogin">Log In</button>
         <p class="admin-login-error" id="adminError"></p>
     </div>
     <div id="adminDashboard" style="display:none">
         <div class="admin-header">
-            <div><h1>Orders Dashboard</h1><span class="admin-realtime"><span class="live-dot"></span> Real-time via Firebase</span></div>
+            <div><h1>Orders</h1><span class="admin-realtime"><span class="live-dot"></span> Live via Firebase</span></div>
             <div class="admin-actions">
                 <button class="btn-admin" onclick="exportCSV()">Export CSV</button>
                 <button class="btn-admin" onclick="adminSignOut()">Sign Out</button>
-                <button class="btn-admin primary" onclick="window.location.href=window.location.pathname">Back to Site</button>
+                <button class="btn-admin primary" onclick="window.location.href=window.location.pathname">Back To Site</button>
             </div>
         </div>
         <div class="admin-stats" id="adminStats"></div>
         <div class="admin-toolbar">
-            <input class="admin-search" id="adminSearch" placeholder="Search orders by name, email, or order ID..." oninput="renderAdmin()">
+            <input class="admin-search" id="adminSearch" placeholder="SEARCH NAME / EMAIL / ORDER ID..." aria-label="Search orders" oninput="renderAdmin()">
             <select class="admin-filter" id="adminStatusFilter" onchange="renderAdmin()">
-                <option value="all">All Statuses</option>
-                <option value="pending">Pending</option>
-                <option value="confirmed">Confirmed</option>
-                <option value="shipped">Shipped</option>
-                <option value="cancelled">Cancelled</option>
+                <option value="all">ALL STATUSES</option>
+                <option value="pending">PENDING</option>
+                <option value="confirmed">CONFIRMED</option>
+                <option value="shipped">SHIPPED</option>
+                <option value="cancelled">CANCELLED</option>
             </select>
         </div>
         <div class="admin-table-wrap">
@@ -641,25 +813,25 @@
 </div>
 
 <!-- TOAST -->
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <!-- FOOTER -->
 <footer>
+    <div class="footer-word" aria-hidden="true">Mankit</div>
     <div class="footer-inner">
-        <div class="footer-logo">MANKIT</div>
         <ul class="footer-links">
-            <li><a href="#products">Products</a></li>
-            <li><a href="#science">Science</a></li>
-            <li><a href="#how">How It Works</a></li>
-            <li><a href="#athletes">Results</a></li>
+            <li><a href="#products">Lineup</a></li>
+            <li><a href="#science">Problem</a></li>
+            <li><a href="#how">Protocol</a></li>
+            <li><a href="#athletes">Reports</a></li>
             <li><a href="#waitlist">Waitlist</a></li>
         </ul>
         <div class="footer-social">
-            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
-            <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
-            <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
+            <a href="#" aria-label="Instagram">[IG]</a>
+            <a href="#" aria-label="TikTok">[TT]</a>
+            <a href="#" aria-label="X">[X]</a>
         </div>
-        <p class="footer-copy">&copy; 2026 MANKIT by Ryan Hutzley. All rights reserved.</p>
+        <p class="footer-copy">&copy; 2026 MANKIT by Ryan Hutzley — Built Different.</p>
     </div>
 </footer>
 
@@ -694,7 +866,7 @@ function esc(str) {
 
 function showToast(msg, isError) {
     const t = document.getElementById('toast');
-    t.textContent = msg;
+    t.textContent = (isError ? '✕ ' : '✓ ') + msg;
     t.className = 'toast show' + (isError ? ' error' : '');
     setTimeout(() => t.className = 'toast', 3000);
 }
@@ -720,7 +892,10 @@ function updateCountdown() {
     const launch = new Date('2026-04-01T00:00:00');
     const now = new Date();
     const diff = launch - now;
-    if (diff <= 0) { document.getElementById('countdown').textContent = '— LIVE'; return; }
+    if (diff <= 0) {
+        document.getElementById('heroBadge').innerHTML = '<span class="dot"></span> Batch 001 is live — order now';
+        return;
+    }
     const d = Math.floor(diff / 86400000);
     const h = Math.floor((diff % 86400000) / 3600000);
     const m = Math.floor((diff % 3600000) / 60000);
@@ -728,6 +903,19 @@ function updateCountdown() {
 }
 updateCountdown();
 setInterval(updateCountdown, 60000);
+
+// ============ MOBILE MENU ============
+function toggleMenu() {
+    const links = document.getElementById('navLinks');
+    const open = links.classList.toggle('open');
+    document.querySelector('.nav-menu-btn').setAttribute('aria-expanded', open);
+}
+document.querySelectorAll('#navLinks a').forEach(a => {
+    a.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('open');
+        document.querySelector('.nav-menu-btn').setAttribute('aria-expanded', 'false');
+    });
+});
 
 // ============ SCROLL REVEAL ============
 const observer = new IntersectionObserver((entries) => {
@@ -780,7 +968,7 @@ if (heroShowcase) {
         const cx = (e.clientX / window.innerWidth - 0.5) * 2;
         const cy = (e.clientY / window.innerHeight - 0.5) * 2;
         heroShowcase.querySelectorAll('.can, .stick').forEach((el, i) => {
-            const factor = (i % 3 + 1) * 3;
+            const factor = (i % 3 + 1) * 2.5;
             el.style.transform = 'translateY(0px) rotateY(' + (cx * factor) + 'deg) rotateX(' + (-cy * factor) + 'deg)';
         });
     });
@@ -790,7 +978,10 @@ if (heroShowcase) {
 document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const emailInput = this.querySelector('input[type="email"]');
-    const email = emailInput.value.trim();
+    const btn = this.querySelector('button[type="submit"]');
+    const email = emailInput.value.trim().toLowerCase();
+    btn.disabled = true;
+    btn.textContent = 'Joining...';
     try {
         await db.collection('waitlist').add({ email, createdAt: firebase.firestore.FieldValue.serverTimestamp() });
         this.style.display = 'none';
@@ -799,6 +990,8 @@ document.getElementById('waitlistForm').addEventListener('submit', async functio
         document.querySelector('.waitlist-perks').style.display = 'none';
     } catch (err) {
         showToast('Could not join waitlist. Please try again.', true);
+        btn.disabled = false;
+        btn.textContent = 'Join Waitlist';
     }
 });
 
@@ -812,7 +1005,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ============ PARALLAX ============
+// ============ PARALLAX FADE ============
 let ticking = false;
 window.addEventListener('scroll', () => {
     if (!ticking) {
@@ -830,38 +1023,51 @@ window.addEventListener('scroll', () => {
 
 // ============ SOCIAL SHARE ============
 function getShareText(orderId) {
-    return 'Just locked in my MANKIT order \ud83d\udd25 Built Different. @mankitofficial #MANKIT #BuiltDifferent';
+    return 'Just locked in my MANKIT order 🔥 Built Different. @mankitofficial #MANKIT #BuiltDifferent';
 }
 function copyShareText() {
     const orderId = document.getElementById('confirmOrderId').textContent;
     navigator.clipboard.writeText(getShareText(orderId)).then(() => showToast('Copied to clipboard!'));
 }
 
-// ============ PRE-ORDER MODAL ============
+// ============ ORDER DRAWER ============
+let lastFocused = null;
+
+function setStep(n) {
+    document.querySelectorAll('#drawerSteps .dstep').forEach((el, i) => {
+        el.classList.toggle('on', i < n);
+    });
+}
+
 function openPreorder() {
+    lastFocused = document.activeElement;
     document.getElementById('preorderModal').classList.add('open');
     document.body.style.overflow = 'hidden';
-    resetOrderModal();
+    // Only reset after a completed order — preserve cart on accidental close
+    if (document.getElementById('orderStep3').style.display !== 'none') resetOrderModal();
+    document.querySelector('#preorderModal .modal-close').focus();
 }
 function closePreorder() {
     document.getElementById('preorderModal').classList.remove('open');
     document.body.style.overflow = '';
+    if (lastFocused) { lastFocused.focus(); lastFocused = null; }
 }
 document.getElementById('preorderModal').addEventListener('click', function(e) {
     if (e.target === this) closePreorder();
 });
 document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closePreorder();
+    if (e.key === 'Escape' && document.getElementById('preorderModal').classList.contains('open')) closePreorder();
 });
 
 function resetOrderModal() {
     document.getElementById('orderStep1').style.display = '';
     document.getElementById('orderStep2').style.display = 'none';
     document.getElementById('orderStep3').style.display = 'none';
-    document.getElementById('modalTitle').textContent = 'Pre-Order';
+    document.getElementById('modalTitle').textContent = 'Order Sheet';
     document.querySelectorAll('.qty-val').forEach(i => i.value = '0');
     document.getElementById('btnSubmitOrder').disabled = false;
-    document.getElementById('btnSubmitOrder').innerHTML = 'Place Pre-Order';
+    document.getElementById('btnSubmitOrder').innerHTML = 'Place Pre-Order &rarr;';
+    setStep(1);
     updateSummary();
 }
 
@@ -895,7 +1101,7 @@ function updateSummary() {
     summaryDiv.style.display = '';
     btnNext.disabled = false;
     let html = '', total = 0;
-    items.forEach(item => { html += '<div class="order-summary-row"><span>' + esc(item.name) + ' x' + item.qty + '</span><span>$' + item.subtotal.toFixed(2) + '</span></div>'; total += item.subtotal; });
+    items.forEach(item => { html += '<div class="order-summary-row"><span>' + esc(item.name) + ' ×' + item.qty + '</span><span>$' + item.subtotal.toFixed(2) + '</span></div>'; total += item.subtotal; });
     linesDiv.innerHTML = html;
     totalSpan.textContent = '$' + total.toFixed(2);
 }
@@ -904,26 +1110,26 @@ function goToStep2() {
     if (getCartItems().length === 0) return;
     document.getElementById('orderStep1').style.display = 'none';
     document.getElementById('orderStep2').style.display = '';
-    document.getElementById('modalTitle').textContent = 'Your Details';
+    document.getElementById('modalTitle').textContent = 'Ship To';
+    setStep(2);
     const items = getCartItems();
     let total = 0, html = '';
-    items.forEach(i => { html += '<div class="order-summary-row"><span>' + esc(i.name) + ' x' + i.qty + '</span><span>$' + i.subtotal.toFixed(2) + '</span></div>'; total += i.subtotal; });
-    html += '<div class="order-summary-total"><span>Total</span><span>$' + total.toFixed(2) + '</span></div>';
+    items.forEach(i => { html += '<div class="order-summary-row"><span>' + esc(i.name) + ' ×' + i.qty + '</span><span>$' + i.subtotal.toFixed(2) + '</span></div>'; total += i.subtotal; });
+    html += '<div class="order-summary-total"><span>TOTAL</span><span>$' + total.toFixed(2) + '</span></div>';
     document.getElementById('orderSummary2').innerHTML = html;
+    document.getElementById('modalBody').scrollTop = 0;
 }
 
 function backToStep1() {
     document.getElementById('orderStep2').style.display = 'none';
     document.getElementById('orderStep1').style.display = '';
-    document.getElementById('modalTitle').textContent = 'Pre-Order';
+    document.getElementById('modalTitle').textContent = 'Order Sheet';
+    setStep(1);
 }
 
 async function submitOrder(e) {
     e.preventDefault();
     const btn = document.getElementById('btnSubmitOrder');
-
-    // Rate limit
-    if (!checkRateLimit()) { showToast('Too many orders. Please try again later.', true); return; }
 
     // Validate
     const items = getCartItems();
@@ -931,21 +1137,24 @@ async function submitOrder(e) {
     let total = 0;
     items.forEach(i => total += i.subtotal);
 
-    // Sanitize inputs
+    // Store raw values — output is escaped at render time (admin table, CSV)
     const customer = {
-        firstName: esc(document.getElementById('custFirst').value.trim()),
-        lastName: esc(document.getElementById('custLast').value.trim()),
+        firstName: document.getElementById('custFirst').value.trim(),
+        lastName: document.getElementById('custLast').value.trim(),
         email: document.getElementById('custEmail').value.trim().toLowerCase(),
         phone: document.getElementById('custPhone').value.trim().replace(/[^0-9+\-\s()]/g, ''),
-        address: esc(document.getElementById('custAddress').value.trim()),
-        city: esc(document.getElementById('custCity').value.trim()),
-        state: esc(document.getElementById('custState').value.trim()),
-        zip: esc(document.getElementById('custZip').value.trim()),
-        country: esc(document.getElementById('custCountry').value.trim())
+        address: document.getElementById('custAddress').value.trim(),
+        city: document.getElementById('custCity').value.trim(),
+        state: document.getElementById('custState').value.trim(),
+        zip: document.getElementById('custZip').value.trim(),
+        country: document.getElementById('custCountry').value.trim()
     };
 
     // Email format validation
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customer.email)) { showToast('Please enter a valid email.', true); return; }
+
+    // Rate limit — only consume a slot once validation has passed
+    if (!checkRateLimit()) { showToast('Too many orders. Please try again later.', true); return; }
 
     const orderId = genOrderId();
     btn.disabled = true;
@@ -956,7 +1165,7 @@ async function submitOrder(e) {
             id: orderId,
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
             customer,
-            notes: esc(document.getElementById('custNotes').value.trim()).substring(0, 500),
+            notes: document.getElementById('custNotes').value.trim().substring(0, 500),
             items: items.map(i => ({ id: i.id, name: i.name, price: i.price, qty: i.qty, subtotal: i.subtotal })),
             total,
             status: 'pending'
@@ -964,17 +1173,19 @@ async function submitOrder(e) {
 
         document.getElementById('orderStep2').style.display = 'none';
         document.getElementById('orderStep3').style.display = '';
-        document.getElementById('modalTitle').textContent = 'Order Placed';
+        document.getElementById('modalTitle').textContent = 'Confirmed';
         document.getElementById('confirmOrderId').textContent = orderId;
+        setStep(3);
         // Set up share links
         const shareText = getShareText(orderId);
         document.getElementById('shareTwitter').href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText);
         document.getElementById('customerForm').reset();
         document.getElementById('custCountry').value = 'United States';
+        document.getElementById('modalBody').scrollTop = 0;
         showToast('Order placed successfully!');
     } catch (err) {
         btn.disabled = false;
-        btn.innerHTML = 'Place Pre-Order';
+        btn.innerHTML = 'Place Pre-Order &rarr;';
         showToast('Failed to place order. Please try again.', true);
         console.error('Order error:', err);
     }
@@ -982,7 +1193,18 @@ async function submitOrder(e) {
 
 // ============ ADMIN DASHBOARD ============
 let allOrders = [];
+let renderedOrders = [];
 let unsubOrders = null;
+const NEXT_STATUS = { pending:'confirmed', confirmed:'shipped', shipped:'cancelled', cancelled:'pending' };
+
+document.getElementById('adminTableBody').addEventListener('click', function(e) {
+    const btn = e.target.closest('button[data-action]');
+    if (!btn) return;
+    const order = renderedOrders[parseInt(btn.dataset.idx)];
+    if (!order) return;
+    if (btn.dataset.action === 'status') cycleStatus(order.id, NEXT_STATUS[order.status] || 'pending');
+    else if (btn.dataset.action === 'delete') deleteOrder(order.id);
+});
 
 function checkAdmin() {
     if (new URLSearchParams(window.location.search).has('admin')) {
@@ -1014,7 +1236,7 @@ async function adminAuth() {
 }
 
 function adminSignOut() {
-    if (unsubOrders) unsubOrders();
+    if (unsubOrders) { unsubOrders(); unsubOrders = null; }
     auth.signOut();
     document.getElementById('adminLogin').style.display = '';
     document.getElementById('adminDashboard').style.display = 'none';
@@ -1027,6 +1249,7 @@ function adminSignOut() {
 function showDashboard() {
     document.getElementById('adminLogin').style.display = 'none';
     document.getElementById('adminDashboard').style.display = '';
+    if (unsubOrders) unsubOrders();
     unsubOrders = db.collection('orders').orderBy('createdAt', 'desc').onSnapshot(snapshot => {
         allOrders = snapshot.docs.map(doc => doc.data());
         renderAdmin();
@@ -1060,24 +1283,25 @@ function renderAdmin() {
     if (orders.length === 0) { tbody.innerHTML = ''; document.getElementById('adminEmpty').style.display = ''; return; }
     document.getElementById('adminEmpty').style.display = 'none';
 
+    renderedOrders = orders;
     let html = '';
-    orders.forEach(o => {
+    orders.forEach((o, idx) => {
         const date = o.createdAt ? o.createdAt.toDate() : new Date();
         const dateStr = date.toLocaleDateString('en-US', { month:'short',day:'numeric',year:'numeric' });
         const timeStr = date.toLocaleTimeString('en-US', { hour:'2-digit',minute:'2-digit' });
         const itemsHtml = o.items.map(i => esc(i.name) + ' x' + i.qty).join('<br>');
         const addr = esc(o.customer.city) + ', ' + esc(o.customer.state) + ' ' + esc(o.customer.zip);
-        const nextStatus = { pending:'confirmed', confirmed:'shipped', shipped:'cancelled', cancelled:'pending' };
+        const statusClass = NEXT_STATUS[o.status] ? o.status : 'pending';
 
         html += '<tr>' +
             '<td><strong>' + esc(o.id) + '</strong></td>' +
-            '<td>' + dateStr + '<br><span style="color:var(--text-tertiary);font-size:12px">' + timeStr + '</span></td>' +
+            '<td>' + dateStr + '<br><span style="color:var(--ash-dim);font-size:11px">' + timeStr + '</span></td>' +
             '<td>' + esc(o.customer.firstName) + ' ' + esc(o.customer.lastName) + '<div class="order-address">' + addr + '</div></td>' +
-            '<td>' + esc(o.customer.email) + '<br><span style="color:var(--text-tertiary);font-size:12px">' + esc(o.customer.phone) + '</span></td>' +
+            '<td>' + esc(o.customer.email) + '<br><span style="color:var(--ash-dim);font-size:11px">' + esc(o.customer.phone) + '</span></td>' +
             '<td><div class="order-items-list">' + itemsHtml + '</div></td>' +
             '<td><strong>$' + o.total.toFixed(2) + '</strong></td>' +
-            '<td><button class="order-status ' + o.status + '" onclick="cycleStatus(\'' + o.id + '\',\'' + nextStatus[o.status] + '\')" title="Click to change">' + o.status + '</button></td>' +
-            '<td><button class="order-delete" onclick="deleteOrder(\'' + o.id + '\')" title="Delete order">&#x2715;</button></td>' +
+            '<td><button class="order-status ' + statusClass + '" data-action="status" data-idx="' + idx + '" title="Click to change">' + esc(o.status) + '</button></td>' +
+            '<td><button class="order-delete" data-action="delete" data-idx="' + idx + '" title="Delete order" aria-label="Delete order">&#x2715;</button></td>' +
         '</tr>';
     });
     tbody.innerHTML = html;
@@ -1097,13 +1321,20 @@ async function deleteOrder(orderId) {
     } catch (err) { showToast('Failed to delete order.', true); }
 }
 
+function csvField(v) {
+    let s = String(v == null ? '' : v);
+    // Guard against spreadsheet formula injection
+    if (/^[=+\-@\t\r]/.test(s)) s = "'" + s;
+    return '"' + s.replace(/"/g, '""') + '"';
+}
+
 function exportCSV() {
     if (allOrders.length === 0) return showToast('No orders to export.', true);
     let csv = 'Order ID,Date,First Name,Last Name,Email,Phone,Address,City,State,ZIP,Country,Items,Total,Status,Notes\n';
     allOrders.forEach(o => {
         const date = o.createdAt ? o.createdAt.toDate().toLocaleString() : '';
         const items = o.items.map(i => i.name + ' x' + i.qty).join('; ');
-        csv += [o.id, date, '"'+o.customer.firstName+'"', '"'+o.customer.lastName+'"', o.customer.email, o.customer.phone, '"'+o.customer.address+'"', '"'+o.customer.city+'"', '"'+o.customer.state+'"', o.customer.zip, '"'+o.customer.country+'"', '"'+items+'"', '$'+o.total.toFixed(2), o.status, '"'+(o.notes||'')+'"'].join(',') + '\n';
+        csv += [o.id, date, o.customer.firstName, o.customer.lastName, o.customer.email, o.customer.phone, o.customer.address, o.customer.city, o.customer.state, o.customer.zip, o.customer.country, items, '$'+o.total.toFixed(2), o.status, o.notes||''].map(csvField).join(',') + '\n';
     });
     const blob = new Blob([csv], { type: 'text/csv' });
     const a = document.createElement('a');
